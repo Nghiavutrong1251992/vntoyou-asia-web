@@ -1,10 +1,10 @@
 [
   {
     "id": "danang",
-    "title": "Tour Đà Nẵng 3 ngày 2 đêm: Sắc màu miền Trung",
-    "region": "Miền Trung",
+    "title": "Da Nang Tour 3 days 2 nights: Colors of Central Vietnam",
+    "region": "Central Vietnam",
     "days": 3,
-    "description": "Khám phá vẻ đẹp quyến rũ của thành phố biển Đà Nẵng, nơi có bãi cát trắng mịn, những cây cầu độc đáo và nền ẩm thực phong phú.",
+    "description": "Explore the captivating beauty of the coastal city of Da Nang, with its fine white sand beaches, unique bridges, and rich culinary scene.",
     "image": "tours/data/tour-danang.jpg",
     "dataFile": "data/tour-danang.json"
   }

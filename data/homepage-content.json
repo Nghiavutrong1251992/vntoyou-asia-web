@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Chào Mừng Đến Với VN To You Asia",
-    "subtitle": "Chúng tôi cung cấp các dịch vụ tour du lịch chất lượng cao cho doanh nghiệp B2B."
+    "title": "Welcome to VN To You Asia",
+    "subtitle": "We provide high-quality tour services for B2B businesses."
   },
   "carousel": {
     "slides": [
@@ -33,62 +33,62 @@
     ]
   },
   "services": {
-    "title": "Dịch Vụ Của Chúng Tôi",
+    "title": "Our Services",
     "items": [
       {
-        "title": "Tour Du Lịch",
-        "description": "Các tour được thiết kế chuyên nghiệp cho nhóm và doanh nghiệp.",
+        "title": "Tour Services",
+        "description": "Professionally designed tours for groups and businesses.",
         "icon": "🌍"
       },
       {
-        "title": "Dịch Vụ Hỗ Trợ", 
-        "description": "Hỗ trợ 24/7 cho mọi nhu cầu của khách hàng.",
+        "title": "Support Services", 
+        "description": "24/7 support for all customer needs.",
         "icon": "🎧"
       },
       {
-        "title": "Tư Vấn Cá Nhân",
-        "description": "Tư vấn chuyên nghiệp để lựa chọn tour phù hợp.",
+        "title": "Personal Consultation",
+        "description": "Professional consultation to choose the right tour.",
         "icon": "💼"
       }
     ]
   },
   "achievements": {
-    "title": "Thành Tựu Của Chúng Tôi",
-    "subtitle": "Chúng tôi tự hào với những thành tựu đạt được trong ngành du lịch B2B.",
+    "title": "Our Achievements",
+    "subtitle": "We are proud of our achievements in the B2B tourism industry.",
     "awards": {
-      "title": "Giải Thưởng",
+      "title": "Awards",
       "items": [
-        "Giải thưởng Tour Du Lịch Tốt Nhất 2023",
-        "Chứng nhận Dịch Vụ Xuất Sắc"
+        "Best Tourism Tour Award 2023",
+        "Excellent Service Certification"
       ]
     },
     "stats": {
-      "title": "Thống Kê",
+      "title": "Statistics",
       "items": [
-        "Hơn 10,000 khách hàng hài lòng",
-        "100+ tour được tổ chức thành công"
+        "Over 10,000 satisfied customers",
+        "100+ successfully organized tours"
       ]
     }
   },
   "navigation": {
-    "title": "Khám Phá Thêm",
-    "subtitle": "Tìm hiểu thêm về dịch vụ và thông tin của chúng tôi",
+    "title": "Explore More",
+    "subtitle": "Learn more about our services and information",
     "buttons": [
       {
-        "title": "🌍 Xem Các Tour",
-        "description": "Khám phá các tour du lịch hấp dẫn",
+        "title": "🌍 View Tours",
+        "description": "Explore exciting travel tours",
         "link": "tour.html",
         "class": "btn btn-primary btn-lg"
       },
       {
-        "title": "📰 Tin Tức",
-        "description": "Cập nhật tin tức du lịch mới nhất",
+        "title": "📰 News",
+        "description": "Latest travel news updates",
         "link": "news.html", 
         "class": "btn btn-info btn-lg"
       },
       {
-        "title": "📞 Liên Hệ",
-        "description": "Liên hệ với chúng tôi ngay hôm nay",
+        "title": "📞 Contact",
+        "description": "Contact us today",
         "link": "contact.html",
         "class": "btn btn-success btn-lg"
       }

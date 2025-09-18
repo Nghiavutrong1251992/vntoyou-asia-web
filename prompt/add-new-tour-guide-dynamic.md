@@ -1,164 +1,164 @@
-# Hướng Dẫn Thêm Tour Mới - Hệ Thống Động (Cập Nhật 2025)
+# Guide to Adding New Tour - Dynamic System (Updated 2025)
 
-## 🚀 Tổng Quan
-Website đã được nâng cấp sang **hệ thống dynamic loading** với JavaScript. Giờ thêm tour chỉ cần 2 bước đơn giản!
+## 🚀 Overview
+Website has been upgraded to **dynamic loading system** with JavaScript. Now adding tours only takes 2 simple steps!
 
-## ✅ Cách Thêm Tour Mới (Chỉ 2 Bước!)
+## ✅ How to Add New Tour (Only 2 Steps!)
 
-### Bước 1: Thêm Tour Vào Danh Sách
+### Step 1: Add Tour to List
 **File:** `tours/data/tours.json`  
-Thêm object mới vào array hiện tại:
+Add new object to current array:
 
 ```json
 {
-  "id": "tour-moi",
-  "title": "Tour ABC 3 ngày 2 đêm: Tên tour",
-  "region": "Miền Bắc",
+  "id": "new-tour",
+  "title": "Tour ABC 3 days 2 nights: Tour name",
+  "region": "Northern Vietnam",
   "days": 3,
-  "description": "Mô tả ngắn gọn về tour...",
-  "image": "tours/data/tour-moi.jpg",
-  "dataFile": "data/tour-moi.json"
+  "description": "Brief description of the tour...",
+  "image": "tours/data/new-tour.jpg",
+  "dataFile": "data/new-tour.json"
 }
 ```
 
-**Lưu ý:**
-- `id`: Unique, chỉ dùng chữ thường, số, dấu gạch ngang
-- `region`: Phải là "Miền Bắc", "Miền Trung", hoặc "Miền Nam"
-- `days`: Số nguyên (filter sẽ dùng)
-- `image`: Đường dẫn từ root tới ảnh đại diện
-- `dataFile`: Đường dẫn tới file JSON chi tiết
+**Notes:**
+- `id`: Unique, only use lowercase letters, numbers, hyphens
+- `region`: Must be "Northern Vietnam", "Central Vietnam", or "Southern Vietnam"
+- `days`: Integer (filter will use this)
+- `image`: Path from root to representative image
+- `dataFile`: Path to detailed JSON file
 
-### Bước 2: Tạo File Chi Tiết
-**File:** `tours/data/tour-moi.json`  
-Tạo file mới với format:
+### Step 2: Create Detail File
+**File:** `tours/data/new-tour.json`  
+Create new file with format:
 
 ```json
 {
   "id": 4,
-  "title": "Tour ABC 3 ngày 2 đêm: Tên tour chi tiết",
-  "region": "Miền Bắc",
+  "title": "Tour ABC 3 days 2 nights: Detailed tour name",
+  "region": "Northern Vietnam",
   "days": 3,
-  "description": "Mô tả chi tiết về tour, điểm đến, trải nghiệm...",
-  "image": "tours/data/tour-moi.jpg",
+  "description": "Detailed description of the tour, destinations, experiences...",
+  "image": "tours/data/new-tour.jpg",
   "itinerary": [
-    "Ngày 1: Khởi hành - Tham quan điểm A, B. Nghỉ đêm tại khách sạn.",
-    "Ngày 2: Khám phá điểm C, D. Trải nghiệm hoạt động X, Y.",
-    "Ngày 3: Tham quan điểm E. Kết thúc chuyến đi."
+    "Day 1: Departure - Visit point A, B. Overnight at hotel.",
+    "Day 2: Explore point C, D. Experience activity X, Y.",
+    "Day 3: Visit point E. End of trip."
   ],
   "includes": [
-    "Xe du lịch điều hòa",
-    "Hướng dẫn viên chuyên nghiệp",
-    "Vé tham quan các điểm",
-    "Bữa ăn theo chương trình",
-    "Khách sạn 3-4 sao"
+    "Air-conditioned tourist vehicle",
+    "Professional guide",
+    "Entrance tickets to sites",
+    "Meals as per program",
+    "3-4 star hotel"
   ],
   "excludes": [
-    "Vé máy bay khứ hồi",
-    "Chi phí cá nhân",
-    "Đồ uống ngoài bữa ăn",
-    "Bảo hiểm du lịch",
-    "Tip cho hướng dẫn viên"
+    "Round-trip flight tickets",
+    "Personal expenses",
+    "Beverages outside meals",
+    "Travel insurance",
+    "Guide tips"
   ],
   "terms": [
-    "Đặt tour trước 7 ngày để có giá tốt nhất",
-    "Hủy tour trước 3 ngày không mất phí",
-    "Trẻ em dưới 2 tuổi miễn phí",
-    "Cần mang CMND/Hộ chiếu còn hạn",
-    "Lịch trình có thể thay đổi tùy thời tiết"
+    "Book tour 7 days in advance for best price",
+    "Cancel tour 3 days in advance with no fee",
+    "Children under 2 years old free",
+    "Bring valid ID/Passport",
+    "Itinerary may change depending on weather"
   ]
 }
 ```
 
-### Bước 3: Thêm Ảnh (Tùy Chọn)
-- **Tên file**: Trùng với tour ID + extension (vd: `tour-moi.jpg`)
-- **Đường dẫn**: `tours/data/tour-moi.jpg`
-- **Kích thước**: 800x450px (tỷ lệ 16:9) khuyến nghị
-- **Format**: JPG (ảnh thật) hoặc PNG (có background trong suốt)
+### Step 3: Add Image (Optional)
+- **File name**: Same as tour ID + extension (e.g.: `new-tour.jpg`)
+- **Path**: `tours/data/new-tour.jpg`
+- **Size**: 800x450px (16:9 ratio) recommended
+- **Format**: JPG (real photo) or PNG (transparent background)
 
-**🎯 Quy Tắc Đặt Tên Ảnh:**
-- ✅ Chữ thường, không dấu, dùng gạch ngang: `sapa.jpg`, `ha-long.jpg`
-- ✅ Trùng với tour ID để dễ nhận diện
-- ❌ Tránh dấu cách: `nha trang.jpg`
-- ❌ Tránh tiếng Việt có dấu: `đà-nẵng.jpg`
+**🎯 Image Naming Rules:**
+- ✅ Lowercase, no accents, use hyphens: `sapa.jpg`, `ha-long.jpg`
+- ✅ Same as tour ID for easy identification
+- ❌ Avoid spaces: `nha trang.jpg`
+- ❌ Avoid Vietnamese accents: `da-nang.jpg`
 
-## 🎉 Xong!
-Tour mới sẽ **tự động xuất hiện** trong:
-- ✅ Danh sách tour (`tour.html`) 
-- ✅ Bộ lọc theo vùng và ngày
-- ✅ Link chi tiết tự động: `tours/details/tour-detail.html?id=tour-moi`
-- ✅ Layout responsive đẹp
+## 🎉 Done!
+New tour will **automatically appear** in:
+- ✅ Tour list (`tour.html`) 
+- ✅ Filter by region and days
+- ✅ Auto detail link: `tours/details/tour-detail.html?id=new-tour`
+- ✅ Beautiful responsive layout
 
-## 🔗 Cấu Trúc Hoàn Chỉnh
+## 🔗 Complete Structure
 ```
 tours/
 ├── data/
-│   ├── tours.json          ← BƯỚC 1: Thêm tour vào đây
-│   ├── tour-moi.json       ← BƯỚC 2: Tạo file chi tiết
-│   ├── tour-moi.jpg        ← BƯỚC 3: Ảnh đại diện
-│   ├── tour-danang.json    ← Tour có sẵn
-│   └── nhatrang.json       ← Tour có sẵn
+│   ├── tours.json          ← STEP 1: Add tour here
+│   ├── new-tour.json       ← STEP 2: Create detail file
+│   ├── new-tour.jpg        ← STEP 3: Representative image
+│   ├── tour-danang.json    ← Existing tour
+│   └── nhatrang.json       ← Existing tour
 └── details/
-    └── tour-detail.html    ← Không cần động vào
+    └── tour-detail.html    ← Don't touch this
 ```
 
-## 🛠️ Debug Nếu Có Lỗi
-1. **Mở DevTools (F12) → Console**
-2. **Refresh trang `tour.html`**
-3. **Kiểm tra log:**
-   - `Tours loaded: Array(4)` ← Số tour đã tăng
-   - Nếu có lỗi: Check JSON syntax bằng jsonlint.com
+## 🛠️ Debug If Error Occurs
+1. **Open DevTools (F12) → Console**
+2. **Refresh `tour.html` page**
+3. **Check logs:**
+   - `Tours loaded: Array(4)` ← Number of tours increased
+   - If error: Check JSON syntax at jsonlint.com
 
-## 📝 Tips Quan Trọng
-- **Encoding UTF-8**: File JSON phải save UTF-8 để hiện tiếng Việt
-- **Unique ID**: Mỗi tour phải có ID khác nhau
-- **Consistent Data**: Đảm bảo `region` đúng chính tả
-- **Path Chính Xác**: Image path từ root website
-- **Tên Ảnh**: Đặt tên trùng với tour ID (vd: `sapa.jpg` cho tour ID `sapa`)
-- **File Size**: Nén ảnh dưới 1MB để load nhanh
+## 📝 Important Tips
+- **UTF-8 Encoding**: JSON files must be saved as UTF-8 to display Vietnamese
+- **Unique ID**: Each tour must have different ID
+- **Consistent Data**: Ensure `region` is spelled correctly
+- **Exact Path**: Image path from website root
+- **Image Name**: Name same as tour ID (e.g.: `sapa.jpg` for tour ID `sapa`)
+- **File Size**: Compress images under 1MB for fast loading
 
-## 🗂️ Ví Dụ Thực Tế - Tour Sapa
-**File 1:** `tours/data/tours.json` (thêm vào array)
+## 🗂️ Real Example - Sapa Tour
+**File 1:** `tours/data/tours.json` (add to array)
 ```json
 {
   "id": "sapa",
-  "title": "Tour Sapa 2 ngày 1 đêm: Ruộng bậc thang",
-  "region": "Miền Bắc", 
+  "title": "Sapa Tour 2 days 1 night: Terraced fields",
+  "region": "Northern Vietnam", 
   "days": 2,
-  "description": "Khám phá vẻ đẹp ruộng bậc thang Sapa, trekking và trải nghiệm văn hóa dân tộc.",
+  "description": "Explore the beauty of Sapa terraced fields, trekking and experiencing ethnic culture.",
   "image": "tours/data/sapa.jpg",
   "dataFile": "data/sapa.json"
 }
 ```
 
-**File 2:** `tours/data/sapa.json` (tạo mới)
+**File 2:** `tours/data/sapa.json` (create new)
 ```json
 {
   "id": 4,
-  "title": "Tour Sapa 2 ngày 1 đêm: Ruộng bậc thang",
-  "region": "Miền Bắc",
+  "title": "Sapa Tour 2 days 1 night: Terraced fields",
+  "region": "Northern Vietnam",
   "days": 2,
-  "description": "Khám phá Sapa với ruộng bậc thang vàng óng, trekking qua các bản làng và trải nghiệm văn hóa H'Mông, Tày.",
+  "description": "Explore Sapa with golden terraced fields, trekking through villages and experiencing H'Mong, Tay culture.",
   "itinerary": [
-    "Ngày 1: Khởi hành từ Hà Nội - Sapa. Tham quan thị trấn Sapa. Trekking bản Cát Cát.",
-    "Ngày 2: Trekking ruộng bậc thang Mường Hoa. Ghé thăm bản Tả Van. Về Hà Nội."
+    "Day 1: Departure from Hanoi - Sapa. Visit Sapa town. Trekking Cat Cat village.",
+    "Day 2: Trekking Muong Hoa terraced fields. Visit Ta Van village. Return to Hanoi."
   ],
   "includes": [
-    "Xe giường nằm Hà Nội - Sapa - Hà Nội",
-    "Hướng dẫn viên địa phương",
-    "Homestay 1 đêm",
-    "Bữa ăn theo chương trình"
+    "Sleeper bus Hanoi - Sapa - Hanoi",
+    "Local guide",
+    "1 night homestay",
+    "Meals as per program"
   ],
   "excludes": [
-    "Chi phí cá nhân",
-    "Đồ uống ngoài bữa ăn",
-    "Bảo hiểm cá nhân"
+    "Personal expenses",
+    "Beverages outside meals",
+    "Personal insurance"
   ],
   "terms": [
-    "Cần giày trekking và áo ấm",
-    "Hủy tour trước 2 ngày",
-    "Phù hợp từ 16 tuổi trở lên"
+    "Need trekking shoes and warm clothes",
+    "Cancel tour 2 days in advance",
+    "Suitable for 16 years old and above"
   ]
 }
 ```
 
-➡️ **Result**: Tour Sapa sẽ xuất hiện ngay trong filter "Miền Bắc" và "1-3 Ngày"!
+➡️ **Result**: Sapa tour will immediately appear in "Northern Vietnam" and "1-3 Days" filter!

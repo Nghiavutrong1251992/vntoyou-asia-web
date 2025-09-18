@@ -1,215 +1,215 @@
-# Hướng Dẫn Thêm Tin Tức Mới - VN To You Asia
+# Guide to Adding New News - VN To You Asia
 
-## 📋 Tổng Quan
-Hướng dẫn này giúp bạn thêm tin tức mới vào website VN To You Asia một cách dễ dàng và đồng nhất với giao diện hiện tại.
+## 📋 Overview
+This guide helps you add new news to the VN To You Asia website easily and consistently with the current interface.
 
-## 📁 Cấu Trúc Thư Mục
+## 📁 Directory Structure
 ```
 news/
 ├── data/
-│   ├── news.json                 # Danh sách tất cả tin tức (CẬP NHẬT)
-│   ├── [id-tin-tuc].json        # File chi tiết tin tức mới (TẠO MỚI)
-│   └── [ten-anh].jpg            # Ảnh thumbnail tin tức (TẠO MỚI)
+│   ├── news.json                 # List of all news (UPDATE)
+│   ├── [news-id].json           # New news detail file (CREATE NEW)
+│   └── [image-name].jpg         # News thumbnail image (CREATE NEW)
 └── details/
-    └── news-detail.html         # Template (KHÔNG CẦN SỬA)
+    └── news-detail.html         # Template (NO NEED TO EDIT)
 ```
 
-## 🔄 Các Bước Thêm Tin Tức Mới
+## 🔄 Steps to Add New News
 
-### Bước 1: Chuẩn Bị Ảnh
-1. **Tên file ảnh:** `news-[id-tin-tuc].jpg`
-   - Ví dụ: `news-promotion-tet-2026.jpg`
+### Step 1: Prepare Image
+1. **Image file name:** `news-[news-id].jpg`
+   - Example: `news-promotion-tet-2026.jpg`
    
-2. **Kích thước ảnh:** 
-   - Khuyến nghị: 800x400px (tỷ lệ 2:1)
-   - Định dạng: JPG hoặc PNG
-   - Dung lượng: < 500KB
+2. **Image size:** 
+   - Recommended: 800x400px (2:1 ratio)
+   - Format: JPG or PNG
+   - Size: < 500KB
 
-3. **Đặt ảnh vào:** `news/data/`
+3. **Place image in:** `news/data/`
 
-### Bước 2: Tạo File Chi Tiết Tin Tức
+### Step 2: Create News Detail File
 
-#### 📄 Tạo file: `news/data/[id-tin-tuc].json`
+#### 📄 Create file: `news/data/[news-id].json`
 
-**Template cơ bản:**
+**Basic template:**
 ```json
 {
-  "id": "id-tin-tuc",
-  "title": "Tiêu Đề Tin Tức",
-  "category": "Danh Mục",
+  "id": "news-id",
+  "title": "News Title",
+  "category": "Category",
   "date": "YYYY-MM-DD",
-  "author": "Tên Tác Giả",
-  "summary": "Tóm tắt ngắn gọn về tin tức",
+  "author": "Author Name",
+  "summary": "Brief summary of the news",
   "content": [
-    "Đoạn văn thứ nhất của tin tức...",
-    "Đoạn văn thứ hai của tin tức...",
-    "Đoạn văn thứ ba của tin tức..."
+    "First paragraph of the news...",
+    "Second paragraph of the news...",
+    "Third paragraph of the news..."
   ],
   "contact": {
     "phone": "+84 123 456 789",
     "email": "info@vntoyouasia.com",
-    "note": "Ghi chú liên hệ"
+    "note": "Contact note"
   }
 }
 ```
 
-### Bước 3: Cập Nhật Danh Sách Tin Tức
+### Step 3: Update News List
 
-#### 📄 Sửa file: `news/data/news.json`
+#### 📄 Edit file: `news/data/news.json`
 
-Thêm entry mới vào đầu mảng:
+Add new entry at the beginning of the array:
 ```json
 [
   {
-    "id": "id-tin-tuc-moi",
-    "title": "Tiêu Đề Tin Tức Mới",
-    "summary": "Tóm tắt tin tức mới",
+    "id": "new-news-id",
+    "title": "New News Title",
+    "summary": "New news summary",
     "date": "2025-09-20",
-    "category": "Danh Mục",
-    "image": "news/data/news-id-tin-tuc-moi.jpg",
-    "dataFile": "data/id-tin-tuc-moi.json"
+    "category": "Category",
+    "image": "news/data/news-new-news-id.jpg",
+    "dataFile": "data/new-news-id.json"
   },
-  // ... các tin tức cũ
+  // ... old news
 ]
 ```
 
-## 📝 Các Loại Tin Tức & Template
+## 📝 News Types & Templates
 
-### 1. 🎯 Tour Mới
+### 1. 🎯 New Tours
 ```json
 {
   "id": "tour-singapore-2026",
-  "title": "Tour Singapore Mới - Trải Nghiệm Hiện Đại",
-  "category": "Tour Mới",
+  "title": "New Singapore Tour - Modern Experience",
+  "category": "New Tours",
   "date": "2025-10-01",
   "author": "VN To You Asia",
-  "summary": "Khám phá Singapore với những trải nghiệm hiện đại và độc đáo.",
+  "summary": "Explore Singapore with modern and unique experiences.",
   "content": [
-    "Singapore là điểm đến lý tưởng cho các chuyến du lịch doanh nghiệp...",
-    "Tour mới của chúng tôi bao gồm những địa điểm hot nhất..."
+    "Singapore is an ideal destination for business trips...",
+    "Our new tour includes the hottest spots..."
   ],
   "highlights": [
-    "Tham quan Gardens by the Bay",
-    "Trải nghiệm Marina Bay Sands",
-    "Khám phá khu phố Chinatown",
-    "Shopping tại Orchard Road"
+    "Visit Gardens by the Bay",
+    "Experience Marina Bay Sands",
+    "Explore Chinatown",
+    "Shopping at Orchard Road"
   ],
   "details": {
-    "duration": "4 ngày 3 đêm",
-    "price": "Từ 15,000,000 VND",
-    "departure": "Hà Nội / TP.HCM",
-    "season": "Quanh năm"
+    "duration": "4 days 3 nights",
+    "price": "From 15,000,000 VND",
+    "departure": "Hanoi / Ho Chi Minh City",
+    "season": "All year round"
   },
   "contact": {
     "phone": "+84 123 456 789",
     "email": "info@vntoyouasia.com",
-    "note": "Liên hệ ngay để được tư vấn chi tiết!"
+    "note": "Contact us immediately for detailed consultation!"
   }
 }
 ```
 
-### 2. 🎁 Khuyến Mãi
+### 2. 🎁 Promotions
 ```json
 {
   "id": "khuyen-mai-tet-2026",
-  "title": "Khuyến Mãi Tết 2026 - Giảm Giá Sốc",
-  "category": "Khuyến Mãi",
+  "title": "Tet 2026 Promotion - Massive Discounts",
+  "category": "Promotions",
   "date": "2025-12-01",
   "author": "VN To You Asia",
-  "summary": "Chương trình khuyến mãi đặc biệt nhân dịp Tết Nguyên Đán 2026.",
+  "summary": "Special promotion program for Tet Lunar New Year 2026.",
   "content": [
-    "Nhân dịp Tết Nguyên Đán 2026, VN To You Asia tung ra chương trình ưu đãi lớn...",
-    "Chương trình áp dụng từ ngày 01/12/2025 đến hết 15/01/2026..."
+    "For Tet Lunar New Year 2026, VN To You Asia launches a big promotion...",
+    "Program applies from 01/12/2025 to 15/01/2026..."
   ],
   "promotions": [
-    "Giảm 40% cho nhóm từ 20 người",
-    "Giảm 25% cho nhóm từ 10 người",
-    "Tặng bảo hiểm du lịch cao cấp",
-    "Miễn phí 1 đêm khách sạn 4 sao"
+    "40% off for groups of 20+ people",
+    "25% off for groups of 10+ people",
+    "Free premium travel insurance",
+    "Free 1 night at 4-star hotel"
   ],
   "applicable_tours": [
-    "Tour Thái Lan 5N4Đ",
-    "Tour Singapore 4N3Đ", 
-    "Tour Malaysia 6N5Đ"
+    "Thailand Tour 5N4D",
+    "Singapore Tour 4N3D", 
+    "Malaysia Tour 6N5D"
   ],
   "terms": [
-    "Áp dụng cho đặt tour từ 01/12/2025",
-    "Khởi hành từ 16/01/2026 đến 30/04/2026",
-    "Thanh toán 100% trước ngày khởi hành 20 ngày"
+    "Applies for tour bookings from 01/12/2025",
+    "Departure from 16/01/2026 to 30/04/2026",
+    "100% payment 20 days before departure"
   ],
   "contact": {
     "phone": "+84 123 456 789",
     "email": "promo@vntoyouasia.com",
-    "note": "Số lượng có hạn! Đặt ngay để không bỏ lỡ!"
+    "note": "Limited quantity! Book now to not miss out!"
   }
 }
 ```
 
-### 3. 🎪 Sự Kiện
+### 3. 🎪 Events
 ```json
 {
   "id": "hoi-thao-du-lich-2026",
-  "title": "Hội Thảo Du Lịch Doanh Nghiệp 2026",
-  "category": "Sự Kiện",
+  "title": "Business Travel Conference 2026",
+  "category": "Events",
   "date": "2025-11-15",
   "author": "VN To You Asia",
-  "summary": "Hội thảo chuyên đề về xu hướng du lịch doanh nghiệp năm 2026.",
+  "summary": "Specialized conference on business travel trends in 2026.",
   "content": [
-    "VN To You Asia tổ chức hội thảo chuyên đề về xu hướng du lịch doanh nghiệp...",
-    "Sự kiện quy tụ các chuyên gia hàng đầu trong ngành..."
+    "VN To You Asia organizes a specialized conference on business travel trends...",
+    "The event brings together leading experts in the industry..."
   ],
   "event_details": {
-    "date": "Thứ Bảy, 15/11/2025",
+    "date": "Saturday, 15/11/2025",
     "time": "09:00 - 17:00",
-    "venue": "Khách sạn Lotte Hanoi",
-    "address": "54 Liễu Giai, Ba Đình, Hà Nội",
+    "venue": "Lotte Hanoi Hotel",
+    "address": "54 Lieu Giai, Ba Dinh, Hanoi",
     "dress_code": "Business Casual"
   },
   "agenda": [
-    "09:00 - 09:30: Đăng ký và coffee",
-    "09:30 - 10:30: Xu hướng du lịch 2026",
-    "10:30 - 11:00: Giải lao",
-    "11:00 - 12:00: Workshop thực hành",
+    "09:00 - 09:30: Registration and coffee",
+    "09:30 - 10:30: Travel trends 2026",
+    "10:30 - 11:00: Break",
+    "11:00 - 12:00: Practical workshop",
     "14:00 - 16:00: Panel discussion",
     "16:00 - 17:00: Networking"
   ],
   "registration": {
     "deadline": "10/11/2025",
-    "fee": "Miễn phí",
-    "requirement": "Đại diện doanh nghiệp",
+    "fee": "Free",
+    "requirement": "Business representative",
     "contact": "Ms. Lan - 0912.345.678"
   },
   "contact": {
     "phone": "+84 123 456 789",
     "email": "events@vntoyouasia.com",
-    "note": "Đăng ký sớm để đảm bảo chỗ ngồi!"
+    "note": "Register early to secure your seat!"
   }
 }
 ```
 
-### 4. 📈 Xu Hướng
+### 4. 📈 Trends
 ```json
 {
   "id": "xu-huong-2026",
-  "title": "Xu Hướng Du Lịch 2026 - Điểm Đến Mới",
-  "category": "Xu Hướng",
+  "title": "Travel Trends 2026 - New Destinations",
+  "category": "Trends",
   "date": "2025-10-15",
   "author": "VN To You Asia Research Team",
-  "summary": "Phân tích xu hướng du lịch và những điểm đến nổi bật năm 2026.",
+  "summary": "Analysis of travel trends and prominent destinations in 2026.",
   "content": [
-    "Năm 2026 sẽ chứng kiến sự thay đổi lớn trong ngành du lịch...",
-    "Các doanh nghiệp ngày càng chú trọng đến du lịch bền vững..."
+    "2026 will see major changes in the tourism industry...",
+    "Businesses are increasingly focusing on sustainable tourism..."
   ],
   "trending_destinations": [
     {
       "name": "Bhutan",
-      "reason": "Du lịch carbon negative và văn hóa độc đáo",
-      "best_time": "Tháng 3-5, 9-11"
+      "reason": "Carbon negative tourism and unique culture",
+      "best_time": "March-May, September-November"
     },
     {
       "name": "Albania",
-      "reason": "Bờ biển đẹp và chi phí hợp lý",
-      "best_time": "Tháng 5-9"
+      "reason": "Beautiful coastline and reasonable costs",
+      "best_time": "May-September"
     }
   ],
   "travel_trends_2026": [
@@ -219,98 +219,98 @@ Thêm entry mới vào đầu mảng:
     "Wellness & mental health focus"
   ],
   "business_travel_insights": [
-    "Tích hợp wellness vào business travel",
-    "Sử dụng VR cho virtual site visits",
-    "Ưu tiên carbon-neutral transportation"
+    "Integrating wellness into business travel",
+    "Using VR for virtual site visits",
+    "Prioritizing carbon-neutral transportation"
   ],
   "contact": {
     "phone": "+84 123 456 789",
     "email": "research@vntoyouasia.com",
-    "note": "Tư vấn miễn phí về xu hướng du lịch!"
+    "note": "Free consultation on travel trends!"
   }
 }
 ```
 
-## 🎨 Danh Mục Tin Tức
+## 🎨 News Categories
 
-### Các danh mục có sẵn:
-- **"Tour Mới"** - Giới thiệu các tour du lịch mới
-- **"Khuyến Mãi"** - Các chương trình ưu đãi, giảm giá
-- **"Sự Kiện"** - Hội thảo, workshop, event của công ty
-- **"Xu Hướng"** - Phân tích xu hướng, insights ngành
+### Available categories:
+- **"New Tours"** - Introducing new travel tours
+- **"Promotions"** - Promotion programs, discounts
+- **"Events"** - Company workshops, seminars, events
+- **"Trends"** - Trend analysis, industry insights
 
-### Thêm danh mục mới:
-Nếu muốn thêm danh mục mới, cần sửa file `news.html` ở phần:
+### Adding new category:
+If you want to add a new category, need to edit `news.html` in the section:
 ```html
 <select class="form-select" id="category">
-    <option value="all">Tất Cả</option>
-    <option value="Tour Mới">Tour Mới</option>
-    <option value="Khuyến Mãi">Khuyến Mãi</option>
-    <option value="Sự Kiện">Sự Kiện</option>
-    <option value="Xu Hướng">Xu Hướng</option>
-    <option value="Danh Mục Mới">Danh Mục Mới</option> <!-- THÊM DÒNG NÀY -->
+    <option value="all">All</option>
+    <option value="New Tours">New Tours</option>
+    <option value="Promotions">Promotions</option>
+    <option value="Events">Events</option>
+    <option value="Trends">Trends</option>
+    <option value="New Category">New Category</option> <!-- ADD THIS LINE -->
 </select>
 ```
 
-## ⚠️ Lưu Ý Quan Trọng
+## ⚠️ Important Notes
 
-### 1. **ID tin tức:**
-- Phải unique (không trùng lặp)
-- Chỉ dùng chữ thường, số, và dấu gạch ngang
-- Ví dụ: `tour-nhat-ban-2026`, `khuyen-mai-tet`
+### 1. **News ID:**
+- Must be unique (no duplicates)
+- Only use lowercase letters, numbers, and hyphens
+- Example: `tour-japan-2026`, `promotion-tet`
 
-### 2. **Định dạng ngày:**
+### 2. **Date format:**
 - Format: `YYYY-MM-DD`
-- Ví dụ: `2025-12-25`
+- Example: `2025-12-25`
 
-### 3. **Đường dẫn ảnh:**
-- Luôn bắt đầu bằng `news/data/`
-- Ví dụ: `news/data/news-tour-singapore.jpg`
+### 3. **Image path:**
+- Always start with `news/data/`
+- Example: `news/data/news-tour-singapore.jpg`
 
-### 4. **File JSON:**
-- Phải có đúng syntax
-- Sử dụng UTF-8 encoding
-- Test JSON trước khi deploy
+### 4. **JSON file:**
+- Must have correct syntax
+- Use UTF-8 encoding
+- Test JSON before deploying
 
-## 🚀 Triển Khai
+## 🚀 Deployment
 
-### Sau khi tạo xong:
-1. ✅ Upload ảnh vào `news/data/`
-2. ✅ Tạo file JSON chi tiết
-3. ✅ Cập nhật `news.json`
-4. ✅ Test trên local trước
-5. ✅ Deploy lên server
+### After completion:
+1. ✅ Upload image to `news/data/`
+2. ✅ Create detailed JSON file
+3. ✅ Update `news.json`
+4. ✅ Test locally first
+5. ✅ Deploy to server
 
-### Kiểm tra:
-- Tin tức hiển thị đúng trên trang `/news.html`
-- Click vào "Đọc Thêm" có mở được trang chi tiết
-- Filter và sort hoạt động bình thường
-- Responsive trên mobile
+### Check:
+- News displays correctly on `/news.html`
+- Click "Read More" opens detail page
+- Filter and sort work normally
+- Responsive on mobile
 
-## 🆘 Xử Lý Lỗi
+## 🆘 Error Handling
 
-### Tin tức không hiển thị:
-- Kiểm tra syntax JSON
-- Đảm bảo đường dẫn ảnh đúng
-- Xem console browser để debug
+### News not displaying:
+- Check JSON syntax
+- Ensure image path is correct
+- Check browser console for debugging
 
-### Ảnh không load:
-- Kiểm tra tên file và đường dẫn
-- Đảm bảo ảnh có trong thư mục `news/data/`
-- Kiểm tra quyền truy cập file
+### Image not loading:
+- Check file name and path
+- Ensure image is in `news/data/` folder
+- Check file access permissions
 
-### Link chi tiết bị lỗi:
-- Đảm bảo `id` trong `news.json` khớp với tên file JSON
-- Kiểm tra `dataFile` path đúng format
+### Detail link error:
+- Ensure `id` in `news.json` matches JSON file name
+- Check `dataFile` path format is correct
 
 ---
 
-## 💡 Tips Viết Tin Tức Hay
+## 💡 Tips for Writing Good News
 
-1. **Tiêu đề:** Ngắn gọn, hấp dẫn, có từ khóa
-2. **Summary:** 1-2 câu tóm tắt nội dung chính
-3. **Content:** Chia thành đoạn ngắn, dễ đọc
-4. **Call-to-action:** Luôn có thông tin liên hệ rõ ràng
-5. **SEO-friendly:** Dùng từ khóa tự nhiên trong nội dung
+1. **Title:** Concise, attractive, with keywords
+2. **Summary:** 1-2 sentences summarizing main content
+3. **Content:** Divide into short paragraphs, easy to read
+4. **Call-to-action:** Always have clear contact information
+5. **SEO-friendly:** Use keywords naturally in content
 
-**Chúc bạn tạo tin tức thành công! 🎉**
+**Wish you success in creating news! 🎉**
