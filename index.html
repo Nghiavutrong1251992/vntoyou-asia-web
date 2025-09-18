@@ -49,6 +49,12 @@
         </div>
     </section>
 
+    <section id="about" class="py-5 bg-white">
+        <div class="container" id="about-section">
+            <!-- About section will be loaded from JSON -->
+        </div>
+    </section>
+
     <section id="services" class="py-5">
         <div class="container" id="services-section">
             <!-- Services will be loaded from JSON -->
@@ -235,7 +241,51 @@
             }
         }
 
-        // Render navigation section
+        // Render about section
+        function renderAbout() {
+            const aboutSection = document.getElementById('about-section');
+            if (aboutSection && homepageContent.about) {
+                const about = homepageContent.about;
+                let aboutHTML = `
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="text-center mb-4">${sanitizeHTML(about.title)}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title text-primary mb-3">${sanitizeHTML(about.greeting)}</h3>
+                                    <p class="lead mb-4">${sanitizeHTML(about.description)}</p>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="bg-light p-3 rounded mb-3">
+                                                <h5 class="text-success mb-2">🌟 Our Strength in 2025</h5>
+                                                <p>${sanitizeHTML(about.stats.year)}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="bg-light p-3 rounded mb-3">
+                                                <h5 class="text-success mb-2">🏆 Our Pride</h5>
+                                                <p>${sanitizeHTML(about.stats.pride)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h5 class="text-primary mb-3">✨ Our Services</h5>
+                                        <p class="mb-4">${sanitizeHTML(about.services)}</p>
+                                        <div class="text-center">
+                                            <a href="tour.html" class="btn btn-primary btn-lg me-2">🌍 Explore Our Tours</a>
+                                            <a href="contact.html" class="btn btn-success btn-lg">📞 Contact Us Today</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                aboutSection.innerHTML = aboutHTML;
+            }
+        }
         function renderNavigation() {
             const navigationSection = document.getElementById('navigation-section');
             if (navigationSection && homepageContent.navigation) {
@@ -269,6 +319,7 @@
         function renderHomepage() {
             renderHeroSection();
             renderCarousel();
+            renderAbout();
             renderServices();
             renderAchievements();
             renderNavigation();
