@@ -1,0 +1,77 @@
+{
+  "popup": {
+    "enabled": true,
+    "showDelay": 5000,
+    "theme": "default",
+    "showOnPages": ["index", "tour", "news", "contact"],
+    "excludePages": ["details"],
+    "settings": {
+      "autoClose": false,
+      "closeOnOverlay": true,
+      "closeOnEscape": true,
+      "reopenDays": 7,
+      "trackEvents": true
+    }
+  },
+  "content": {
+    "default": {
+      "title": "Welcome to VN To You Asia!",
+      "subtitle": "Your Trusted Vietnam Travel Partner",
+      "icon": "🇻🇳",
+      "heading": "Discover Amazing Vietnam Tours",
+      "message": "We provide high-quality, customized tour packages for businesses and travelers. From Northern mountains to Southern beaches, explore Vietnam with our expert guides!",
+      "offer": {
+        "title": "🎁 Special Offer for New Customers",
+        "text": "Contact us today and get a <strong>free consultation</strong> for your Vietnam travel plans!"
+      },
+      "contacts": [
+        {
+          "type": "email",
+          "icon": "📧",
+          "text": "Email Us",
+          "url": "mailto:SALES@VNTOYOU.NET"
+        },
+        {
+          "type": "whatsapp",
+          "icon": "💬",
+          "text": "WhatsApp",
+          "url": "https://wa.me/84904596505"
+        },
+        {
+          "type": "phone",
+          "icon": "📱",
+          "text": "Call Now",
+          "url": "tel:+84904596505"
+        }
+      ]
+    },
+    "holiday": {
+      "title": "🎄 Holiday Special Offers!",
+      "subtitle": "Limited Time Vietnam Tour Packages",
+      "icon": "🎁",
+      "heading": "Holiday Vietnam Tours - Up to 25% OFF",
+      "message": "Book your Vietnam adventure now and save big! Special holiday packages available for families and groups.",
+      "offer": {
+        "title": "⏰ Limited Time: Holiday Promotion",
+        "text": "<strong>Book before December 31st</strong> and get up to 25% discount on all Vietnam tour packages!"
+      }
+    },
+    "summer": {
+      "title": "☀️ Summer Vietnam Adventures",
+      "subtitle": "Beat the Heat with Cool Mountain Tours",
+      "icon": "🏔️",
+      "heading": "Cool Summer Escapes in Vietnam",
+      "message": "Escape the summer heat with our mountain and coastal tours. Perfect weather, amazing views, unforgettable experiences!",
+      "offer": {
+        "title": "🌊 Summer Special: Beach & Mountain Combo",
+        "text": "Book our <strong>Beach & Mountain package</strong> and get free airport transfers!"
+      }
+    }
+  },
+  "analytics": {
+    "trackPopupViews": true,
+    "trackContactClicks": true,
+    "trackDismissals": true,
+    "googleAnalyticsEvents": true
+  }
+}
