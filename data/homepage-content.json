@@ -1,0 +1,97 @@
+{
+  "hero": {
+    "title": "Chào Mừng Đến Với VN To You Asia",
+    "subtitle": "Chúng tôi cung cấp các dịch vụ tour du lịch chất lượng cao cho doanh nghiệp B2B."
+  },
+  "carousel": {
+    "slides": [
+      {
+        "image": "images/slides-trang-chu/slide1.jpg",
+        "alt": "Slide 1",
+        "caption": ""
+      },
+      {
+        "image": "images/slides-trang-chu/slide2.jpg", 
+        "alt": "Slide 2",
+        "caption": ""
+      },
+      {
+        "image": "images/slides-trang-chu/slide3.jpg",
+        "alt": "Slide 3", 
+        "caption": ""
+      },
+      {
+        "image": "images/slides-trang-chu/slide4.jpg",
+        "alt": "Slide 4",
+        "caption": ""
+      },
+      {
+        "image": "images/slides-trang-chu/slide5.jpg",
+        "alt": "Slide 5",
+        "caption": ""
+      }
+    ]
+  },
+  "services": {
+    "title": "Dịch Vụ Của Chúng Tôi",
+    "items": [
+      {
+        "title": "Tour Du Lịch",
+        "description": "Các tour được thiết kế chuyên nghiệp cho nhóm và doanh nghiệp.",
+        "icon": "🌍"
+      },
+      {
+        "title": "Dịch Vụ Hỗ Trợ", 
+        "description": "Hỗ trợ 24/7 cho mọi nhu cầu của khách hàng.",
+        "icon": "🎧"
+      },
+      {
+        "title": "Tư Vấn Cá Nhân",
+        "description": "Tư vấn chuyên nghiệp để lựa chọn tour phù hợp.",
+        "icon": "💼"
+      }
+    ]
+  },
+  "achievements": {
+    "title": "Thành Tựu Của Chúng Tôi",
+    "subtitle": "Chúng tôi tự hào với những thành tựu đạt được trong ngành du lịch B2B.",
+    "awards": {
+      "title": "Giải Thưởng",
+      "items": [
+        "Giải thưởng Tour Du Lịch Tốt Nhất 2023",
+        "Chứng nhận Dịch Vụ Xuất Sắc"
+      ]
+    },
+    "stats": {
+      "title": "Thống Kê",
+      "items": [
+        "Hơn 10,000 khách hàng hài lòng",
+        "100+ tour được tổ chức thành công"
+      ]
+    }
+  },
+  "navigation": {
+    "title": "Khám Phá Thêm",
+    "subtitle": "Tìm hiểu thêm về dịch vụ và thông tin của chúng tôi",
+    "buttons": [
+      {
+        "title": "🌍 Xem Các Tour",
+        "description": "Khám phá các tour du lịch hấp dẫn",
+        "link": "tour.html",
+        "class": "btn btn-primary btn-lg"
+      },
+      {
+        "title": "📰 Tin Tức",
+        "description": "Cập nhật tin tức du lịch mới nhất",
+        "link": "news.html", 
+        "class": "btn btn-info btn-lg"
+      },
+      {
+        "title": "📞 Liên Hệ",
+        "description": "Liên hệ với chúng tôi ngay hôm nay",
+        "link": "contact.html",
+        "class": "btn btn-success btn-lg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN To You Asia - {{NEWS_TITLE}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html"><img src="../../images/VN TO YOU LOGO.png" alt="VN To You Asia" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tour.html">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../contact.html">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../news.html">Tin Tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5" id="news-header">
+        <div class="container">
+            <h1>Chi Tiết Tin Tức</h1>
+            <p>Thông tin chi tiết về tin tức và sự kiện</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Đang tải...</span>
+                </div>
+                <p>Đang tải tin tức...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 VN To You Asia. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-footer">
+                        <p class="mb-2"><strong>Liên hệ với chúng tôi:</strong></p>
+                        <p class="mb-1">
+                            <a href="mailto:info@vntoyouasia.com" class="text-white text-decoration-none">
+                                📧 Email: info@vntoyouasia.com
+                            </a>
+                        </p>
+                        <p class="mb-1">
+                            <a href="tel:+84123456789" class="text-white text-decoration-none">
+                                📱 Điện thoại: +84 123 456 789
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/84123456789" class="text-white text-decoration-none" target="_blank">
+                                💬 WhatsApp: +84 123 456 789
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sanitize HTML to prevent XSS
+        function sanitizeHTML(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                timeZone: 'Asia/Ho_Chi_Minh'
+            };
+            return new Date(dateString).toLocaleDateString('vi-VN', options);
+        }
+
+        async function loadNewsDetail() {
+            console.log('loadNewsDetail started');
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = urlParams.get('id');
+            console.log('News ID:', newsId);
+            
+            if (!newsId) {
+                console.log('No news ID found');
+                const container = document.querySelector('section .container');
+                if (container) {
+                    container.innerHTML = '<div class="alert alert-danger">Không tìm thấy ID tin tức trong URL</div>';
+                }
+                return;
+            }
+
+            try {
+                console.log('Fetching news.json...');
+                const newsResponse = await fetch('/news/data/news.json');
+                console.log('News response status:', newsResponse.status);
+                
+                if (!newsResponse.ok) {
+                    throw new Error(`HTTP error! status: ${newsResponse.status}`);
+                }
+                
+                const newsList = await newsResponse.json();
+                console.log('News list loaded:', newsList);
+                
+                const newsItem = newsList.find(n => n.id === newsId);
+                console.log('Found news:', newsItem);
+                if (!newsItem) throw new Error(`Tin tức với ID "${newsId}" không tồn tại`);
+
+                console.log('Fetching news detail from:', newsItem.dataFile);
+                const detailResponse = await fetch('/news/' + newsItem.dataFile);
+                console.log('Detail response status:', detailResponse.status);
+                
+                if (!detailResponse.ok) {
+                    throw new Error(`HTTP error! status: ${detailResponse.status}`);
+                }
+                
+                const newsDetail = await detailResponse.json();
+                console.log('News detail loaded:', newsDetail);
+                
+                // Update page title and header
+                document.title = 'VN To You Asia - ' + newsDetail.title;
+                
+                // Update header section
+                const newsHeader = document.getElementById('news-header');
+                if (newsHeader) {
+                    newsHeader.innerHTML = `
+                        <div class="container">
+                            <h1>${sanitizeHTML(newsDetail.title)}</h1>
+                            <p class="mb-2">${sanitizeHTML(newsDetail.summary)}</p>
+                            <small>Đăng ngày: ${formatDate(newsDetail.date)} | Danh mục: ${sanitizeHTML(newsDetail.category)}</small>
+                        </div>
+                    `;
+                }
+                
+                renderNewsContent(newsItem, newsDetail);
+                
+            } catch (error) {
+                console.error('Error loading news detail:', error);
+                const container = document.querySelector('section .container');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="alert alert-danger">
+                            <h4>Không thể tải tin tức</h4>
+                            <p>Lỗi: ${error.message}</p>
+                            <a href="../../news.html" class="btn btn-primary">⬅️ Quay Lại Danh Sách Tin Tức</a>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function renderNewsContent(newsItem, newsDetail) {
+            const imageUrl = '/' + newsItem.image;
+            
+            let contentHTML = `
+                <div class="news-detail-content">
+                    <img src="${sanitizeHTML(imageUrl)}" class="news-detail-img mb-4" alt="${sanitizeHTML(newsDetail.title)}" onerror="this.src='https://via.placeholder.com/800x400?text=Tin+Tức'">
+                    
+                    <div class="news-meta mb-4">
+                        <span class="badge bg-primary me-2">${sanitizeHTML(newsDetail.category)}</span>
+                        <span class="text-muted">Tác giả: ${sanitizeHTML(newsDetail.author)} | ${formatDate(newsDetail.date)}</span>
+                    </div>
+                    
+                    <div class="news-content mb-4">
+                        <h3>Nội Dung</h3>
+            `;
+            
+            // Render content paragraphs
+            if (newsDetail.content && Array.isArray(newsDetail.content)) {
+                newsDetail.content.forEach(paragraph => {
+                    contentHTML += `<p>${sanitizeHTML(paragraph)}</p>`;
+                });
+            }
+            
+            contentHTML += '</div>';
+            
+            // Render specific sections based on news type
+            if (newsDetail.highlights) {
+                contentHTML += `
+                    <div class="news-section mb-4">
+                        <h4>Điểm Nổi Bật</h4>
+                        <ul class="list-group list-group-flush">
+                `;
+                newsDetail.highlights.forEach(highlight => {
+                    contentHTML += `<li class="list-group-item">${sanitizeHTML(highlight)}</li>`;
+                });
+                contentHTML += '</ul></div>';
+            }
+            
+            if (newsDetail.promotions) {
+                contentHTML += `
+                    <div class="news-section mb-4">
+                        <h4>Ưu Đãi</h4>
+                        <ul class="list-group list-group-flush">
+                `;
+                newsDetail.promotions.forEach(promotion => {
+                    contentHTML += `<li class="list-group-item text-success"><strong>${sanitizeHTML(promotion)}</strong></li>`;
+                });
+                contentHTML += '</ul></div>';
+            }
+            
+            if (newsDetail.event_details) {
+                contentHTML += `
+                    <div class="news-section mb-4">
+                        <h4>Thông Tin Sự Kiện</h4>
+                        <div class="card">
+                            <div class="card-body">
+                                <p><strong>Ngày:</strong> ${sanitizeHTML(newsDetail.event_details.date)}</p>
+                                <p><strong>Thời gian:</strong> ${sanitizeHTML(newsDetail.event_details.time)}</p>
+                                <p><strong>Địa điểm:</strong> ${sanitizeHTML(newsDetail.event_details.venue)}</p>
+                                <p><strong>Địa chỉ:</strong> ${sanitizeHTML(newsDetail.event_details.address)}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (newsDetail.trending_destinations) {
+                contentHTML += `
+                    <div class="news-section mb-4">
+                        <h4>Điểm Đến Trending</h4>
+                        <div class="row">
+                `;
+                newsDetail.trending_destinations.forEach(dest => {
+                    contentHTML += `
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">${sanitizeHTML(dest.name)}</h5>
+                                    <p class="card-text">${sanitizeHTML(dest.reason)}</p>
+                                    <small class="text-muted">Thời gian tốt nhất: ${sanitizeHTML(dest.best_time)}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div></div>';
+            }
+            
+            // Contact section
+            if (newsDetail.contact) {
+                contentHTML += `
+                    <div class="contact-section bg-light p-4 rounded">
+                        <h4>📞 Liên Hệ</h4>
+                        <p class="mb-3">${sanitizeHTML(newsDetail.contact.note)}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="tel:${sanitizeHTML(newsDetail.contact.phone)}" class="btn btn-primary me-2">📱 ${sanitizeHTML(newsDetail.contact.phone)}</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="mailto:${sanitizeHTML(newsDetail.contact.email)}" class="btn btn-success">📧 ${sanitizeHTML(newsDetail.contact.email)}</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            contentHTML += `
+                    <div class="text-center mt-4">
+                        <a href="../../news.html" class="btn btn-primary btn-lg">⬅️ Quay Lại Danh Sách</a>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.querySelector('section .container');
+            if (container) {
+                container.innerHTML = contentHTML;
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsDetail();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "id": 1,
+  "title": "Tour Đà Nẵng 3 ngày 2 đêm: Sắc màu miền Trung",
+  "region": "Miền Trung",
+  "days": 3,
+  "description": "Khám phá vẻ đẹp quyến rũ của thành phố biển Đà Nẵng, nơi có bãi cát trắng mịn, những cây cầu độc đáo và nền ẩm thực phong phú.",
+  "image": "tours/data/tour-danang.jpg",
+  "itinerary": [
+    "Ngày 1: Tham quan Bán đảo Sơn Trà, Chùa Linh Ứng và ngắm Cầu Rồng phun lửa, phun nước vào cuối tuần.",
+    "Ngày 2: Trải nghiệm Bà Nà Hills, khám phá Cầu Vàng nổi tiếng, Làng Pháp cổ kính và vườn hoa Le Jardin D'Amour.",
+    "Ngày 3: Mua sắm đặc sản, tận hưởng vẻ đẹp của Ngũ Hành Sơn trước khi kết thúc chuyến đi."
+  ],
+  "includes": [
+    "Xe du lịch điều hòa",
+    "Hướng dẫn viên tiếng Việt",
+    "Vé tham quan các điểm du lịch",
+    "Bữa ăn theo chương trình",
+    "Khách sạn 3-4 sao"
+  ],
+  "excludes": [
+    "Vé máy bay khứ hồi",
+    "Chi phí cá nhân",
+    "Đồ uống có cồn",
+    "Bảo hiểm du lịch",
+    "Tip cho hướng dẫn viên"
+  ],
+  "terms": [
+    "Đặt tour trước 7 ngày để được giá tốt nhất",
+    "Hủy tour trước 3 ngày không mất phí",
+    "Trẻ em dưới 2 tuổi miễn phí, từ 2-11 tuổi tính 75% giá người lớn",
+    "Cần mang theo CMND/Hộ chiếu còn hạn",
+    "Công ty có quyền thay đổi lịch trình phù hợp với thời tiết"
+  ]
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN To You Asia - Tin Tức</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/VN TO YOU LOGO.png" alt="VN To You Asia" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="news.html">Tin Tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Tin Tức Mới Nhất</h1>
+            <p>Cập nhật những thông tin và xu hướng du lịch mới nhất từ VN To You Asia.</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="category" class="form-label">Chọn Danh Mục:</label>
+                    <select class="form-select" id="category">
+                        <option value="all">Tất Cả</option>
+                        <option value="Tour Mới">Tour Mới</option>
+                        <option value="Khuyến Mãi">Khuyến Mãi</option>
+                        <option value="Sự Kiện">Sự Kiện</option>
+                        <option value="Xu Hướng">Xu Hướng</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="sort" class="form-label">Sắp Xếp:</label>
+                    <select class="form-select" id="sort">
+                        <option value="newest">Mới Nhất</option>
+                        <option value="oldest">Cũ Nhất</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="news-list">
+                <!-- News sẽ được load tự động bằng JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 VN To You Asia. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-footer">
+                        <p class="mb-2"><strong>Liên hệ với chúng tôi:</strong></p>
+                        <p class="mb-1">
+                            <a href="mailto:info@vntoyouasia.com" class="text-white text-decoration-none">
+                                📧 Email: info@vntoyouasia.com
+                            </a>
+                        </p>
+                        <p class="mb-1">
+                            <a href="tel:+84123456789" class="text-white text-decoration-none">
+                                📱 Điện thoại: +84 123 456 789
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/84123456789" class="text-white text-decoration-none" target="_blank">
+                                💬 WhatsApp: +84 123 456 789
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allNews = []; // Lưu trữ tất cả tin tức
+
+        // Load news từ JSON
+        async function loadNews() {
+            try {
+                const response = await fetch('news/data/news.json');
+                allNews = await response.json();
+                displayNews(allNews);
+            } catch (error) {
+                console.error('Lỗi load tin tức:', error);
+                const newsList = document.getElementById('news-list');
+                if (newsList) {
+                    newsList.innerHTML = '<div class="col-12"><div class="alert alert-danger">Không thể tải tin tức. Vui lòng thử lại sau.</div></div>';
+                }
+            }
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                timeZone: 'Asia/Ho_Chi_Minh'
+            };
+            return new Date(dateString).toLocaleDateString('vi-VN', options);
+        }
+
+        // Hiển thị tin tức
+        function displayNews(newsList) {
+            const newsContainer = document.getElementById('news-list');
+            newsContainer.innerHTML = '';
+
+            if (newsList.length === 0) {
+                newsContainer.innerHTML = '<div class="col-12"><div class="alert alert-info">Không có tin tức nào.</div></div>';
+                return;
+            }
+
+            newsList.forEach(news => {
+                const newsCard = `
+                    <div class="col-md-4 mb-4" data-category="${news.category}" data-date="${news.date}">
+                        <div class="card h-100">
+                            <img src="${news.image}" class="card-img-top" alt="${news.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Tin+Tức'" style="height: 200px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2">
+                                    <span class="badge bg-primary">${news.category}</span>
+                                </div>
+                                <h5 class="card-title">${news.title}</h5>
+                                <p class="card-text flex-grow-1">${news.summary}</p>
+                                <div class="mt-auto">
+                                    <small class="text-muted">Ngày ${formatDate(news.date)}</small>
+                                    <div class="mt-2">
+                                        <a href="news/details/news-detail.html?id=${news.id}" class="btn btn-primary">Đọc Thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                newsContainer.innerHTML += newsCard;
+            });
+        }
+
+        // Filter tin tức
+        function filterNews() {
+            const categoryFilter = document.getElementById('category').value;
+            const sortFilter = document.getElementById('sort').value;
+
+            let filteredNews = [...allNews];
+
+            // Filter theo danh mục
+            if (categoryFilter !== 'all') {
+                filteredNews = filteredNews.filter(news => news.category === categoryFilter);
+            }
+
+            // Sort theo ngày
+            filteredNews.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                
+                if (sortFilter === 'newest') {
+                    return dateB - dateA; // Mới nhất trước
+                } else {
+                    return dateA - dateB; // Cũ nhất trước
+                }
+            });
+
+            displayNews(filteredNews);
+        }
+
+        // Khởi tạo
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNews();
+            
+            const categoryFilter = document.getElementById('category');
+            const sortFilter = document.getElementById('sort');
+            
+            categoryFilter.addEventListener('change', filterNews);
+            sortFilter.addEventListener('change', filterNews);
+        });
+    </script>
+</body>
+</html>

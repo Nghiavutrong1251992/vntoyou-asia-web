@@ -1,0 +1,354 @@
+/* 
+ * VN To You Asia - Custom Styles v2.0
+ * Updated: Logo sizing fixed for all devices
+ * 
+ * Nguyên tắc: 
+ * - Không được dùng inline CSS nữa. Tất cả style phải trong file này hoặc Bootstrap classes.
+ * - Màu logo chính: #0095d9
+ * - Logo responsive: 35px-60px tùy thiết bị
+ * - Nếu cần style thêm, dùng Bootstrap utilities.
+ */
+
+/* Style cho logo - override Bootstrap img-fluid với multiple selectors */
+.navbar-brand img,
+.navbar-brand img.img-fluid,
+.navbar .navbar-brand img {
+    height: 45px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+/* Logo responsive cho các thiết bị */
+@media (min-width: 992px) {
+    .navbar-brand img,
+    .navbar-brand img.img-fluid,
+    .navbar .navbar-brand img {
+        height: 60px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-brand img,
+    .navbar-brand img.img-fluid,
+    .navbar .navbar-brand img {
+        height: 50px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-brand img,
+    .navbar-brand img.img-fluid,
+    .navbar .navbar-brand img {
+        height: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand img,
+    .navbar-brand img.img-fluid,
+    .navbar .navbar-brand img {
+        height: 35px !important;
+    }
+}
+
+/* Style cho carousel: Ảnh zoom cover, caption màu logo trên nền trắng */
+.carousel-item img {
+    object-fit: cover;
+    height: 400px;
+}
+
+.carousel-caption h5, .carousel-caption p {
+    color: #0095d9 !important;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Style tối ưu cho ảnh tour card - aspect ratio 16:9 */
+.card-img-top {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+/* Carousel styles - consistent image height */
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (min-width: 768px) {
+    .carousel-item img {
+        height: 450px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-item img {
+        height: 500px;
+    }
+}
+
+/* Responsive cho card images */
+@media (min-width: 768px) {
+    .card-img-top {
+        height: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+/* Style cho ảnh chi tiết tour - tối ưu cho tỷ lệ 16:9 */
+.tour-detail-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.375rem;
+}
+
+/* Responsive cho desktop - giữ tỷ lệ 16:9 */
+@media (min-width: 768px) {
+    .tour-detail-img {
+        max-height: 450px;
+        max-width: 800px;
+    }
+}
+
+/* Responsive cho tablet */
+@media (max-width: 767px) and (min-width: 481px) {
+    .tour-detail-img {
+        max-height: 337px;
+        max-width: 600px;
+    }
+}
+
+/* Responsive cho mobile */
+@media (max-width: 480px) {
+    .tour-detail-img {
+        max-height: 225px;
+        max-width: 400px;
+    }
+}
+
+/* Style cho tiêu đề tour detail - margin top để cách ảnh */
+.tour-detail-img + h1 {
+    margin-top: 1.5rem;
+    color: #0095d9;
+}
+
+/* Responsive typography cho tour detail */
+@media (max-width: 768px) {
+    .tour-detail-img + h1 {
+        font-size: 1.75rem;
+        margin-top: 1rem;
+    }
+    
+    .container h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+    }
+    
+    .container p, .container li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tour-detail-img + h1 {
+        font-size: 1.5rem;
+    }
+    
+    .container h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Style cho contact buttons */
+.contact-buttons {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0095d9;
+}
+
+.contact-buttons h4 {
+    color: #0095d9;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.btn-email {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.btn-messenger {
+    background-color: #0084FF;
+    color: white;
+}
+
+.btn-line {
+    background-color: #00C300;
+    color: white;
+}
+
+/* Style cho tour detail layout */
+.tour-detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.tour-title {
+    color: #0095d9;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.tour-meta {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #0095d9;
+}
+
+.tour-meta p {
+    margin-bottom: 0.5rem;
+}
+
+.tour-meta p:last-child {
+    margin-bottom: 0;
+}
+
+.tour-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tour-section h3 {
+    color: #0095d9;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tour-list {
+    padding-left: 1.5rem;
+}
+
+.tour-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Responsive cho tour detail */
+@media (max-width: 768px) {
+    .tour-title {
+        font-size: 1.5rem;
+    }
+    
+    .tour-section h3 {
+        font-size: 1.25rem;
+    }
+    
+    .tour-list li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive cho contact buttons */
+@media (max-width: 768px) {
+    .contact-btn {
+        display: block;
+        width: 100%;
+        margin: 0.25rem 0;
+        text-align: center;
+    }
+}
+
+/* News detail styles */
+.news-detail-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 0.375rem;
+}
+
+.news-meta {
+    padding: 1rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.news-content {
+    line-height: 1.8;
+}
+
+.news-content p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.news-section {
+    margin-bottom: 2rem;
+}
+
+.news-section h4 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.contact-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 1px solid #dee2e6;
+}
+
+/* News card hover effects */
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}

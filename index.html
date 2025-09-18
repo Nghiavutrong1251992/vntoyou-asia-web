@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN To You Asia - Giới Thiệu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/VN TO YOU LOGO.png" alt="VN To You Asia" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin Tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container" id="hero-section">
+            <!-- Content will be loaded from JSON -->
+        </div>
+    </header>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carousel-slides">
+                    <!-- Slides will be loaded from JSON -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container" id="services-section">
+            <!-- Services will be loaded from JSON -->
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container" id="achievements-section">
+            <!-- Achievements will be loaded from JSON -->
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container" id="navigation-section">
+            <!-- Navigation buttons will be loaded from JSON -->
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 VN To You Asia. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-footer">
+                        <p class="mb-2"><strong>Liên hệ với chúng tôi:</strong></p>
+                        <p class="mb-1">
+                            <a href="mailto:info@vntoyouasia.com" class="text-white text-decoration-none">
+                                📧 Email: info@vntoyouasia.com
+                            </a>
+                        </p>
+                        <p class="mb-1">
+                            <a href="tel:+84123456789" class="text-white text-decoration-none">
+                                📱 Điện thoại: +84 123 456 789
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/84123456789" class="text-white text-decoration-none" target="_blank">
+                                💬 WhatsApp: +84 123 456 789
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Homepage Content Management System
+        let homepageContent = {};
+
+        // Sanitize HTML to prevent XSS
+        function sanitizeHTML(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Load homepage content from JSON
+        async function loadHomepageContent() {
+            try {
+                const response = await fetch('data/homepage-content.json');
+                homepageContent = await response.json();
+                renderHomepage();
+            } catch (error) {
+                console.error('Error loading homepage content:', error);
+                renderFallbackContent();
+            }
+        }
+
+        // Render hero section
+        function renderHeroSection() {
+            const heroSection = document.getElementById('hero-section');
+            if (heroSection && homepageContent.hero) {
+                heroSection.innerHTML = `
+                    <h1>${sanitizeHTML(homepageContent.hero.title)}</h1>
+                    <p>${sanitizeHTML(homepageContent.hero.subtitle)}</p>
+                `;
+            }
+        }
+
+        // Render carousel slides
+        function renderCarousel() {
+            const carouselSlides = document.getElementById('carousel-slides');
+            if (carouselSlides && homepageContent.carousel?.slides) {
+                carouselSlides.innerHTML = '';
+                homepageContent.carousel.slides.forEach((slide, index) => {
+                    const activeClass = index === 0 ? 'active' : '';
+                    const slideHTML = `
+                        <div class="carousel-item ${activeClass}">
+                            <img src="${sanitizeHTML(slide.image)}" class="d-block w-100" alt="${sanitizeHTML(slide.alt)}" onerror="this.src='https://via.placeholder.com/800x400?text=${sanitizeHTML(slide.alt)}'">
+                            ${slide.caption ? `<div class="carousel-caption d-none d-md-block"><p>${sanitizeHTML(slide.caption)}</p></div>` : ''}
+                        </div>
+                    `;
+                    carouselSlides.innerHTML += slideHTML;
+                });
+                
+                // Reinitialize carousel after content is loaded
+                const carouselElement = document.getElementById('carouselExample');
+                if (carouselElement) {
+                    // Dispose existing carousel instance if any
+                    const existingCarousel = bootstrap.Carousel.getInstance(carouselElement);
+                    if (existingCarousel) {
+                        existingCarousel.dispose();
+                    }
+                    
+                    // Create new carousel instance with auto-cycling
+                    new bootstrap.Carousel(carouselElement, {
+                        interval: 5000,
+                        wrap: true,
+                        touch: true
+                    });
+                }
+            }
+        }
+
+        // Render services section
+        function renderServices() {
+            const servicesSection = document.getElementById('services-section');
+            if (servicesSection && homepageContent.services) {
+                let servicesHTML = `<h2>${sanitizeHTML(homepageContent.services.title)}</h2><div class="row">`;
+                
+                homepageContent.services.items.forEach(service => {
+                    servicesHTML += `
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <div class="service-icon mb-3" style="font-size: 3rem;">${service.icon}</div>
+                                    <h5 class="card-title">${sanitizeHTML(service.title)}</h5>
+                                    <p class="card-text">${sanitizeHTML(service.description)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                servicesHTML += '</div>';
+                servicesSection.innerHTML = servicesHTML;
+            }
+        }
+
+        // Render achievements section
+        function renderAchievements() {
+            const achievementsSection = document.getElementById('achievements-section');
+            if (achievementsSection && homepageContent.achievements) {
+                const achievements = homepageContent.achievements;
+                let achievementsHTML = `
+                    <h1 class="text-center">${sanitizeHTML(achievements.title)}</h1>
+                    <p class="text-center">${sanitizeHTML(achievements.subtitle)}</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>${sanitizeHTML(achievements.awards.title)}</h3>
+                            <ul>
+                `;
+                
+                achievements.awards.items.forEach(award => {
+                    achievementsHTML += `<li>${sanitizeHTML(award)}</li>`;
+                });
+                
+                achievementsHTML += `
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>${sanitizeHTML(achievements.stats.title)}</h3>
+                `;
+                
+                achievements.stats.items.forEach(stat => {
+                    achievementsHTML += `<p>${sanitizeHTML(stat)}</p>`;
+                });
+                
+                achievementsHTML += `
+                        </div>
+                    </div>
+                `;
+                
+                achievementsSection.innerHTML = achievementsHTML;
+            }
+        }
+
+        // Render navigation section
+        function renderNavigation() {
+            const navigationSection = document.getElementById('navigation-section');
+            if (navigationSection && homepageContent.navigation) {
+                const navigation = homepageContent.navigation;
+                let navigationHTML = `
+                    <h2 class="text-center">${sanitizeHTML(navigation.title)}</h2>
+                    <p class="text-center mb-4">${sanitizeHTML(navigation.subtitle)}</p>
+                    <div class="row">
+                `;
+                
+                navigation.buttons.forEach(button => {
+                    navigationHTML += `
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">${sanitizeHTML(button.title)}</h5>
+                                    <p class="card-text">${sanitizeHTML(button.description)}</p>
+                                    <a href="${sanitizeHTML(button.link)}" class="${sanitizeHTML(button.class)}">${sanitizeHTML(button.title)}</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                navigationHTML += '</div>';
+                navigationSection.innerHTML = navigationHTML;
+            }
+        }
+
+        // Render all homepage sections
+        function renderHomepage() {
+            renderHeroSection();
+            renderCarousel();
+            renderServices();
+            renderAchievements();
+            renderNavigation();
+        }
+
+        // Fallback content if JSON fails to load
+        function renderFallbackContent() {
+            const heroSection = document.getElementById('hero-section');
+            if (heroSection) {
+                heroSection.innerHTML = `
+                    <h1>Chào Mừng Đến Với VN To You Asia</h1>
+                    <p>Chúng tôi cung cấp các dịch vụ tour du lịch chất lượng cao cho doanh nghiệp B2B.</p>
+                `;
+            }
+            
+            // Add fallback for other sections as needed
+            console.warn('Using fallback content due to JSON loading error');
+        }
+
+        // Initialize homepage when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHomepageContent();
+        });
+    </script>
+</body>
+</html>

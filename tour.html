@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN To You Asia - Tour</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="images/VN TO YOU LOGO.png" alt="VN To You Asia" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tour.html">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">Tin Tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Các Tour Du Lịch</h1>
+            <p>Khám phá những điểm đến tuyệt vời với các tour du lịch được thiết kế đặc biệt cho doanh nghiệp.</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="region" class="form-label">Chọn Vùng:</label>
+                    <select class="form-select" id="region">
+                        <option value="all">Tất Cả Việt Nam</option>
+                        <option value="bac">Miền Bắc</option>
+                        <option value="trung">Miền Trung</option>
+                        <option value="nam">Miền Nam</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="days" class="form-label">Số Ngày:</label>
+                    <select class="form-select" id="days">
+                        <option value="all">Tất Cả</option>
+                        <option value="1-3">1-3 Ngày</option>
+                        <option value="4-7">4-7 Ngày</option>
+                        <option value="8+">8+ Ngày</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="tour-list">
+                <!-- Tours sẽ được load tự động bằng JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 VN To You Asia. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-footer">
+                        <p class="mb-2"><strong>Liên hệ với chúng tôi:</strong></p>
+                        <p class="mb-1">
+                            <a href="mailto:info@vntoyouasia.com" class="text-white text-decoration-none">
+                                📧 Email: info@vntoyouasia.com
+                            </a>
+                        </p>
+                        <p class="mb-1">
+                            <a href="tel:+84123456789" class="text-white text-decoration-none">
+                                📱 Điện thoại: +84 123 456 789
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/84123456789" class="text-white text-decoration-none" target="_blank">
+                                💬 WhatsApp: +84 123 456 789
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allTours = []; // Lưu trữ tất cả tours
+
+        // Load tours từ JSON
+        async function loadTours() {
+            try {
+                const response = await fetch('tours/data/tours.json');
+                allTours = await response.json();
+                displayTours(allTours);
+            } catch (error) {
+                console.error('Lỗi load tours:', error);
+            }
+        }
+
+        // Hiển thị tours
+        function displayTours(tours) {
+            const tourList = document.getElementById('tour-list');
+            tourList.innerHTML = '';
+
+            tours.forEach(tour => {
+                const tourCard = `
+                    <div class="col-md-4 mb-4" data-region="${tour.region}" data-days="${tour.days}">
+                        <div class="card">
+                            <img src="${tour.image}" class="card-img-top" alt="${tour.title}" onerror="this.src='https://via.placeholder.com/300x200'">
+                            <div class="card-body">
+                                <h5 class="card-title">${tour.title}</h5>
+                                <p class="card-text">${tour.description}</p>
+                                <p class="text-muted">${tour.region} | ${tour.days} Ngày</p>
+                                <a href="tours/details/tour-detail.html?id=${tour.id}" class="btn btn-primary">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                tourList.innerHTML += tourCard;
+            });
+        }
+
+        // Filter tours
+        function filterTours() {
+            const regionFilter = document.getElementById('region').value;
+            const daysFilter = document.getElementById('days').value;
+
+            let filteredTours = allTours;
+
+            // Filter theo vùng
+            if (regionFilter !== 'all') {
+                const regionMap = {
+                    'bac': 'Miền Bắc',
+                    'trung': 'Miền Trung', 
+                    'nam': 'Miền Nam'
+                };
+                filteredTours = filteredTours.filter(tour => 
+                    tour.region === regionMap[regionFilter]
+                );
+            }
+
+            // Filter theo số ngày
+            if (daysFilter !== 'all') {
+                filteredTours = filteredTours.filter(tour => {
+                    const days = tour.days;
+                    if (daysFilter === '1-3') return days >= 1 && days <= 3;
+                    if (daysFilter === '4-7') return days >= 4 && days <= 7;
+                    if (daysFilter === '8+') return days >= 8;
+                    return true;
+                });
+            }
+
+            displayTours(filteredTours);
+        }
+
+        // Khởi tạo
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTours();
+            
+            const regionFilter = document.getElementById('region');
+            const daysFilter = document.getElementById('days');
+            
+            regionFilter.addEventListener('change', filterTours);
+            daysFilter.addEventListener('change', filterTours);
+        });
+    </script>
+</body>
+</html>

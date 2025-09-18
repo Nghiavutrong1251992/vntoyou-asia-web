@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN To You Asia - {{TITLE}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html"><img src="../../images/VN TO YOU LOGO.png" alt="VN To You Asia" class="img-fluid"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Giới Thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../tour.html">Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../contact.html">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../news.html">Tin Tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5" id="tour-header">
+        <div class="container">
+            <h1>Chi Tiết Tour</h1>
+            <p>Thông tin chi tiết về chuyến du lịch của bạn</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Đang tải...</span>
+                </div>
+                <p>Đang tải thông tin tour...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 VN To You Asia. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-footer">
+                        <p class="mb-2"><strong>Liên hệ với chúng tôi:</strong></p>
+                        <p class="mb-1">
+                            <a href="mailto:info@vntoyouasia.com" class="text-white text-decoration-none">
+                                📧 Email: info@vntoyouasia.com
+                            </a>
+                        </p>
+                        <p class="mb-1">
+                            <a href="tel:+84123456789" class="text-white text-decoration-none">
+                                📱 Điện thoại: +84 123 456 789
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/84123456789" class="text-white text-decoration-none" target="_blank">
+                                💬 WhatsApp: +84 123 456 789
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // XSS Protection: Sanitize HTML content
+        function sanitizeHTML(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+        
+        // Safe way to set text content
+        function setTextContent(selector, content) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.textContent = content; // textContent is safe from XSS
+            }
+        }
+
+        async function loadTourDetail() {
+            console.log('loadTourDetail started');
+            const urlParams = new URLSearchParams(window.location.search);
+            const tourId = urlParams.get('id');
+            console.log('Tour ID:', tourId);
+            console.log('Current URL:', window.location.href);
+            
+            if (!tourId) {
+                console.log('No tour ID found');
+                const container = document.querySelector('section .container');
+                if (container) {
+                    container.innerHTML = '<div class="alert alert-danger">Không tìm thấy ID tour trong URL</div>';
+                }
+                return;
+            }
+
+            try {
+                console.log('Fetching tours.json...');
+                console.log('Fetch URL will be:', window.location.origin + '/tours/data/tours.json');
+                const toursResponse = await fetch('/tours/data/tours.json');
+                console.log('Tours response status:', toursResponse.status);
+                
+                if (!toursResponse.ok) {
+                    throw new Error(`HTTP error! status: ${toursResponse.status}`);
+                }
+                
+                const tours = await toursResponse.json();
+                console.log('Tours loaded:', tours);
+                
+                const tour = tours.find(t => t.id === tourId);
+                console.log('Found tour:', tour);
+                if (!tour) throw new Error(`Tour với ID "${tourId}" không tồn tại`);
+
+                console.log('Fetching tour detail from:', tour.dataFile);
+                const detailResponse = await fetch('/tours/' + tour.dataFile);
+                console.log('Detail response status:', detailResponse.status);
+                
+                if (!detailResponse.ok) {
+                    throw new Error(`HTTP error! status: ${detailResponse.status}`);
+                }
+                
+                const tourDetail = await detailResponse.json();
+                console.log('Tour detail loaded:', tourDetail);
+                
+                // Update page title and header
+                document.title = 'VN To You Asia - ' + tourDetail.title;
+                
+                // Update header section
+                const tourHeader = document.getElementById('tour-header');
+                if (tourHeader) {
+                    tourHeader.innerHTML = `
+                        <div class="container">
+                            <h1>${sanitizeHTML(tourDetail.title)}</h1>
+                            <p>${sanitizeHTML(tourDetail.description)}</p>
+                        </div>
+                    `;
+                }
+                
+                const imageUrl = '/' + tour.image;
+                
+                console.log('Starting HTML render...');
+                console.log('Image URL:', imageUrl);
+                console.log('Title:', tourDetail.title);
+                
+                try {
+                    const htmlContent = `
+                        <div class="tour-detail-content">
+                            <img src="${sanitizeHTML(imageUrl)}" class="tour-detail-img mb-4" alt="${sanitizeHTML(tourDetail.title)}" onerror="this.src='https://via.placeholder.com/500x300'">
+                            
+                            <h1 class="tour-title">${sanitizeHTML(tourDetail.title)}</h1>
+                            <div class="tour-meta mb-4">
+                                <p><strong>Vùng:</strong> ${sanitizeHTML(tourDetail.region)}</p>
+                                <p><strong>Số Ngày:</strong> ${sanitizeHTML(tourDetail.days)} Ngày</p>
+                                <p><strong>Mô tả:</strong> ${sanitizeHTML(tourDetail.description)}</p>
+                            </div>
+                            
+                            <div class="tour-section">
+                                <h3>Lịch Trình</h3>
+                                <ul class="tour-list">${tourDetail.itinerary.map(item => '<li>' + item + '</li>').join('')}</ul>
+                            </div>
+                            
+                            <div class="tour-section">
+                                <h3>Bao Gồm</h3>
+                                <ul class="tour-list">${tourDetail.includes.map(item => '<li>' + item + '</li>').join('')}</ul>
+                            </div>
+                            
+                            <div class="tour-section">
+                                <h3>Không Bao Gồm</h3>
+                                <ul class="tour-list">${tourDetail.excludes.map(item => '<li>' + item + '</li>').join('')}</ul>
+                            </div>
+                            
+                            <div class="tour-section">
+                                <h3>Điều Khoản</h3>
+                                <ul class="tour-list">${tourDetail.terms.map(item => '<li>' + item + '</li>').join('')}</ul>
+                            </div>
+                            
+                            <div class="contact-buttons">
+                                <h4>💬 Liên Hệ Đặt Tour</h4>
+                                <p class="mb-3">Nhấn vào nút bên dưới để trò chuyện trực tiếp với chúng tôi:</p>
+                                <a href="mailto:info@vntoyouasia.com?subject=Đặt ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-email">📧 Email</a>
+                                <a href="https://wa.me/84987654321?text=Xin chào! Tôi quan tâm đến ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-whatsapp" target="_blank">📱 WhatsApp</a>
+                                <a href="https://m.me/vntoyouasia" class="contact-btn btn-messenger" target="_blank">💬 Messenger</a>
+                                <a href="https://line.me/ti/p/~vntoyouasia" class="contact-btn btn-line" target="_blank">📞 LINE</a>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="../../tour.html" class="btn btn-primary btn-lg">⬅️ Quay Lại Danh Sách</a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    console.log('HTML content generated successfully');
+                    const container = document.querySelector('section .container');
+                    console.log('Section container found:', container);
+                    console.log('Section container current content:', container ? container.innerHTML : 'null');
+                    
+                    if (container) {
+                        container.innerHTML = htmlContent;
+                        console.log('HTML rendered successfully');
+                        console.log('Section container new content preview:', container.innerHTML.substring(0, 200) + '...');
+                        
+                        // Kiểm tra xem còn spinner không
+                        const spinners = document.querySelectorAll('.spinner-border');
+                        console.log('Remaining spinners after render:', spinners.length);
+                        
+                    } else {
+                        console.error('Section container not found!');
+                        throw new Error('Section container element not found');
+                    }
+                    
+                } catch (renderError) {
+                    console.error('Error during HTML rendering:', renderError);
+                    throw new Error('Lỗi hiển thị: ' + renderError.message);
+                }
+                
+            } catch (error) {
+                console.error('Error loading tour:', error);
+                const container = document.querySelector('section .container');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="alert alert-danger">
+                            <h4>Lỗi: ${error.message}</h4>
+                            <p>Chi tiết lỗi: ${error.stack || 'Không có thông tin thêm'}</p>
+                            <a href="../../tour.html" class="btn btn-primary">⬅️ Quay Lại</a>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTourDetail);
+    </script>
+</body>
+</html>
