@@ -182,15 +182,14 @@
         function renderServices() {
             const servicesSection = document.getElementById('services-section');
             if (servicesSection && homepageContent.services) {
-                let servicesHTML = `<h2>${sanitizeHTML(homepageContent.services.title)}</h2><div class="row">`;
+                let servicesHTML = `<h2 class="text-center mb-5">${sanitizeHTML(homepageContent.services.title)}</h2><div class="row">`;
                 
                 homepageContent.services.items.forEach(service => {
                     servicesHTML += `
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <div class="service-icon mb-3" style="font-size: 3rem;">${service.icon}</div>
-                                    <h5 class="card-title">${sanitizeHTML(service.title)}</h5>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary mb-3">${sanitizeHTML(service.title)}</h5>
                                     <p class="card-text">${sanitizeHTML(service.description)}</p>
                                 </div>
                             </div>
@@ -258,24 +257,24 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="bg-light p-3 rounded mb-3">
-                                                <h5 class="text-success mb-2">🌟 Our Strength in 2025</h5>
+                                                <h5 class="text-success mb-2">Our Strength in 2025</h5>
                                                 <p>${sanitizeHTML(about.stats.year)}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="bg-light p-3 rounded mb-3">
-                                                <h5 class="text-success mb-2">🏆 Our Pride</h5>
+                                                <h5 class="text-success mb-2">Our Pride</h5>
                                                 <p>${sanitizeHTML(about.stats.pride)}</p>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <div class="mt-4">
-                                        <h5 class="text-primary mb-3">✨ Our Services</h5>
+                                        <h5 class="text-primary mb-3">Our Services</h5>
                                         <p class="mb-4">${sanitizeHTML(about.services)}</p>
                                         <div class="text-center">
-                                            <a href="tour.html" class="btn btn-primary btn-lg me-2">🌍 Explore Our Tours</a>
-                                            <a href="contact.html" class="btn btn-success btn-lg">📞 Contact Us Today</a>
+                                            <a href="tour.html" class="btn btn-primary btn-lg me-2">Explore Our Tours</a>
+                                            <a href="contact.html" class="btn btn-success btn-lg">Contact Us Today</a>
                                         </div>
                                     </div>
                                 </div>

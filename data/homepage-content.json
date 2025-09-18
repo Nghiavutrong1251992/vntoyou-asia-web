@@ -43,22 +43,31 @@
     ]
   },
   "services": {
-    "title": "Our Services",
+    "title": "Our Key Services",
     "items": [
       {
-        "title": "Tour Services",
-        "description": "Professionally designed tours for groups and businesses.",
-        "icon": "🌍"
+        "title": "Vietnam Land Tours",
+        "description": "Professionally organized tours across all three regions of Vietnam—North, Central, and South—highlighting the country's unique culture, landscapes, and landmarks."
       },
       {
-        "title": "Support Services", 
-        "description": "24/7 support for all customer needs.",
-        "icon": "🎧"
+        "title": "Private Group Tours",
+        "description": "Customized tours for groups of various sizes, from intimate groups of 6-8 up to larger groups of 200. Ideal for corporate outings, dealer incentive trips, company team-building activities, gala dinners, parties, and trips with family or friends."
       },
       {
-        "title": "Personal Consultation",
-        "description": "Professional consultation to choose the right tour.",
-        "icon": "💼"
+        "title": "Specialized Travel Services",
+        "description": "Expertise in arranging educational and business visits, such as factory tours, school excursions, agricultural research visits, and trade trips focused on the apparel industry and other fields."
+      },
+      {
+        "title": "Vehicle Rental Services",
+        "description": "A broad selection of rental vehicles with experienced drivers, available in 7, 16, 29, 35, and 45-seat options, ensuring comfortable and convenient travel for groups of all sizes."
+      },
+      {
+        "title": "Tour Guides and Interpreters",
+        "description": "Skilled and professional guides and interpreters are available to provide in-depth knowledge and assistance throughout the trip."
+      },
+      {
+        "title": "Luxury Leisure Activities",
+        "description": "Premium travel experiences, including golfing, playing at casinos, and exclusive shopping tours."
       }
     ]
   },
@@ -85,19 +94,19 @@
     "subtitle": "Learn more about our services and information",
     "buttons": [
       {
-        "title": "🌍 View Tours",
+        "title": "View Tours",
         "description": "Explore exciting travel tours",
         "link": "tour.html",
         "class": "btn btn-primary btn-lg"
       },
       {
-        "title": "📰 News",
+        "title": "News",
         "description": "Latest travel news updates",
         "link": "news.html", 
         "class": "btn btn-info btn-lg"
       },
       {
-        "title": "📞 Contact",
+        "title": "Contact",
         "description": "Contact us today",
         "link": "contact.html",
         "class": "btn btn-success btn-lg"
