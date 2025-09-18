@@ -104,7 +104,7 @@
                 console.log('No news ID found');
                 const container = document.querySelector('section .container');
                 if (container) {
-                    container.innerHTML = '<div class="alert alert-danger">Không tìm thấy ID tin tức trong URL</div>';
+                    container.innerHTML = '<div class="alert alert-danger">News ID not found in URL</div>';
                 }
                 return;
             }
@@ -161,7 +161,7 @@
                         <div class="alert alert-danger">
                             <h4>Không thể tải tin tức</h4>
                             <p>Lỗi: ${error.message}</p>
-                            <a href="../../news.html" class="btn btn-primary">⬅️ Quay Lại Danh Sách Tin Tức</a>
+                            <a href="../../news.html" class="btn btn-primary">⬅️ Back to News List</a>
                         </div>
                     `;
                 }
@@ -224,10 +224,10 @@
                         <h4>Thông Tin Sự Kiện</h4>
                         <div class="card">
                             <div class="card-body">
-                                <p><strong>Ngày:</strong> ${sanitizeHTML(newsDetail.event_details.date)}</p>
-                                <p><strong>Thời gian:</strong> ${sanitizeHTML(newsDetail.event_details.time)}</p>
-                                <p><strong>Địa điểm:</strong> ${sanitizeHTML(newsDetail.event_details.venue)}</p>
-                                <p><strong>Địa chỉ:</strong> ${sanitizeHTML(newsDetail.event_details.address)}</p>
+                                <p><strong>Date:</strong> ${sanitizeHTML(newsDetail.event_details.date)}</p>
+                                <p><strong>Time:</strong> ${sanitizeHTML(newsDetail.event_details.time)}</p>
+                                <p><strong>Venue:</strong> ${sanitizeHTML(newsDetail.event_details.venue)}</p>
+                                <p><strong>Address:</strong> ${sanitizeHTML(newsDetail.event_details.address)}</p>
                             </div>
                         </div>
                     </div>
@@ -237,7 +237,7 @@
             if (newsDetail.trending_destinations) {
                 contentHTML += `
                     <div class="news-section mb-4">
-                        <h4>Điểm Đến Trending</h4>
+                        <h4>Trending Destinations</h4>
                         <div class="row">
                 `;
                 newsDetail.trending_destinations.forEach(dest => {
@@ -260,7 +260,7 @@
             if (newsDetail.contact) {
                 contentHTML += `
                     <div class="contact-section bg-light p-4 rounded">
-                        <h4>📞 Liên Hệ</h4>
+                        <h4>📞 Contact</h4>
                         <p class="mb-3">${sanitizeHTML(newsDetail.contact.note)}</p>
                         <div class="row">
                             <div class="col-md-6">
@@ -276,7 +276,7 @@
             
             contentHTML += `
                     <div class="text-center mt-4">
-                        <a href="../../news.html" class="btn btn-primary btn-lg">⬅️ Quay Lại Danh Sách</a>
+                        <a href="../../news.html" class="btn btn-primary btn-lg">⬅️ Back to List</a>
                     </div>
                 </div>
             `;

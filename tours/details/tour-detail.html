@@ -102,7 +102,7 @@
                 console.log('No tour ID found');
                 const container = document.querySelector('section .container');
                 if (container) {
-                    container.innerHTML = '<div class="alert alert-danger">Không tìm thấy ID tour trong URL</div>';
+                    container.innerHTML = '<div class="alert alert-danger">Tour ID not found in URL</div>';
                 }
                 return;
             }
@@ -162,9 +162,9 @@
                             
                             <h1 class="tour-title">${sanitizeHTML(tourDetail.title)}</h1>
                             <div class="tour-meta mb-4">
-                                <p><strong>Vùng:</strong> ${sanitizeHTML(tourDetail.region)}</p>
-                                <p><strong>Số Ngày:</strong> ${sanitizeHTML(tourDetail.days)} Ngày</p>
-                                <p><strong>Mô tả:</strong> ${sanitizeHTML(tourDetail.description)}</p>
+                                <p><strong>Region:</strong> ${sanitizeHTML(tourDetail.region)}</p>
+                                <p><strong>Days:</strong> ${sanitizeHTML(tourDetail.days)} Days</p>
+                                <p><strong>Description:</strong> ${sanitizeHTML(tourDetail.description)}</p>
                             </div>
                             
                             <div class="tour-section">
@@ -188,16 +188,16 @@
                             </div>
                             
                             <div class="contact-buttons">
-                                <h4>💬 Liên Hệ Đặt Tour</h4>
-                                <p class="mb-3">Nhấn vào nút bên dưới để trò chuyện trực tiếp với chúng tôi:</p>
-                                <a href="mailto:info@vntoyouasia.com?subject=Đặt ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-email">📧 Email</a>
-                                <a href="https://wa.me/84987654321?text=Xin chào! Tôi quan tâm đến ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-whatsapp" target="_blank">📱 WhatsApp</a>
+                                <h4>💬 Contact to Book Tour</h4>
+                                <p class="mb-3">Click the button below to chat directly with us:</p>
+                                <a href="mailto:info@vntoyouasia.com?subject=Book ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-email">📧 Email</a>
+                                <a href="https://wa.me/84987654321?text=Hello! I'm interested in ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-whatsapp" target="_blank">📱 WhatsApp</a>
                                 <a href="https://m.me/vntoyouasia" class="contact-btn btn-messenger" target="_blank">💬 Messenger</a>
                                 <a href="https://line.me/ti/p/~vntoyouasia" class="contact-btn btn-line" target="_blank">📞 LINE</a>
                             </div>
                             
                             <div class="text-center mt-4">
-                                <a href="../../tour.html" class="btn btn-primary btn-lg">⬅️ Quay Lại Danh Sách</a>
+                                <a href="../../tour.html" class="btn btn-primary btn-lg">⬅️ Back to List</a>
                             </div>
                         </div>
                     `;
@@ -233,8 +233,8 @@
                     container.innerHTML = `
                         <div class="alert alert-danger">
                             <h4>Lỗi: ${error.message}</h4>
-                            <p>Chi tiết lỗi: ${error.stack || 'Không có thông tin thêm'}</p>
-                            <a href="../../tour.html" class="btn btn-primary">⬅️ Quay Lại</a>
+                            <p>Error details: ${error.stack || 'No additional information'}</p>
+                            <a href="../../tour.html" class="btn btn-primary">⬅️ Back to List</a>
                         </div>
                     `;
                 }

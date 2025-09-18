@@ -125,7 +125,7 @@
             newsContainer.innerHTML = '';
 
             if (newsList.length === 0) {
-                newsContainer.innerHTML = '<div class="col-12"><div class="alert alert-info">Không có tin tức nào.</div></div>';
+                newsContainer.innerHTML = '<div class="col-12"><div class="alert alert-info">No news available.</div></div>';
                 return;
             }
 
@@ -143,7 +143,7 @@
                                 <div class="mt-auto">
                                     <small class="text-muted">Ngày ${formatDate(news.date)}</small>
                                     <div class="mt-2">
-                                        <a href="news/details/news-detail.html?id=${news.id}" class="btn btn-primary">Đọc Thêm</a>
+                                        <a href="news/details/news-detail.html?id=${news.id}" class="btn btn-primary">Read More</a>
                                     </div>
                                 </div>
                             </div>
