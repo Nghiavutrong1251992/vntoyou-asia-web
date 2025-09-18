@@ -61,12 +61,6 @@
         </div>
     </section>
 
-    <section class="py-5">
-        <div class="container" id="achievements-section">
-            <!-- Achievements will be loaded from JSON -->
-        </div>
-    </section>
-
     <section class="py-5 bg-light">
         <div class="container" id="navigation-section">
             <!-- Navigation buttons will be loaded from JSON -->
@@ -202,44 +196,6 @@
             }
         }
 
-        // Render achievements section
-        function renderAchievements() {
-            const achievementsSection = document.getElementById('achievements-section');
-            if (achievementsSection && homepageContent.achievements) {
-                const achievements = homepageContent.achievements;
-                let achievementsHTML = `
-                    <h1 class="text-center">${sanitizeHTML(achievements.title)}</h1>
-                    <p class="text-center">${sanitizeHTML(achievements.subtitle)}</p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3>${sanitizeHTML(achievements.awards.title)}</h3>
-                            <ul>
-                `;
-                
-                achievements.awards.items.forEach(award => {
-                    achievementsHTML += `<li>${sanitizeHTML(award)}</li>`;
-                });
-                
-                achievementsHTML += `
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h3>${sanitizeHTML(achievements.stats.title)}</h3>
-                `;
-                
-                achievements.stats.items.forEach(stat => {
-                    achievementsHTML += `<p>${sanitizeHTML(stat)}</p>`;
-                });
-                
-                achievementsHTML += `
-                        </div>
-                    </div>
-                `;
-                
-                achievementsSection.innerHTML = achievementsHTML;
-            }
-        }
-
         // Render about section
         function renderAbout() {
             const aboutSection = document.getElementById('about-section');
@@ -320,7 +276,6 @@
             renderCarousel();
             renderAbout();
             renderServices();
-            renderAchievements();
             renderNavigation();
         }
 
