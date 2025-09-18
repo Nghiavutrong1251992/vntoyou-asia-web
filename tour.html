@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="images/VN TO YOU LOGO.png" alt="VIET NAM TO YOU TOURISM COMPANY LIMITED" class="img-fluid"></a>
+            <a class="navbar-brand" href="index.html"><img src="images/VN TO YOU LOGO.png" alt="VIET NAM TO YOU TOURISM COMPANY LIMITED" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -73,7 +73,7 @@
                         <p class="mb-2"><strong>Contact us:</strong></p>
                         <p class="mb-1">
                             <i class="fas fa-map-marker-alt me-2"></i>
-                            Address: 3rd Floor, 29T1 Building, Hoang Dao Thuy Street, Cau Giay District, Hanoi, Vietnam
+                            Address: No. 5TT1 Alley 537 Bat Khoi Str, Long Bien Dist, Hanoi, Vietnam
                         </p>
                         <p class="mb-1">
                             <a href="mailto:SALES@VNTOYOU.NET" class="text-white text-decoration-none">
@@ -124,7 +124,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${tour.title}</h5>
                                 <p class="card-text">${tour.description}</p>
-                                <p class="text-muted">${tour.region} | ${tour.days} Ngày</p>
+                                <p class="text-muted">${tour.region} | ${tour.days} Days</p>
                                 <a href="tours/details/tour-detail.html?id=${tour.id}" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
@@ -141,19 +141,19 @@
 
             let filteredTours = allTours;
 
-            // Filter theo vùng
+            // Filter by region
             if (regionFilter !== 'all') {
                 const regionMap = {
-                    'bac': 'Miền Bắc',
-                    'trung': 'Miền Trung', 
-                    'nam': 'Miền Nam'
+                    'bac': 'Northern Vietnam',
+                    'trung': 'Central Vietnam', 
+                    'nam': 'Southern Vietnam'
                 };
                 filteredTours = filteredTours.filter(tour => 
                     tour.region === regionMap[regionFilter]
                 );
             }
 
-            // Filter theo số ngày
+            // Filter by number of days
             if (daysFilter !== 'all') {
                 filteredTours = filteredTours.filter(tour => {
                     const days = tour.days;

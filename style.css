@@ -9,6 +9,57 @@
  * - Nếu cần style thêm, dùng Bootstrap utilities.
  */
 
+/* Override Bootstrap colors to use logo color */
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger,
+.btn-secondary,
+.bg-primary,
+.bg-success,
+.bg-info {
+    background-color: #0095d9 !important;
+    border-color: #0095d9 !important;
+    color: white !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #007bb3 !important;
+    border-color: #007bb3 !important;
+    color: white !important;
+}
+
+.badge.bg-primary,
+.badge.bg-success,
+.badge.bg-info {
+    background-color: #0095d9 !important;
+}
+
+/* Text color overrides */
+.text-primary,
+.text-success,
+.text-info {
+    color: #0095d9 !important;
+}
+
 /* Style cho logo - override Bootstrap img-fluid với multiple selectors */
 .navbar-brand img,
 .navbar-brand img.img-fluid,
@@ -205,22 +256,22 @@
 }
 
 .btn-email {
-    background-color: #dc3545;
+    background-color: #0095d9;
     color: white;
 }
 
 .btn-whatsapp {
-    background-color: #25D366;
+    background-color: #0095d9;
     color: white;
 }
 
 .btn-messenger {
-    background-color: #0084FF;
+    background-color: #0095d9;
     color: white;
 }
 
 .btn-line {
-    background-color: #00C300;
+    background-color: #0095d9;
     color: white;
 }
 
