@@ -445,3 +445,38 @@
         right: 15px;
     }
 }
+
+/* Mobile responsive cho action buttons trong homepage */
+@media (max-width: 768px) {
+    /* Make buttons stack vertically on mobile */
+    .text-center .btn.btn-lg {
+        display: block;
+        width: 100%;
+        margin: 0 0 15px 0 !important;
+    }
+    
+    /* Remove right margin on mobile */
+    .text-center .btn.btn-lg.me-2 {
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure last button doesn't have bottom margin */
+    .text-center .btn.btn-lg:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Tablet responsive - buttons side by side but with better spacing */
+@media (min-width: 769px) and (max-width: 991px) {
+    .text-center .btn.btn-lg {
+        margin: 0 8px 10px 0;
+    }
+}
+
+/* Small mobile screens - smaller padding for buttons */
+@media (max-width: 480px) {
+    .text-center .btn.btn-lg {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
