@@ -34,26 +34,35 @@
         </div>
     </header>
 
-    <section class="py-5">
+    <section class="py-4">
         <div class="container">
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <label for="region" class="form-label">Select Region:</label>
-                    <select class="form-select" id="region">
-                        <option value="all">All Vietnam</option>
-                        <option value="bac">Northern Vietnam</option>
-                        <option value="trung">Central Vietnam</option>
-                        <option value="nam">Southern Vietnam</option>
-                    </select>
+            <!-- Ultra Compact Filter Section -->
+            <div class="filter-section mb-3">
+                <!-- Filter Label -->
+                <div class="mb-2">
+                    <span class="text-muted small">Filter by:</span>
                 </div>
-                <div class="col-md-6">
-                    <label for="days" class="form-label">Number of Days:</label>
-                    <select class="form-select" id="days">
-                        <option value="all">All</option>
-                        <option value="1-3">1-3 Days</option>
-                        <option value="4-7">4-7 Days</option>
-                        <option value="8+">8+ Days</option>
-                    </select>
+
+                <!-- Super Compact Filter Buttons -->
+                <div class="filter-buttons">
+                    <!-- All filters in 2 compact lines -->
+                    <div class="filter-group mb-1">
+                        <button class="btn btn-sm btn-outline-primary filter-btn active" data-filter="region" data-value="all">All</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="region" data-value="bac">North</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="region" data-value="trung">Central</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="region" data-value="nam">South</button>
+                    </div>
+                    
+                    <div class="filter-group d-flex flex-wrap gap-1">
+                        <button class="btn btn-sm btn-outline-primary filter-btn active" data-filter="days" data-value="all">Any</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="days" data-value="1-3">1-3D</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="days" data-value="4-7">4-7D</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" data-filter="days" data-value="8+">8+D</button>
+                        <span class="divider mx-1 d-none d-md-inline">|</span>
+                        <div id="popular-tags" class="d-inline-flex flex-wrap gap-1">
+                            <!-- Popular tags sẽ được load động -->
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row" id="tour-list">
@@ -112,26 +121,73 @@
                 const response = await fetch('tours/data/tours.json');
                 allTours = await response.json();
                 displayTours(allTours);
+                return allTours; // Return promise for chaining
             } catch (error) {
                 console.error('Lỗi load tours:', error);
+                return [];
             }
         }
+
+        // Current view mode
+        let currentViewMode = 'grid';
 
         // Hiển thị tours
         function displayTours(tours) {
             const tourList = document.getElementById('tour-list');
             tourList.innerHTML = '';
 
+            if (currentViewMode === 'grid') {
+                displayToursGrid(tours);
+            } else {
+                displayToursList(tours);
+            }
+        }
+
+        // Grid view display
+        function displayToursGrid(tours) {
+            const tourList = document.getElementById('tour-list');
+            tourList.className = 'row';
+
             tours.forEach(tour => {
+                // Generate hashtags display
+                const hashtagsHtml = tour.hashtags ? 
+                    tour.hashtags.slice(0, 3).map(tag => 
+                        `<span class="badge bg-secondary me-1">${tag}</span>`
+                    ).join('') : '';
+
+                // Region badge color
+                const regionBadgeClass = {
+                    'Northern Vietnam': 'bg-success',
+                    'Central Vietnam': 'bg-warning text-dark', 
+                    'Southern Vietnam': 'bg-info'
+                }[tour.region] || 'bg-secondary';
+
                 const tourCard = `
                     <div class="col-md-4 mb-4" data-region="${tour.region}" data-days="${tour.days}">
-                        <div class="card">
-                            <img src="${tour.image}" class="card-img-top" alt="${tour.title}" onerror="this.src='https://via.placeholder.com/300x200'">
-                            <div class="card-body">
+                        <div class="card h-100">
+                            <img src="${tour.image}" class="card-img-top" alt="${tour.title}" onerror="this.src='https://via.placeholder.com/300x200'" style="height: 200px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2">
+                                    <span class="badge ${regionBadgeClass}">${tour.region}</span>
+                                    ${tour.city ? `<span class="badge bg-light text-dark ms-1">${tour.city}</span>` : ''}
+                                </div>
                                 <h5 class="card-title">${tour.title}</h5>
-                                <p class="card-text">${tour.description}</p>
-                                <p class="text-muted">${tour.region} | ${tour.days} Days</p>
-                                <a href="tours/details/tour-detail.html?id=${tour.id}" class="btn btn-primary">View Details</a>
+                                <p class="card-text flex-grow-1">${tour.description}</p>
+                                
+                                <div class="mb-2">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar-alt me-1"></i>${tour.days} Days
+                                        ${tour.price ? `<span class="ms-3"><i class="fas fa-tag me-1"></i>${tour.price}</span>` : ''}
+                                    </small>
+                                </div>
+                                
+                                ${hashtagsHtml ? `<div class="mb-2">${hashtagsHtml}</div>` : ''}
+                                
+                                <div class="mt-auto">
+                                    <a href="tours/details/tour-detail.html?id=${tour.id}" class="btn btn-primary w-100">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,48 +196,305 @@
             });
         }
 
-        // Filter tours
-        function filterTours() {
-            const regionFilter = document.getElementById('region').value;
-            const daysFilter = document.getElementById('days').value;
+        // List view display
+        function displayToursList(tours) {
+            const tourList = document.getElementById('tour-list');
+            tourList.className = '';
 
+            tours.forEach(tour => {
+                // Generate hashtags display
+                const hashtagsHtml = tour.hashtags ? 
+                    tour.hashtags.slice(0, 5).map(tag => 
+                        `<span class="badge bg-secondary me-1">${tag}</span>`
+                    ).join('') : '';
+
+                // Region badge color
+                const regionBadgeClass = {
+                    'Northern Vietnam': 'bg-success',
+                    'Central Vietnam': 'bg-warning text-dark', 
+                    'Southern Vietnam': 'bg-info'
+                }[tour.region] || 'bg-secondary';
+
+                const tourListItem = `
+                    <div class="card mb-3 tour-list-item" data-region="${tour.region}" data-days="${tour.days}">
+                        <div class="row g-0">
+                            <div class="col-md-3">
+                                <img src="${tour.image}" class="img-fluid rounded-start h-100" alt="${tour.title}" 
+                                     onerror="this.src='https://via.placeholder.com/300x200'" style="object-fit: cover; min-height: 200px;">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body h-100 d-flex flex-column">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <span class="badge ${regionBadgeClass}">${tour.region}</span>
+                                            ${tour.city ? `<span class="badge bg-light text-dark ms-1">${tour.city}</span>` : ''}
+                                        </div>
+                                        <div class="text-end">
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar-alt me-1"></i>${tour.days} Days
+                                            </small>
+                                            ${tour.price ? `<div class="h6 mb-0 text-primary"><i class="fas fa-tag me-1"></i>${tour.price}</div>` : ''}
+                                        </div>
+                                    </div>
+                                    
+                                    <h5 class="card-title">${tour.title}</h5>
+                                    <p class="card-text flex-grow-1">${tour.description}</p>
+                                    
+                                    ${hashtagsHtml ? `<div class="mb-3">${hashtagsHtml}</div>` : ''}
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="tours/details/tour-detail.html?id=${tour.id}" class="btn btn-primary">
+                                                <i class="fas fa-eye me-1"></i>View Details
+                                            </a>
+                                            <button class="btn btn-outline-primary" onclick="addToFavorites(${tour.id})">
+                                                <i class="fas fa-heart me-1"></i>Save
+                                            </button>
+                                        </div>
+                                        <small class="text-muted">Tour ID: ${tour.id}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                tourList.innerHTML += tourListItem;
+            });
+        }
+
+        // Toggle view mode
+        function toggleViewMode(mode) {
+            currentViewMode = mode;
+            
+            // Update radio button states
+            const gridRadio = document.getElementById('grid-view');
+            const listRadio = document.getElementById('list-view');
+            
+            if (gridRadio && listRadio) {
+                gridRadio.checked = (mode === 'grid');
+                listRadio.checked = (mode === 'list');
+            }
+            
+            // Re-display tours with new mode
+            const currentTours = getCurrentFilteredTours();
+            displayTours(currentTours);
+        }
+
+        // Get currently filtered tours (for view switching)
+        function getCurrentFilteredTours() {
             let filteredTours = allTours;
-
-            // Filter by region
-            if (regionFilter !== 'all') {
+            
+            // Apply filters using currentFilters
+            if (currentFilters.region !== 'all') {
                 const regionMap = {
                     'bac': 'Northern Vietnam',
                     'trung': 'Central Vietnam', 
                     'nam': 'Southern Vietnam'
                 };
                 filteredTours = filteredTours.filter(tour => 
-                    tour.region === regionMap[regionFilter]
+                    tour.region === regionMap[currentFilters.region]
                 );
             }
 
-            // Filter by number of days
-            if (daysFilter !== 'all') {
+            if (currentFilters.days !== 'all') {
                 filteredTours = filteredTours.filter(tour => {
                     const days = tour.days;
-                    if (daysFilter === '1-3') return days >= 1 && days <= 3;
-                    if (daysFilter === '4-7') return days >= 4 && days <= 7;
-                    if (daysFilter === '8+') return days >= 8;
+                    if (currentFilters.days === '1-3') return days >= 1 && days <= 3;
+                    if (currentFilters.days === '4-7') return days >= 4 && days <= 7;
+                    if (currentFilters.days === '8+') return days >= 8;
                     return true;
                 });
             }
 
-            displayTours(filteredTours);
+            if (currentFilters.hashtag !== 'all') {
+                filteredTours = filteredTours.filter(tour => 
+                    tour.hashtags && tour.hashtags.includes(currentFilters.hashtag)
+                );
+            }
+            
+            return filteredTours;
         }
+
+        // Add to favorites (placeholder function)
+        function addToFavorites(tourId) {
+            alert(`Tour ${tourId} added to favorites! (Feature coming soon)`);
+        }
+
+        // Current filter states
+        let currentFilters = {
+            region: 'all',
+            days: 'all',
+            hashtag: 'all'
+        };
+
+        // Load popular tags as clickable buttons (ultra compact version)
+        function loadPopularTags() {
+            const popularTagsContainer = document.getElementById('popular-tags');
+            const tagCount = {};
+            
+            // Count hashtag usage
+            allTours.forEach(tour => {
+                if (tour.hashtags) {
+                    tour.hashtags.forEach(tag => {
+                        tagCount[tag] = (tagCount[tag] || 0) + 1;
+                    });
+                }
+            });
+            
+            // Sort by popularity and take top 4 for ultra compact layout
+            const sortedTags = Object.entries(tagCount)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 4);
+            
+            // Add "All Tags" button first
+            popularTagsContainer.innerHTML = `
+                <button class="btn btn-sm btn-outline-primary filter-btn active" data-filter="hashtag" data-value="all" title="All Tags">
+                    #All
+                </button>
+            `;
+            
+            // Add popular tags (ultra compact - max 6 characters)
+            sortedTags.forEach(([tag, count]) => {
+                const shortTag = tag.replace('#', '').substring(0, 6); // Remove # and limit to 6 chars
+                const button = document.createElement('button');
+                button.className = 'btn btn-sm btn-outline-primary filter-btn';
+                button.dataset.filter = 'hashtag';
+                button.dataset.value = tag;
+                button.title = `${tag} (${count} tours)`;
+                button.innerHTML = `#${shortTag}`;
+                popularTagsContainer.appendChild(button);
+            });
+        }
+
+        // Handle filter button clicks
+        function handleFilterButtonClick(event) {
+            const button = event.target.closest('.filter-btn');
+            if (!button) return;
+
+            const filterType = button.dataset.filter;
+            const filterValue = button.dataset.value;
+            
+            // Update current filters state
+            currentFilters[filterType] = filterValue;
+            
+            // Update active state for buttons in the same group
+            const groupButtons = document.querySelectorAll(`[data-filter="${filterType}"]`);
+            groupButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Apply filter
+            filterTours();
+        }
+
+        // Filter function (no search)
+        function filterTours() {
+            let filteredTours = allTours;
+            
+            // Filter by region
+            if (currentFilters.region !== 'all') {
+                const regionMap = {
+                    'bac': 'Northern Vietnam',
+                    'trung': 'Central Vietnam', 
+                    'nam': 'Southern Vietnam'
+                };
+                filteredTours = filteredTours.filter(tour => 
+                    tour.region === regionMap[currentFilters.region]
+                );
+            }
+
+            // Filter by days
+            if (currentFilters.days !== 'all') {
+                filteredTours = filteredTours.filter(tour => {
+                    const days = tour.days;
+                    if (currentFilters.days === '1-3') return days >= 1 && days <= 3;
+                    if (currentFilters.days === '4-7') return days >= 4 && days <= 7;
+                    if (currentFilters.days === '8+') return days >= 8;
+                    return true;
+                });
+            }
+
+            // Filter by hashtag
+            if (currentFilters.hashtag !== 'all') {
+                filteredTours = filteredTours.filter(tour => 
+                    tour.hashtags && tour.hashtags.includes(currentFilters.hashtag)
+                );
+            }
+            
+            displayTours(filteredTours);
+            updateResultsCount(filteredTours.length, allTours.length);
+        }
+
+        // Update results count with view toggle
+        function updateResultsCount(current, total) {
+            let resultInfo = document.getElementById('results-info');
+            if (!resultInfo) {
+                resultInfo = document.createElement('div');
+                resultInfo.id = 'results-info';
+                resultInfo.className = 'mb-2 d-flex justify-content-between align-items-center';
+                document.getElementById('tour-list').parentNode.insertBefore(resultInfo, document.getElementById('tour-list'));
+            }
+            
+            let countText, countIcon;
+            const isMobile = window.innerWidth <= 480;
+            
+            if (current === total) {
+                countIcon = 'fas fa-list';
+                countText = isMobile ? `${total}` : `${total} tours`;
+            } else {
+                countIcon = 'fas fa-filter';
+                countText = isMobile ? `${current}/${total}` : `${current} of ${total} tours`;
+            }
+            
+            resultInfo.innerHTML = `
+                <span class="results-count">
+                    <i class="${countIcon} me-1"></i>${countText}
+                </span>
+                <div class="btn-group btn-group-sm" role="group">
+                    <input type="radio" class="btn-check" name="viewMode" id="grid-view" autocomplete="off" ${currentViewMode === 'grid' ? 'checked' : ''}>
+                    <label class="btn btn-outline-primary" for="grid-view">
+                        <i class="fas fa-th"></i>
+                    </label>
+                    <input type="radio" class="btn-check" name="viewMode" id="list-view" autocomplete="off" ${currentViewMode === 'list' ? 'checked' : ''}>
+                    <label class="btn btn-outline-primary" for="list-view">
+                        <i class="fas fa-list"></i>
+                    </label>
+                </div>
+            `;
+            
+            // Re-attach event listeners for radio buttons
+            document.getElementById('grid-view').addEventListener('change', function() {
+                if (this.checked) toggleViewMode('grid');
+            });
+            document.getElementById('list-view').addEventListener('change', function() {
+                if (this.checked) toggleViewMode('list');
+            });
+        }
+
+
+
+
 
         // Khởi tạo
         document.addEventListener('DOMContentLoaded', function() {
-            loadTours();
+            loadTours().then(() => {
+                loadPopularTags(); // Load popular tags as buttons
+                updateResultsCount(allTours.length, allTours.length); // Initial count (will create view buttons)
+            });
             
-            const regionFilter = document.getElementById('region');
-            const daysFilter = document.getElementById('days');
+            // Filter button click events
+            document.addEventListener('click', handleFilterButtonClick);
             
-            regionFilter.addEventListener('change', filterTours);
-            daysFilter.addEventListener('change', filterTours);
+            // Update results count on window resize for responsive text
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const currentTours = getCurrentFilteredTours();
+                    updateResultsCount(currentTours.length, allTours.length);
+                }, 150);
+            });
+            
+            // Note: View mode toggle buttons are created and attached in updateResultsCount()
         });
 
         // Back to Top functionality

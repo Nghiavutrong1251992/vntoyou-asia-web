@@ -85,13 +85,13 @@
         "title": "News",
         "description": "Latest travel news updates",
         "link": "news.html", 
-        "class": "btn btn-info btn-lg"
+        "class": "btn btn-primary btn-lg"
       },
       {
         "title": "Contact",
         "description": "Contact us today",
         "link": "contact.html",
-        "class": "btn btn-success btn-lg"
+        "class": "btn btn-primary btn-lg"
       }
     ]
   }

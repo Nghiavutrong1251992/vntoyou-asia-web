@@ -222,7 +222,7 @@
                         <ul class="list-group list-group-flush">
                 `;
                 newsDetail.promotions.forEach(promotion => {
-                    contentHTML += `<li class="list-group-item text-success"><strong>${sanitizeHTML(promotion)}</strong></li>`;
+                    contentHTML += `<li class="list-group-item text-primary"><strong>${sanitizeHTML(promotion)}</strong></li>`;
                 });
                 contentHTML += '</ul></div>';
             }
@@ -276,7 +276,7 @@
                                 <a href="tel:${sanitizeHTML(newsDetail.contact.phone)}" class="btn btn-primary me-2">📱 ${sanitizeHTML(newsDetail.contact.phone)}</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="mailto:${sanitizeHTML(newsDetail.contact.email)}" class="btn btn-success">📧 ${sanitizeHTML(newsDetail.contact.email)}</a>
+                                <a href="mailto:${sanitizeHTML(newsDetail.contact.email)}" class="btn btn-primary">📧 ${sanitizeHTML(newsDetail.contact.email)}</a>
                             </div>
                         </div>
                     </div>
