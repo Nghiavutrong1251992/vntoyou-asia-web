@@ -14,11 +14,11 @@
     --brand-primary-color: #0095d9;
     --brand-primary-hover: #007bb3;
     --brand-text-white: #ffffff;
-    --logo-height-mobile: 35px;
-    --logo-height-tablet: 40px;
-    --logo-height-desktop: 45px;
-    --logo-height-large: 50px;
-    --logo-height-xl: 60px;
+    --logo-height-mobile: 45px;
+    --logo-height-tablet: 50px;
+    --logo-height-desktop: 55px;
+    --logo-height-large: 65px;
+    --logo-height-xl: 75px;
 }
 
 /* Override Bo/* Clean results info with view toggle */
@@ -617,11 +617,11 @@
     justify-content: flex-start;
 }
 
-/* Super compact filter button styling */
+/* Compact filter button styling - readable size */
 .filter-btn {
     border-radius: 12px;
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.875rem;
+    padding: 0.3rem 0.75rem;
     transition: all 0.15s ease;
     white-space: nowrap;
     border-width: 1px;
@@ -797,8 +797,8 @@
     }
     
     .filter-btn {
-        font-size: 0.65rem;
-        padding: 0.15rem 0.35rem;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
         border-radius: 10px;
     }
     
@@ -846,8 +846,8 @@
     }
     
     .filter-btn {
-        font-size: 0.6rem;
-        padding: 0.1rem 0.25rem;
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
         border-radius: 8px;
     }
     
