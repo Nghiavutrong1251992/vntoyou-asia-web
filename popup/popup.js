@@ -94,6 +94,16 @@ class PopupManager {
     }
     
     addEventListeners() {
+        // Force close button positioning with inline styles
+        const closeBtn = this.popup.querySelector('.popup-close');
+        if (closeBtn) {
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '15px';
+            closeBtn.style.right = '15px';
+            closeBtn.style.left = 'auto';
+            closeBtn.style.zIndex = '9999999';
+        }
+        
         // Close popup when clicking overlay
         this.popup.addEventListener('click', (e) => {
             if (e.target === this.popup) {

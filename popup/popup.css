@@ -3,6 +3,29 @@
  * Responsive popup with logo color theme
  */
 
+/* Force popup close button positioning - highest priority */
+.popup-close, 
+.popup-container .popup-close, 
+.popup-header .popup-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    float: none !important;
+    z-index: 9999999 !important;
+}
+
+/* Additional override for any dynamic CSS injection */
+.popup-overlay .popup-close,
+.popup-container .popup-header .popup-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important;
+}
+
 /* Popup overlay */
 .popup-overlay {
     position: fixed;
@@ -66,9 +89,10 @@
 
 /* Close button */
 .popup-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important;
     background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;

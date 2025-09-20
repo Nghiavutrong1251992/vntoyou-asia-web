@@ -7,423 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .tour-hero {
-            background: linear-gradient(rgba(0, 149, 217, 0.8), rgba(0, 149, 217, 0.8));
-            color: white;
-            padding: 60px 0;
-        }
-        .tour-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .tour-hero .lead {
-            font-size: 1.25rem;
-        }
-        .tour-hero p {
-            font-size: 1.1rem;
-        }
-        
-        /* Mobile hero adjustments */
-        @media (max-width: 768px) {
-            .tour-hero {
-                padding: 40px 0;
-            }
-            .tour-hero h1 {
-                font-size: 1.75rem;
-            }
-            .tour-hero .lead {
-                font-size: 1.1rem;
-            }
-            .tour-hero p {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .tour-hero h1 {
-                font-size: 1.5rem;
-            }
-            .tour-hero .lead {
-                font-size: 1rem;
-            }
-            .tour-hero p {
-                font-size: 0.9rem;
-            }
-        }
-        .tour-meta-cards {
-            margin-top: -40px;
-            margin-bottom: 40px;
-            z-index: 10;
-            position: relative;
-        }
-        .meta-card {
-            background: white;
-            border-radius: 8px;
-            padding: 12px 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            text-align: center;
-            height: 100%;
-        }
-        .meta-card i {
-            font-size: 1.3em;
-            color: #0095d9;
-            margin-bottom: 6px;
-        }
-        .meta-card h6 {
-            font-size: 0.75em;
-            margin-bottom: 4px;
-            font-weight: bold;
-            line-height: 1.1;
-        }
-        .meta-card p {
-            font-size: 0.7em;
-            margin-bottom: 0;
-            line-height: 1.2;
-        }
-        
-        /* Mobile optimizations for 4 columns */
-        @media (max-width: 768px) {
-            .meta-card {
-                padding: 8px 4px;
-                margin-bottom: 10px;
-                border-radius: 6px;
-            }
-            .meta-card i {
-                font-size: 1.1em;
-                margin-bottom: 4px;
-            }
-            .meta-card h6 {
-                font-size: 0.65em;
-                margin-bottom: 2px;
-            }
-            .meta-card p {
-                font-size: 0.6em;
-                line-height: 1.1;
-            }
-            .tour-meta-cards {
-                margin-top: -30px;
-                margin-bottom: 30px;
-            }
-        }
-        
-        /* Extra small screens */
-        @media (max-width: 576px) {
-            .meta-card h6 {
-                font-size: 0.6em;
-            }
-            .meta-card p {
-                font-size: 0.55em;
-            }
-        }
-        .section-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .section-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        .section-card li {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 0.5rem;
-        }
-        .section-card h5 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            color: #0095d9;
-            border-bottom: 2px solid #0095d9;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        /* Mobile font sizes - consistent with main site */
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.25rem;
-            }
-            .section-card h3 {
-                font-size: 1.1rem;
-            }
-            .section-card p,
-            .section-card li {
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .section-title {
-                font-size: 1.1rem;
-            }
-        }
-        .itinerary-day {
-            background: #f8f9fa;
-            border-left: 4px solid #0095d9;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 0 10px 10px 0;
-        }
-        .day-number {
-            background: #0095d9;
-            color: white;
-            border-radius: 25px;
-            min-width: 80px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 0.9em;
-        }
-        .meals-icons {
-            margin-top: 10px;
-        }
-        .meals-icons span {
-            background: #0095d9;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-        .hotel-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        .hotel-city {
-            color: #0095d9;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .hotel-star {
-            margin-bottom: 10px;
-        }
-        .hotel-list {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .pricing-table {
-            overflow-x: auto;
-        }
-        .pricing-tabs .nav-tabs {
-            border-bottom: 2px solid #0095d9;
-            margin-bottom: 20px;
-        }
-        .pricing-tabs .nav-link {
-            color: #666;
-            border: none;
-            border-bottom: 2px solid transparent;
-            background: none;
-            padding: 10px 20px;
-            font-weight: bold;
-        }
-        .pricing-tabs .nav-link.active {
-            color: #0095d9;
-            border-bottom-color: #0095d9;
-            background: none;
-        }
-        .pricing-tabs .nav-link:hover {
-            color: #0095d9;
-            border-color: transparent;
-        }
-        .pricing-option {
-            background: white;
-            border: 2px solid #0095d9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .pricing-header {
-            background: #0095d9;
-            color: white;
-            padding: 15px;
-            margin: -20px -20px 20px -20px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-            font-weight: bold;
-        }
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .price-row:last-child {
-            border-bottom: none;
-        }
-        .price-amount {
-            font-weight: bold;
-            color: #0095d9;
-        }
-        .contact-section {
-            background: linear-gradient(135deg, #0095d9, #00b4db);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        .contact-btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-        .btn-email { background: #0095d9; color: white; }
-        .btn-whatsapp { background: #0095d9; color: white; }
-        .btn-messenger { background: #0095d9; color: white; }
-        .btn-line { background: #0095d9; color: white; }
-        .hashtags {
-            margin: 20px 0;
-        }
-        .hashtag {
-            background: #e9ecef;
-            color: #0095d9;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            margin: 2px;
-            display: inline-block;
-        }
-        .highlights-section {
-            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-            border: 1px solid #ffc107;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .highlight-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid #ffc107;
-        }
-        
-        /* Sticky Navigation Menu */
-        .sticky-nav {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            padding: 15px 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            z-index: 1000;
-            max-width: 200px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .sticky-nav.hidden {
-            transform: translateY(-50%) translateX(-100%);
-            opacity: 0.3;
-        }
-        .sticky-nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .sticky-nav li {
-            margin-bottom: 8px;
-        }
-        .sticky-nav a {
-            display: block;
-            color: #666;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-        .sticky-nav a:hover {
-            background: #f0f8ff;
-            color: #0095d9;
-            border-left-color: #0095d9;
-        }
-        .sticky-nav a.active {
-            background: #0095d9;
-            color: white;
-            border-left-color: #004a8f;
-        }
-        
-        /* Toggle Button */
-        .nav-toggle {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            background: #0095d9;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2em;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,149,217,0.3);
-            z-index: 1001;
-            transition: all 0.3s ease;
-        }
-        .nav-toggle:hover {
-            background: #007bb5;
-            transform: scale(1.1);
-        }
-        .nav-toggle.nav-visible {
-            background: #dc3545;
-        }
-        
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .sticky-nav {
-                left: 10px;
-                max-width: 160px;
-                padding: 10px 8px;
-                font-size: 0.8em;
-            }
-            .sticky-nav a {
-                padding: 6px 8px;
-                font-size: 0.75em;
-            }
-            .nav-toggle {
-                left: 10px;
-                bottom: 10px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.1em;
-            }
-        }
-        
-        /* Hide on very small screens */
-        @media (max-width: 480px) {
-            .sticky-nav {
-                display: none;
-            }
-            .nav-toggle {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -944,8 +527,16 @@
                 navVisible = !navVisible;
                 if (navVisible) {
                     stickyNav.classList.remove('hidden');
+                    stickyNav.classList.remove('fade-out');
+                    // Clear any pending auto-hide when manually showing
+                    clearTimeout(scrollTimeout);
+                    // Start auto-hide timer when manually shown
+                    hideNavAfterDelay();
                 } else {
                     stickyNav.classList.add('hidden');
+                    stickyNav.classList.remove('fade-out');
+                    // Clear auto-hide timer when manually hidden
+                    clearTimeout(scrollTimeout);
                 }
                 updateToggleButton();
             }
@@ -1002,17 +593,63 @@
                 });
             }
             
-            // Throttled scroll listener
+            // Throttled scroll listener with auto-hide functionality
             let ticking = false;
+            let scrollTimeout;
+            const HIDE_DELAY = 1000; // 1 second of inactivity before hiding
+            
+            function hideNavAfterDelay() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    // Only auto-hide if user is not actively interacting
+                    if (navVisible && window.innerWidth > 768) {
+                        stickyNav.classList.add('fade-out');
+                        setTimeout(() => {
+                            if (!stickyNav.matches(':hover')) {
+                                navVisible = false;
+                                stickyNav.classList.add('hidden');
+                                stickyNav.classList.remove('fade-out');
+                                updateToggleButton();
+                            } else {
+                                stickyNav.classList.remove('fade-out');
+                            }
+                        }, 300); // Wait for fade animation
+                    }
+                }, HIDE_DELAY);
+            }
+            
             function handleScroll() {
                 if (!ticking) {
                     requestAnimationFrame(() => {
                         updateActiveNav();
+                        
+                        // Show nav when scrolling if hidden
+                        if (!navVisible && window.innerWidth > 768) {
+                            navVisible = true;
+                            stickyNav.classList.remove('hidden');
+                            updateToggleButton();
+                        }
+                        
+                        // Start hide timer
+                        hideNavAfterDelay();
+                        
                         ticking = false;
                     });
                     ticking = true;
                 }
             }
+            
+            // Prevent hiding when hovering over nav
+            stickyNav.addEventListener('mouseenter', () => {
+                clearTimeout(scrollTimeout);
+                stickyNav.classList.remove('fade-out');
+            });
+            
+            stickyNav.addEventListener('mouseleave', () => {
+                if (navVisible) {
+                    hideNavAfterDelay();
+                }
+            });
             
             window.addEventListener('scroll', handleScroll);
             updateActiveNav(); // Initial call

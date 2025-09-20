@@ -1,12 +1,24 @@
 /* 
- * VN To You Asia - Custom Styles v2.0
- * Updated: Logo sizing fixed for all devices + CSS Variables optimization
+ * VN To You Asia - Custom Styles v3.0 - OPTIMIZED
+ * Updated: CSS optimized with utility classes and consolidated media queries
+ * 
+ * OPTIMIZATION FEATURES:
+ * ✅ CSS Variables for colors, spacing, typography
+ * ✅ Utility classes to reduce duplication 
+ * ✅ Consolidated responsive breakpoints
+ * ✅ Consistent naming and organization
+ * 
+ * MAINTENANCE GUIDELINES:
+ * - Use CSS variables instead of hardcoded values
+ * - Use utility classes when possible before writing custom CSS
+ * - Add new responsive styles to consolidated section at bottom
+ * - Follow the established naming patterns
  * 
  * Nguyên tắc: 
  * - Không được dùng inline CSS nữa. Tất cả style phải trong file này hoặc Bootstrap classes.
- * - Màu logo chính: #0095d9
- * - Logo responsive: 35px-60px tùy thiết bị
- * - Nếu cần style thêm, dùng Bootstrap utilities.
+ * - Màu logo chính: var(--brand-primary-color)
+ * - Logo responsive: CSS variables cho từng breakpoint
+ * - Ưu tiên dùng utility classes trước khi viết CSS mới
  */
 
 /* CSS Custom Properties for better maintainability */
@@ -19,16 +31,47 @@
     --logo-height-desktop: 55px;
     --logo-height-large: 65px;
     --logo-height-xl: 75px;
+    
+    /* Spacing variables */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-2xl: 40px;
+    
+    /* Border radius variables */
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 10px;
+    --radius-xl: 15px;
+    --radius-2xl: 20px;
+    --radius-full: 50%;
+    --radius-pill: 25px;
+    
+    /* Common colors */
+    --color-gray-light: #f8f9fa;
+    --color-gray-border: #e9ecef;
+    --color-gray-text: #666;
+    --color-shadow: rgba(0,0,0,0.1);
+    --color-shadow-hover: rgba(0,0,0,0.15);
+    
+    /* Typography */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.85rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
 }
 
 /* Override Bo/* Clean results info with view toggle */
 #results-info {
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
     padding: 0.5rem 0.8rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
+    background-color: var(--color-gray-light);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gray-border);
     color: #495057;
     display: flex !important;
     justify-content: space-between !important;
@@ -39,7 +82,72 @@
     font-weight: 600;
     color: var(--brand-primary-color);
     white-space: nowrap;
-}ng CSS variables and higher specificity */
+}
+
+/* ===================================================================
+ * UTILITY CLASSES - Reusable components to reduce CSS duplication
+ * 
+ * USAGE EXAMPLES:
+ * Instead of: background-color: #0095d9; → Use class: "brand-primary-bg"
+ * Instead of: border-radius: 8px; → Use class: "radius-md"
+ * Instead of: padding: 20px; → Use class: "p-lg"
+ * Instead of: box-shadow: 0 2px 10px rgba(0,0,0,0.1); → Use class: "shadow-light"
+ * 
+ * This reduces CSS size and ensures consistency across the site.
+ * ================================================================= */
+
+/* Brand Color Utilities */
+.brand-primary-bg { background-color: var(--brand-primary-color) !important; }
+.brand-primary-color { color: var(--brand-primary-color) !important; }
+.brand-primary-border { border-color: var(--brand-primary-color) !important; }
+
+/* Border Radius Utilities */
+.radius-sm { border-radius: var(--radius-sm); }
+.radius-md { border-radius: var(--radius-md); }
+.radius-lg { border-radius: var(--radius-lg); }
+.radius-xl { border-radius: var(--radius-xl); }
+.radius-2xl { border-radius: var(--radius-2xl); }
+.radius-pill { border-radius: var(--radius-pill); }
+.radius-full { border-radius: var(--radius-full); }
+
+/* Spacing Utilities */
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+.p-2xl { padding: var(--spacing-2xl); }
+
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+.m-2xl { margin: var(--spacing-2xl); }
+
+/* Common Shadow Utilities */
+.shadow-light { box-shadow: 0 2px 10px var(--color-shadow); }
+.shadow-medium { box-shadow: 0 4px 15px var(--color-shadow); }
+.shadow-hover { box-shadow: 0 4px 20px var(--color-shadow-hover); }
+
+/* Common Background Utilities */
+.bg-light-gray { background: var(--color-gray-light); }
+.bg-white { background: white; }
+
+/* News specific styles */
+.news-card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Common Typography */
+.text-gray { color: var(--color-gray-text); }
+.font-xs { font-size: var(--font-size-xs); }
+.font-sm { font-size: var(--font-size-sm); }
+.font-lg { font-size: var(--font-size-lg); }
+.font-xl { font-size: var(--font-size-xl); }
+
+/* Override Bootstrap CSS variables and higher specificity */
 .btn.btn-primary,
 .btn.btn-success,
 .btn.btn-info,
@@ -271,43 +379,6 @@
     font-size: 1.2rem;
 }
 
-.contact-btn {
-    display: inline-block;
-    margin: 0.25rem;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.contact-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-decoration: none;
-}
-
-.btn-email {
-    background-color: var(--brand-primary-color);
-    color: var(--brand-text-white);
-}
-
-.btn-whatsapp {
-    background-color: var(--brand-primary-color);
-    color: var(--brand-text-white);
-}
-
-.btn-messenger {
-    background-color: var(--brand-primary-color);
-    color: var(--brand-text-white);
-}
-
-.btn-line {
-    background-color: var(--brand-primary-color);
-    color: var(--brand-text-white);
-}
-
 /* Style cho tour detail layout */
 .tour-detail-content {
     max-width: 800px;
@@ -337,18 +408,6 @@
     margin-bottom: 0;
 }
 
-.tour-section {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.tour-section h3 {
-    color: var(--brand-primary-color);
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
 .tour-list {
     padding-left: 1.5rem;
 }
@@ -356,31 +415,6 @@
 .tour-list li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
-}
-
-/* Responsive cho tour detail */
-@media (max-width: 768px) {
-    .tour-title {
-        font-size: 1.5rem;
-    }
-    
-    .tour-section h3 {
-        font-size: 1.25rem;
-    }
-    
-    .tour-list li {
-        font-size: 0.9rem;
-    }
-}
-
-/* Responsive cho contact buttons */
-@media (max-width: 768px) {
-    .contact-btn {
-        display: block;
-        width: 100%;
-        margin: 0.25rem 0;
-        text-align: center;
-    }
 }
 
 /* News detail styles */
@@ -993,4 +1027,571 @@
 /* Grid to list transition effect */
 #tour-list {
     transition: all 0.3s ease;
+}
+
+/* ===================================================================
+ * TOUR DETAIL PAGE STYLES
+ * Moved from inline CSS in tour-detail.html to follow project standards
+ * ================================================================= */
+
+/* Tour Hero Section */
+.tour-hero {
+    background: linear-gradient(rgba(0, 149, 217, 0.8), rgba(0, 149, 217, 0.8));
+    color: white;
+    padding: 60px 0;
+}
+
+.tour-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.tour-hero .lead {
+    font-size: 1.25rem;
+}
+
+.tour-hero p {
+    font-size: 1.1rem;
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 768px) {
+    .tour-hero {
+        padding: 40px 0;
+    }
+    .tour-hero h1 {
+        font-size: 1.75rem;
+    }
+    .tour-hero .lead {
+        font-size: 1.1rem;
+    }
+    .tour-hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .tour-hero h1 {
+        font-size: 1.5rem;
+    }
+    .tour-hero .lead {
+        font-size: 1rem;
+    }
+    .tour-hero p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tour Meta Cards */
+.tour-meta-cards {
+    margin-top: -40px;
+    margin-bottom: 40px;
+    z-index: 10;
+    position: relative;
+}
+
+.meta-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    text-align: center;
+    height: 100%;
+}
+
+.meta-card i {
+    font-size: 1.3em;
+    color: var(--brand-primary-color);
+    margin-bottom: 6px;
+}
+
+.meta-card h6 {
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.meta-card p {
+    font-size: 0.7em;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+/* Mobile optimizations for 4 columns */
+@media (max-width: 768px) {
+    .meta-card {
+        padding: 8px 4px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+    .meta-card i {
+        font-size: 1.1em;
+        margin-bottom: 4px;
+    }
+    .meta-card h6 {
+        font-size: 0.65em;
+        margin-bottom: 2px;
+    }
+    .meta-card p {
+        font-size: 0.6em;
+        line-height: 1.1;
+    }
+    .tour-meta-cards {
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 576px) {
+    .meta-card h6 {
+        font-size: 0.6em;
+    }
+    .meta-card p {
+        font-size: 0.55em;
+    }
+}
+
+/* Section Cards */
+.section-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.section-card li {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.section-card h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    color: var(--brand-primary-color);
+    border-bottom: 2px solid var(--brand-primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Mobile font sizes - consistent with main site */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.25rem;
+    }
+    .section-card h3 {
+        font-size: 1.1rem;
+    }
+    .section-card p,
+    .section-card li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Itinerary Styles */
+.itinerary-day {
+    background: #f8f9fa;
+    border-left: 4px solid var(--brand-primary-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+.day-number {
+    background: var(--brand-primary-color);
+    color: white;
+    border-radius: 25px;
+    min-width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.meals-icons {
+    margin-top: 10px;
+}
+
+.meals-icons span {
+    background: var(--brand-primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+/* Hotel Sections */
+.hotel-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.hotel-city {
+    color: var(--brand-primary-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hotel-star {
+    margin-bottom: 10px;
+}
+
+.hotel-list {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Pricing Styles */
+.pricing-table {
+    overflow-x: auto;
+}
+
+.pricing-tabs .nav-tabs {
+    border-bottom: 2px solid var(--brand-primary-color);
+    margin-bottom: 20px;
+}
+
+.pricing-tabs .nav-link {
+    color: #666;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.pricing-tabs .nav-link.active {
+    color: var(--brand-primary-color);
+    border-bottom-color: var(--brand-primary-color);
+    background: none;
+}
+
+.pricing-tabs .nav-link:hover {
+    color: var(--brand-primary-color);
+    border-color: transparent;
+}
+
+.pricing-option {
+    background: white;
+    border: 2px solid var(--brand-primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.pricing-header {
+    background: var(--brand-primary-color);
+    color: white;
+    padding: 15px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-amount {
+    font-weight: bold;
+    color: var(--brand-primary-color);
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, var(--brand-primary-color), #00b4db);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.btn-email,
+.btn-whatsapp,
+.btn-messenger,
+.btn-line {
+    background: var(--brand-primary-color);
+    color: white;
+}
+
+/* Hashtags */
+.hashtags {
+    margin: 20px 0;
+}
+
+.hashtag {
+    background: #e9ecef;
+    color: var(--brand-primary-color);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin: 2px;
+    display: inline-block;
+}
+
+/* Highlights Section */
+.highlights-section {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.highlight-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+/* Sticky Navigation Menu */
+.sticky-nav {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 15px 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 200px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sticky-nav.hidden {
+    transform: translateY(-50%) translateX(-100%);
+    opacity: 0.3;
+}
+
+.sticky-nav.fade-out {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.sticky-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-nav li {
+    margin-bottom: 8px;
+}
+
+.sticky-nav a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sticky-nav a:hover {
+    background: #f0f8ff;
+    color: var(--brand-primary-color);
+    border-left-color: var(--brand-primary-color);
+}
+
+.sticky-nav a.active {
+    background: var(--brand-primary-color);
+    color: white;
+    border-left-color: var(--brand-primary-hover);
+}
+
+/* Navigation Toggle Button */
+.nav-toggle {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: var(--brand-primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,149,217,0.3);
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle:hover {
+    background: var(--brand-primary-hover);
+    transform: scale(1.1);
+}
+
+.nav-toggle.nav-visible {
+    background: #dc3545;
+}
+
+/* Mobile optimizations for sticky nav */
+@media (max-width: 768px) {
+    .sticky-nav {
+        left: 10px;
+        max-width: 160px;
+        padding: 10px 8px;
+        font-size: 0.8em;
+    }
+    .sticky-nav a {
+        padding: 6px 8px;
+        font-size: 0.75em;
+    }
+    .nav-toggle {
+        left: 10px;
+        bottom: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+    }
+}
+
+/* Hide on very small screens */
+@media (max-width: 480px) {
+    .sticky-nav {
+        display: none;
+    }
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* ===================================================================
+ * CONSOLIDATED RESPONSIVE DESIGN
+ * All media queries grouped for better maintainability
+ * ================================================================= */
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+    .navbar-brand img {
+        height: var(--logo-height-xl) !important;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .navbar-brand img {
+        height: var(--logo-height-large) !important;
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-brand img {
+        height: var(--logo-height-tablet) !important;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    /* Logo */
+    .navbar-brand img {
+        height: var(--logo-height-mobile) !important;
+    }
+    
+    /* Typography - Common mobile adjustments */
+    .section-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    .tour-hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    /* Layout adjustments */
+    .contact-btn {
+        display: block;
+        width: 100%;
+        margin: 0.25rem 0;
+        text-align: center;
+    }
+    
+    /* Card adjustments */
+    .meta-card {
+        padding: 8px 4px;
+        margin-bottom: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+    }
+    
+    .section-card p,
+    .section-card li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile (max-width: 575px) */
+@media (max-width: 575px) {
+    .tour-hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .meta-card h6 {
+        font-size: 0.6em;
+    }
+    
+    .meta-card p {
+        font-size: 0.55em;
+    }
 }
