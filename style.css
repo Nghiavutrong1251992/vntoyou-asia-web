@@ -26,11 +26,11 @@
     --brand-primary-color: #0095d9;
     --brand-primary-hover: #007bb3;
     --brand-text-white: #ffffff;
-    --logo-height-mobile: 45px;
-    --logo-height-tablet: 50px;
-    --logo-height-desktop: 55px;
-    --logo-height-large: 65px;
-    --logo-height-xl: 75px;
+    --logo-height-mobile: 55px;
+    --logo-height-tablet: 60px;
+    --logo-height-desktop: 70px;
+    --logo-height-large: 80px;
+    --logo-height-xl: 90px;
     
     /* Spacing variables */
     --spacing-xs: 5px;
@@ -57,11 +57,22 @@
     --color-shadow-hover: rgba(0,0,0,0.15);
     
     /* Typography */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.85rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
+    --font-size-xs: 0.85rem;
+    --font-size-sm: 0.95rem;
+    --font-size-base: 1.1rem;
+    --font-size-lg: 1.35rem;
+    --font-size-xl: 1.65rem;
+}
+
+/* Base Typography - Set default font sizes for better readability */
+body, 
+.container,
+.container-fluid,
+p, 
+div, 
+span {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
 }
 
 /* Override Bo/* Clean results info with view toggle */
@@ -1482,6 +1493,37 @@
     background: #dc3545;
 }
 
+/* Hide UI Toggle Button (Reading Mode) */
+.hide-ui-toggle {
+    position: fixed;
+    left: 80px;
+    bottom: 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(108,117,125,0.3);
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hide-ui-toggle:hover {
+    background: #495057;
+    transform: scale(1.1);
+}
+
+.hide-ui-toggle.ui-hidden {
+    background: #28a745;
+}
+
+.hide-ui-toggle.ui-hidden:hover {
+    background: #1e7e34;
+}
+
 /* Mobile optimizations for sticky nav */
 @media (max-width: 768px) {
     .sticky-nav {
@@ -1497,6 +1539,13 @@
     }
     .nav-toggle {
         left: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+    }
+    .hide-ui-toggle {
+        left: 70px;
         bottom: 15px;
         width: 45px;
         height: 45px;
@@ -1519,6 +1568,13 @@
     }
     .nav-toggle {
         left: 15px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+    .hide-ui-toggle {
+        left: 65px;
         bottom: 15px;
         width: 40px;
         height: 40px;

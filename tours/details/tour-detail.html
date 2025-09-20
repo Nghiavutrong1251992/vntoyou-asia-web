@@ -63,6 +63,11 @@
         <i class="fas fa-list"></i>
     </button>
 
+    <!-- Hide UI Button (Reading Mode) -->
+    <button class="hide-ui-toggle" id="hideUIToggle" title="Reading Mode - Hide all UI">
+        <i class="fas fa-eye-slash"></i>
+    </button>
+
     <footer class="bg-dark text-white py-4">
         <div class="container">
             <div class="row">
@@ -721,6 +726,64 @@
                 backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Reading Mode - Hide/Show UI elements
+        const hideUIToggle = document.getElementById('hideUIToggle');
+        let isUIHidden = false;
+
+        hideUIToggle.addEventListener('click', function() {
+            isUIHidden = !isUIHidden;
+            
+            // Elements to hide/show
+            const elementsToHide = [
+                'header',
+                'nav',
+                'navbar',
+                'footer',
+                '.back-to-top',
+                '.nav-toggle',
+                '.sticky-nav'
+            ];
+
+            if (isUIHidden) {
+                // Hide UI elements
+                elementsToHide.forEach(selector => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => {
+                        el.style.transition = 'opacity 0.3s ease';
+                        el.style.opacity = '0';
+                        setTimeout(() => el.style.display = 'none', 300);
+                    });
+                });
+
+                // Update button state
+                hideUIToggle.classList.add('ui-hidden');
+                hideUIToggle.innerHTML = '<i class="fas fa-eye"></i>';
+                hideUIToggle.title = 'Show UI';
+                
+                // Adjust main content
+                document.body.style.paddingTop = '20px';
+                
+            } else {
+                // Show UI elements
+                elementsToHide.forEach(selector => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => {
+                        el.style.display = '';
+                        el.style.transition = 'opacity 0.3s ease';
+                        setTimeout(() => el.style.opacity = '', 50);
+                    });
+                });
+
+                // Update button state
+                hideUIToggle.classList.remove('ui-hidden');
+                hideUIToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+                hideUIToggle.title = 'Reading Mode - Hide all UI';
+                
+                // Reset main content
+                document.body.style.paddingTop = '';
             }
         });
     </script>
