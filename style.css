@@ -1806,3 +1806,104 @@ span {
         font-size: 10px;
     }
 }
+
+/* ===================================================================
+ * TOUR DETAIL PAGE OPTIMIZATIONS
+ * Maximize content area and reduce excessive margins/padding
+ * ================================================================= */
+
+/* Tour Detail Container Optimizations */
+body:has([data-page="tour-detail"]) .container,
+body.tour-detail-page .container {
+    max-width: 95%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Tour Detail Section Spacing */
+body:has([data-page="tour-detail"]) section,
+body.tour-detail-page section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Tour Detail Header Optimization */
+body:has([data-page="tour-detail"]) header.bg-primary,
+body.tour-detail-page header.bg-primary {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Content Area Optimizations */
+.tour-detail-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.tour-detail-content .container {
+    max-width: 98%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Typography optimizations for tour detail */
+.tour-detail-content h1,
+.tour-detail-content h2,
+.tour-detail-content h3 {
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+.tour-detail-content p {
+    margin-bottom: 0.8rem;
+}
+
+.tour-detail-content ul,
+.tour-detail-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+/* Card optimizations in tour detail */
+.tour-detail-content .card {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.tour-detail-content .card-body {
+    padding: 1rem;
+}
+
+/* Image optimizations */
+.tour-detail-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+}
+
+/* Mobile specific optimizations */
+@media (max-width: 768px) {
+    body:has([data-page="tour-detail"]) .container,
+    body.tour-detail-page .container {
+        max-width: 98%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    body:has([data-page="tour-detail"]) section,
+    body.tour-detail-page section {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .tour-detail-content {
+        padding: 0 5px;
+    }
+    
+    .tour-detail-content .container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
