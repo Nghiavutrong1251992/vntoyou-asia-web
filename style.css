@@ -63,12 +63,12 @@
     --font-size-lg: 1.35rem;
     --font-size-xl: 1.65rem;
     
-    /* Mobile Typography (50% larger) */
-    --font-size-mobile-xs: 1.28rem;
-    --font-size-mobile-sm: 1.43rem;
-    --font-size-mobile-base: 1.65rem;
-    --font-size-mobile-lg: 2.03rem;
-    --font-size-mobile-xl: 2.48rem;
+    /* Mobile Typography (reduced from 50% increase to balanced size) */
+    --font-size-mobile-xs: 0.64rem;
+    --font-size-mobile-sm: 0.72rem;
+    --font-size-mobile-base: 0.83rem;
+    --font-size-mobile-lg: 1.02rem;
+    --font-size-mobile-xl: 1.24rem;
 }
 
 /* Base Typography - Set default font sizes for better readability */
@@ -91,7 +91,7 @@ span {
     div, 
     span {
         font-size: var(--font-size-mobile-base);
-        line-height: 1.7;
+        line-height: 1.6;
     }
     
     .font-xs { font-size: var(--font-size-mobile-xs); }
@@ -109,12 +109,12 @@ span {
         font-size: var(--font-size-mobile-base) !important;
     }
     
-    h1 { font-size: 2.5rem !important; }
-    h2 { font-size: 2.1rem !important; }
-    h3 { font-size: 1.8rem !important; }
-    h4 { font-size: 1.6rem !important; }
-    h5 { font-size: 1.4rem !important; }
-    h6 { font-size: 1.2rem !important; }
+    h1 { font-size: 1.75rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.3rem !important; }
+    h4 { font-size: 1.15rem !important; }
+    h5 { font-size: 1.05rem !important; }
+    h6 { font-size: 0.95rem !important; }
 }
 
 /* Override Bo/* Clean results info with view toggle */
