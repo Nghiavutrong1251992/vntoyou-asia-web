@@ -528,10 +528,10 @@
                 if (navVisible) {
                     stickyNav.classList.remove('hidden');
                     stickyNav.classList.remove('fade-out');
-                    // Clear any pending auto-hide when manually showing
-                    clearTimeout(scrollTimeout);
-                    // Start auto-hide timer when manually shown
-                    hideNavAfterDelay();
+                    // Start auto-hide timer for mobile when manually shown
+                    if (window.innerWidth <= 768) {
+                        hideNavAfterDelay();
+                    }
                 } else {
                     stickyNav.classList.add('hidden');
                     stickyNav.classList.remove('fade-out');
@@ -543,6 +543,20 @@
             
             navToggle.addEventListener('click', toggleNav);
             updateToggleButton();
+            
+            // Set initial visibility state
+            if (navVisible) {
+                stickyNav.classList.remove('hidden');
+            } else {
+                stickyNav.classList.add('hidden');
+            }
+            
+            // Set initial toggle button visibility
+            if (window.innerWidth <= 768) {
+                navToggle.style.display = 'block';
+            } else {
+                navToggle.style.display = 'none';
+            }
             
             // Handle click events
             navLinks.forEach(link => {
@@ -593,29 +607,31 @@
                 });
             }
             
-            // Throttled scroll listener with auto-hide functionality
+            // Throttled scroll listener with auto-hide for mobile
             let ticking = false;
             let scrollTimeout;
-            const HIDE_DELAY = 1000; // 1 second of inactivity before hiding
+            const HIDE_DELAY = 2000; // 2 seconds for mobile auto-hide
             
             function hideNavAfterDelay() {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    // Only auto-hide if user is not actively interacting
-                    if (navVisible && window.innerWidth > 768) {
-                        stickyNav.classList.add('fade-out');
-                        setTimeout(() => {
-                            if (!stickyNav.matches(':hover')) {
-                                navVisible = false;
-                                stickyNav.classList.add('hidden');
-                                stickyNav.classList.remove('fade-out');
-                                updateToggleButton();
-                            } else {
-                                stickyNav.classList.remove('fade-out');
-                            }
-                        }, 300); // Wait for fade animation
-                    }
-                }, HIDE_DELAY);
+                // Only auto-hide on mobile
+                if (window.innerWidth <= 768) {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        if (navVisible) {
+                            stickyNav.classList.add('fade-out');
+                            setTimeout(() => {
+                                if (!stickyNav.matches(':hover')) {
+                                    navVisible = false;
+                                    stickyNav.classList.add('hidden');
+                                    stickyNav.classList.remove('fade-out');
+                                    updateToggleButton();
+                                } else {
+                                    stickyNav.classList.remove('fade-out');
+                                }
+                            }, 300); // Wait for fade animation
+                        }
+                    }, HIDE_DELAY);
+                }
             }
             
             function handleScroll() {
@@ -623,15 +639,25 @@
                     requestAnimationFrame(() => {
                         updateActiveNav();
                         
-                        // Show nav when scrolling if hidden
-                        if (!navVisible && window.innerWidth > 768) {
+                        // Desktop: always keep menu visible
+                        if (window.innerWidth > 768 && !navVisible) {
                             navVisible = true;
                             stickyNav.classList.remove('hidden');
                             updateToggleButton();
                         }
                         
-                        // Start hide timer
-                        hideNavAfterDelay();
+                        // Mobile: show menu when scrolling, auto-hide after delay
+                        if (window.innerWidth <= 768 && !navVisible) {
+                            navVisible = true;
+                            stickyNav.classList.remove('hidden');
+                            stickyNav.classList.remove('fade-out');
+                            updateToggleButton();
+                        }
+                        
+                        // Start auto-hide timer for mobile
+                        if (window.innerWidth <= 768) {
+                            hideNavAfterDelay();
+                        }
                         
                         ticking = false;
                     });
@@ -639,14 +665,16 @@
                 }
             }
             
-            // Prevent hiding when hovering over nav
+            // Hover protection for mobile menu
             stickyNav.addEventListener('mouseenter', () => {
-                clearTimeout(scrollTimeout);
-                stickyNav.classList.remove('fade-out');
+                if (window.innerWidth <= 768) {
+                    clearTimeout(scrollTimeout);
+                    stickyNav.classList.remove('fade-out');
+                }
             });
             
             stickyNav.addEventListener('mouseleave', () => {
-                if (navVisible) {
+                if (window.innerWidth <= 768 && navVisible) {
                     hideNavAfterDelay();
                 }
             });
@@ -656,12 +684,22 @@
             
             // Handle window resize
             window.addEventListener('resize', function() {
-                if (window.innerWidth <= 480) {
-                    stickyNav.style.display = 'none';
-                    navToggle.style.display = 'none';
-                } else {
-                    stickyNav.style.display = 'block';
+                if (window.innerWidth <= 768) {
+                    // Mobile: show toggle button, menu starts hidden
                     navToggle.style.display = 'block';
+                    if (navVisible) {
+                        navVisible = false;
+                        stickyNav.classList.add('hidden');
+                        updateToggleButton();
+                    }
+                } else {
+                    // Desktop: hide toggle button, menu always visible
+                    navToggle.style.display = 'none';
+                    if (!navVisible) {
+                        navVisible = true;
+                        stickyNav.classList.remove('hidden');
+                        updateToggleButton();
+                    }
                 }
             });
         }

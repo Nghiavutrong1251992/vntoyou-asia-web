@@ -1438,7 +1438,7 @@
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 0.85em;
+    font-size: 1em;
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
@@ -1489,11 +1489,11 @@
         left: 10px;
         max-width: 160px;
         padding: 10px 8px;
-        font-size: 0.8em;
+        font-size: 1em;
     }
     .sticky-nav a {
         padding: 6px 8px;
-        font-size: 0.75em;
+        font-size: 0.9em;
     }
     .nav-toggle {
         left: 10px;
@@ -1504,13 +1504,24 @@
     }
 }
 
-/* Hide on very small screens */
+/* Mobile optimizations for very small screens */
 @media (max-width: 480px) {
     .sticky-nav {
-        display: none;
+        left: 5px;
+        max-width: 140px;
+        padding: 8px 6px;
+        font-size: 0.9em;
+    }
+    .sticky-nav a {
+        padding: 4px 6px;
+        font-size: 0.8em;
     }
     .nav-toggle {
-        display: none;
+        left: 5px;
+        bottom: 5px;
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
     }
 }
 
