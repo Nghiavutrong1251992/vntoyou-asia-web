@@ -435,11 +435,11 @@ span {
     font-size: 1.2rem;
 }
 
-/* Style cho tour detail layout */
+/* Style cho tour detail layout - Use full container width like homepage */
 .tour-detail-content {
-    max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
+    /* Removed max-width: 800px to match homepage container width */
 }
 
 .tour-title {
@@ -1804,41 +1804,5 @@ span {
     
     .font-control-label {
         font-size: 10px;
-    }
-}
-
-/* Tour Detail Page Layout Optimization */
-.tour-detail-page .container {
-    max-width: 95% !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-}
-
-.tour-detail-page section {
-    padding: 2rem 0 !important;
-}
-
-.tour-detail-page .section-card {
-    margin-bottom: 2rem !important;
-}
-
-.tour-detail-optimized {
-    max-width: 95% !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-}
-
-/* Mobile optimizations for tour detail */
-@media (max-width: 768px) {
-    .tour-detail-page .container {
-        max-width: 98% !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    
-    .tour-detail-optimized {
-        max-width: 98% !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
     }
 }
