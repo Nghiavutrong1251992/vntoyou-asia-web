@@ -30,13 +30,13 @@ class FontAccessibilityController {
     }
 
     createControls() {
-        // Create control panel HTML
+        // Create control panel HTML - vertical layout
         const controlsHTML = `
             <div class="font-size-controls" id="fontSizeControls">
-                <span class="font-control-label">Aa</span>
-                <button class="font-control-btn" id="decreaseFont" title="Giảm kích thước chữ">-</button>
-                <span class="font-size-indicator" id="fontSizeIndicator">${Math.round(this.currentScale * 100)}%</span>
                 <button class="font-control-btn" id="increaseFont" title="Tăng kích thước chữ">+</button>
+                <span class="font-size-indicator" id="fontSizeIndicator">${Math.round(this.currentScale * 100)}%</span>
+                <button class="font-control-btn" id="decreaseFont" title="Giảm kích thước chữ">-</button>
+                <span class="font-control-label">Aa</span>
             </div>
         `;
 
