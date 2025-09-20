@@ -1400,8 +1400,7 @@
 .sticky-nav {
     position: fixed;
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 80px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     padding: 15px 10px;
@@ -1413,7 +1412,7 @@
 }
 
 .sticky-nav.hidden {
-    transform: translateY(-50%) translateX(-100%);
+    transform: translateX(-100%);
     opacity: 0.3;
 }
 
@@ -1486,7 +1485,8 @@
 /* Mobile optimizations for sticky nav */
 @media (max-width: 768px) {
     .sticky-nav {
-        left: 10px;
+        left: 15px;
+        bottom: 70px;
         max-width: 160px;
         padding: 10px 8px;
         font-size: 1em;
@@ -1496,8 +1496,8 @@
         font-size: 0.9em;
     }
     .nav-toggle {
-        left: 10px;
-        bottom: 10px;
+        left: 15px;
+        bottom: 15px;
         width: 45px;
         height: 45px;
         font-size: 1.1em;
@@ -1507,7 +1507,8 @@
 /* Mobile optimizations for very small screens */
 @media (max-width: 480px) {
     .sticky-nav {
-        left: 5px;
+        left: 15px;
+        bottom: 65px;
         max-width: 140px;
         padding: 8px 6px;
         font-size: 0.9em;
@@ -1517,8 +1518,8 @@
         font-size: 0.8em;
     }
     .nav-toggle {
-        left: 5px;
-        bottom: 5px;
+        left: 15px;
+        bottom: 15px;
         width: 40px;
         height: 40px;
         font-size: 1em;
