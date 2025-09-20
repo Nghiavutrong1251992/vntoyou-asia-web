@@ -7,5 +7,14 @@
     "description": "Explore the captivating beauty of the coastal city of Da Nang, with its fine white sand beaches, unique bridges, and rich culinary scene.",
     "image": "tours/data/tour-danang.jpg",
     "dataFile": "data/tour-danang.json"
+  },
+  {
+    "id": "vnn401",
+    "title": "VNN401: Hanoi Sapa 4D3N",
+    "region": "Northern Vietnam",
+    "days": 4,
+    "description": "Discover the breathtaking beauty of Vietnam's mountains and capital city",
+    "image": "tours/data/nhatrang.jpg",
+    "dataFile": "data/vnn401-hanoi-sapa-4d3n.json"
   }
 ]

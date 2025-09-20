@@ -6,6 +6,424 @@
     <title>VIET NAM TO YOU TOURISM COMPANY LIMITED - {{TITLE}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tour-hero {
+            background: linear-gradient(rgba(0, 149, 217, 0.8), rgba(0, 149, 217, 0.8));
+            color: white;
+            padding: 60px 0;
+        }
+        .tour-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .tour-hero .lead {
+            font-size: 1.25rem;
+        }
+        .tour-hero p {
+            font-size: 1.1rem;
+        }
+        
+        /* Mobile hero adjustments */
+        @media (max-width: 768px) {
+            .tour-hero {
+                padding: 40px 0;
+            }
+            .tour-hero h1 {
+                font-size: 1.75rem;
+            }
+            .tour-hero .lead {
+                font-size: 1.1rem;
+            }
+            .tour-hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .tour-hero h1 {
+                font-size: 1.5rem;
+            }
+            .tour-hero .lead {
+                font-size: 1rem;
+            }
+            .tour-hero p {
+                font-size: 0.9rem;
+            }
+        }
+        .tour-meta-cards {
+            margin-top: -40px;
+            margin-bottom: 40px;
+            z-index: 10;
+            position: relative;
+        }
+        .meta-card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            text-align: center;
+            height: 100%;
+        }
+        .meta-card i {
+            font-size: 1.3em;
+            color: #0095d9;
+            margin-bottom: 6px;
+        }
+        .meta-card h6 {
+            font-size: 0.75em;
+            margin-bottom: 4px;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        .meta-card p {
+            font-size: 0.7em;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+        
+        /* Mobile optimizations for 4 columns */
+        @media (max-width: 768px) {
+            .meta-card {
+                padding: 8px 4px;
+                margin-bottom: 10px;
+                border-radius: 6px;
+            }
+            .meta-card i {
+                font-size: 1.1em;
+                margin-bottom: 4px;
+            }
+            .meta-card h6 {
+                font-size: 0.65em;
+                margin-bottom: 2px;
+            }
+            .meta-card p {
+                font-size: 0.6em;
+                line-height: 1.1;
+            }
+            .tour-meta-cards {
+                margin-top: -30px;
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 576px) {
+            .meta-card h6 {
+                font-size: 0.6em;
+            }
+            .meta-card p {
+                font-size: 0.55em;
+            }
+        }
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .section-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .section-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            color: #0095d9;
+            border-bottom: 2px solid #0095d9;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* Mobile font sizes - consistent with main site */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.25rem;
+            }
+            .section-card h3 {
+                font-size: 1.1rem;
+            }
+            .section-card p,
+            .section-card li {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.1rem;
+            }
+        }
+        .itinerary-day {
+            background: #f8f9fa;
+            border-left: 4px solid #0095d9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        .day-number {
+            background: #0095d9;
+            color: white;
+            border-radius: 25px;
+            min-width: 80px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        .meals-icons {
+            margin-top: 10px;
+        }
+        .meals-icons span {
+            background: #0095d9;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .hotel-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .hotel-city {
+            color: #0095d9;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .hotel-star {
+            margin-bottom: 10px;
+        }
+        .hotel-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .pricing-table {
+            overflow-x: auto;
+        }
+        .pricing-tabs .nav-tabs {
+            border-bottom: 2px solid #0095d9;
+            margin-bottom: 20px;
+        }
+        .pricing-tabs .nav-link {
+            color: #666;
+            border: none;
+            border-bottom: 2px solid transparent;
+            background: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .pricing-tabs .nav-link.active {
+            color: #0095d9;
+            border-bottom-color: #0095d9;
+            background: none;
+        }
+        .pricing-tabs .nav-link:hover {
+            color: #0095d9;
+            border-color: transparent;
+        }
+        .pricing-option {
+            background: white;
+            border: 2px solid #0095d9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .pricing-header {
+            background: #0095d9;
+            color: white;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-amount {
+            font-weight: bold;
+            color: #0095d9;
+        }
+        .contact-section {
+            background: linear-gradient(135deg, #0095d9, #00b4db);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .contact-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .btn-email { background: #0095d9; color: white; }
+        .btn-whatsapp { background: #0095d9; color: white; }
+        .btn-messenger { background: #0095d9; color: white; }
+        .btn-line { background: #0095d9; color: white; }
+        .hashtags {
+            margin: 20px 0;
+        }
+        .hashtag {
+            background: #e9ecef;
+            color: #0095d9;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin: 2px;
+            display: inline-block;
+        }
+        .highlights-section {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        /* Sticky Navigation Menu */
+        .sticky-nav {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            max-width: 200px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .sticky-nav.hidden {
+            transform: translateY(-50%) translateX(-100%);
+            opacity: 0.3;
+        }
+        .sticky-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sticky-nav li {
+            margin-bottom: 8px;
+        }
+        .sticky-nav a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        .sticky-nav a:hover {
+            background: #f0f8ff;
+            color: #0095d9;
+            border-left-color: #0095d9;
+        }
+        .sticky-nav a.active {
+            background: #0095d9;
+            color: white;
+            border-left-color: #004a8f;
+        }
+        
+        /* Toggle Button */
+        .nav-toggle {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background: #0095d9;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,149,217,0.3);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        .nav-toggle:hover {
+            background: #007bb5;
+            transform: scale(1.1);
+        }
+        .nav-toggle.nav-visible {
+            background: #dc3545;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .sticky-nav {
+                left: 10px;
+                max-width: 160px;
+                padding: 10px 8px;
+                font-size: 0.8em;
+            }
+            .sticky-nav a {
+                padding: 6px 8px;
+                font-size: 0.75em;
+            }
+            .nav-toggle {
+                left: 10px;
+                bottom: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1em;
+            }
+        }
+        
+        /* Hide on very small screens */
+        @media (max-width: 480px) {
+            .sticky-nav {
+                display: none;
+            }
+            .nav-toggle {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,7 +443,7 @@
         </div>
     </nav>
 
-    <header class="bg-primary text-white text-center py-5" id="tour-header">
+    <header class="tour-hero" id="tour-header">
         <div class="container">
             <h1>Tour Details</h1>
             <p>Detailed information about your trip</p>
@@ -42,6 +460,25 @@
             </div>
         </div>
     </section>
+
+    <!-- Sticky Navigation Menu -->
+    <nav class="sticky-nav" id="stickyNav" style="display: none;">
+        <ul>
+            <li><a href="#highlights-section" data-section="highlights">🌟 Highlights</a></li>
+            <li><a href="#itinerary-section" data-section="itinerary">🗺️ Itinerary</a></li>
+            <li><a href="#hotels-section" data-section="hotels">🏨 Hotels</a></li>
+            <li><a href="#pricing-section" data-section="pricing">💰 Pricing</a></li>
+            <li><a href="#included-section" data-section="included">✅ Included</a></li>
+            <li><a href="#excluded-section" data-section="excluded">❌ Excluded</a></li>
+            <li><a href="#terms-section" data-section="terms">📋 Terms</a></li>
+            <li><a href="#contact-section" data-section="contact">📞 Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Toggle Button -->
+    <button class="nav-toggle" id="navToggle" style="display: none;" title="Toggle Navigation">
+        <i class="fas fa-list"></i>
+    </button>
 
     <footer class="bg-dark text-white py-4">
         <div class="container">
@@ -96,8 +533,103 @@
         function setTextContent(selector, content) {
             const element = document.querySelector(selector);
             if (element) {
-                element.textContent = content; // textContent is safe from XSS
+                element.textContent = content;
             }
+        }
+
+        // Format meals
+        function formatMeals(meals) {
+            const mealMap = { 'B': 'Breakfast', 'L': 'Lunch', 'D': 'Dinner' };
+            return meals.map(meal => `<span>${mealMap[meal] || meal}</span>`).join('');
+        }
+
+        // Render itinerary for new structure
+        function renderItinerary(itinerary) {
+            if (!itinerary || !Array.isArray(itinerary)) return '';
+            
+            // Check if it's new structure (array of objects) or old structure (array of strings)
+            if (typeof itinerary[0] === 'object' && itinerary[0].day) {
+                // New structure
+                return itinerary.map(day => `
+                    <div class="itinerary-day">
+                        <div class="day-number">Day ${day.day}</div>
+                        <h5>${sanitizeHTML(day.title)}</h5>
+                        <p>${sanitizeHTML(day.description)}</p>
+                        ${day.meals ? `<div class="meals-icons">${formatMeals(day.meals)}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                // Old structure - array of strings
+                return itinerary.map(item => `<li>${sanitizeHTML(item)}</li>`).join('');
+            }
+        }
+
+        // Render hotels section
+        function renderHotels(hotels) {
+            if (!hotels) return '';
+            
+            return Object.keys(hotels).map(city => `
+                <div class="hotel-section">
+                    <div class="hotel-city"><i class="fas fa-map-marker-alt"></i> ${sanitizeHTML(city.charAt(0).toUpperCase() + city.slice(1))}</div>
+                    ${Object.keys(hotels[city]).map(starLevel => `
+                        <div class="hotel-star">
+                            <h6><i class="fas fa-star"></i> ${starLevel.replace('star', ' Star Hotels')}</h6>
+                            <div class="hotel-list">
+                                <ul class="mb-0">
+                                    ${hotels[city][starLevel].map(hotel => `<li>${sanitizeHTML(hotel)}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        // Render pricing section with tabs
+        function renderPricing(pricing) {
+            if (!pricing || !pricing.options) return '';
+            
+            const tabsHtml = pricing.options.map((option, index) => `
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link ${index === 0 ? 'active' : ''}" 
+                            id="pricing-tab-${index}" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#pricing-${index}" 
+                            type="button" 
+                            role="tab">
+                        <i class="fas fa-star"></i> ${sanitizeHTML(option.name)}
+                    </button>
+                </li>
+            `).join('');
+            
+            const contentHtml = pricing.options.map((option, index) => `
+                <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" 
+                     id="pricing-${index}" 
+                     role="tabpanel">
+                    <div class="pricing-option">
+                        <div class="pricing-header">
+                            <i class="fas fa-dollar-sign"></i> ${sanitizeHTML(option.name)} - Pricing in ${sanitizeHTML(pricing.currency)}
+                        </div>
+                        ${option.rates.map(rate => `
+                            <div class="price-row">
+                                <span>${sanitizeHTML(rate.type)}</span>
+                                <span class="price-amount">$${rate.price}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            return `
+                <div class="pricing-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        ${tabsHtml}
+                    </ul>
+                    <div class="tab-content">
+                        ${contentHtml}
+                    </div>
+                </div>
+            `;
         }
 
         async function loadTourDetail() {
@@ -105,7 +637,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const tourId = urlParams.get('id');
             console.log('Tour ID:', tourId);
-            console.log('Current URL:', window.location.href);
             
             if (!tourId) {
                 console.log('No tour ID found');
@@ -117,35 +648,61 @@
             }
 
             try {
-                console.log('Fetching tours.json...');
-                console.log('Fetch URL will be:', window.location.origin + '/tours/data/tours.json');
-                const toursResponse = await fetch('/tours/data/tours.json');
-                console.log('Tours response status:', toursResponse.status);
+                let tourDetail;
+                let tourFromList = null;
                 
-                if (!toursResponse.ok) {
-                    throw new Error(`HTTP error! status: ${toursResponse.status}`);
+                // Try to load directly from new structure first
+                try {
+                    const directResponse = await fetch(`/tours/data/${tourId}.json`);
+                    if (directResponse.ok) {
+                        tourDetail = await directResponse.json();
+                        console.log('Loaded tour detail directly:', tourDetail);
+                    }
+                } catch (e) {
+                    console.log('Direct load failed, trying through tours.json');
                 }
                 
-                const tours = await toursResponse.json();
-                console.log('Tours loaded:', tours);
-                
-                const tour = tours.find(t => t.id === tourId);
-                console.log('Found tour:', tour);
-                if (!tour) throw new Error(`Tour với ID "${tourId}" không tồn tại`);
+                // If direct load failed, try through tours.json (old structure)
+                if (!tourDetail) {
+                    console.log('Fetching tours.json...');
+                    const toursResponse = await fetch('/tours/data/tours.json');
+                    
+                    if (!toursResponse.ok) {
+                        throw new Error(`HTTP error! status: ${toursResponse.status}`);
+                    }
+                    
+                    const tours = await toursResponse.json();
+                    console.log('Tours loaded:', tours);
+                    
+                    tourFromList = tours.find(t => t.id === tourId);
+                    console.log('Found tour in list:', tourFromList);
+                    if (!tourFromList) throw new Error(`Tour với ID "${tourId}" không tồn tại`);
 
-                console.log('Fetching tour detail from:', tour.dataFile);
-                const detailResponse = await fetch('/tours/' + tour.dataFile);
-                console.log('Detail response status:', detailResponse.status);
-                
-                if (!detailResponse.ok) {
-                    throw new Error(`HTTP error! status: ${detailResponse.status}`);
+                    console.log('Fetching tour detail from:', tourFromList.dataFile);
+                    const detailResponse = await fetch('/tours/' + tourFromList.dataFile);
+                    
+                    if (!detailResponse.ok) {
+                        throw new Error(`HTTP error! status: ${detailResponse.status}`);
+                    }
+                    
+                    tourDetail = await detailResponse.json();
+                    console.log('Tour detail loaded from dataFile:', tourDetail);
                 }
                 
-                const tourDetail = await detailResponse.json();
-                console.log('Tour detail loaded:', tourDetail);
+                // Update page title and meta
+                const fullTitle = tourDetail.title + (tourDetail.subtitle ? ' - ' + tourDetail.subtitle : '');
+                document.title = 'VIET NAM TO YOU TOURISM COMPANY LIMITED - ' + fullTitle;
                 
-                // Update page title and header
-                document.title = 'VIET NAM TO YOU TOURISM COMPANY LIMITED - ' + tourDetail.title;
+                // Update meta description if available
+                if (tourDetail.seo && tourDetail.seo.metaDescription) {
+                    let metaDesc = document.querySelector('meta[name="description"]');
+                    if (!metaDesc) {
+                        metaDesc = document.createElement('meta');
+                        metaDesc.name = 'description';
+                        document.head.appendChild(metaDesc);
+                    }
+                    metaDesc.content = tourDetail.seo.metaDescription;
+                }
                 
                 // Update header section
                 const tourHeader = document.getElementById('tour-header');
@@ -153,86 +710,195 @@
                     tourHeader.innerHTML = `
                         <div class="container">
                             <h1>${sanitizeHTML(tourDetail.title)}</h1>
-                            <p>${sanitizeHTML(tourDetail.description)}</p>
+                            ${tourDetail.subtitle ? `<p class="lead">${sanitizeHTML(tourDetail.subtitle)}</p>` : ''}
+                            ${tourDetail.overview ? `<p>${sanitizeHTML(tourDetail.overview)}</p>` : `<p>${sanitizeHTML(tourDetail.description)}</p>`}
                         </div>
                     `;
                 }
                 
-                const imageUrl = '/' + tour.image;
+                // Get image URL
+                const imageUrl = tourFromList ? '/' + tourFromList.image : '/images/default-tour.jpg';
+                
+                // Build contact information
+                const contactInfo = tourDetail.contact || {
+                    email: 'SALES@VNTOYOU.NET',
+                    phone: '+84904596505',
+                    whatsapp: '+84904596505',
+                    contactPerson: 'Ms. Ngan'
+                };
                 
                 console.log('Starting HTML render...');
-                console.log('Image URL:', imageUrl);
-                console.log('Title:', tourDetail.title);
                 
-                try {
-                    const htmlContent = `
-                        <div class="tour-detail-content">
-                            <img src="${sanitizeHTML(imageUrl)}" class="tour-detail-img mb-4" alt="${sanitizeHTML(tourDetail.title)}" onerror="this.src='https://via.placeholder.com/500x300'">
-                            
-                            <h1 class="tour-title">${sanitizeHTML(tourDetail.title)}</h1>
-                            <div class="tour-meta mb-4">
-                                <p><strong>Region:</strong> ${sanitizeHTML(tourDetail.region)}</p>
-                                <p><strong>Days:</strong> ${sanitizeHTML(tourDetail.days)} Days</p>
-                                <p><strong>Description:</strong> ${sanitizeHTML(tourDetail.description)}</p>
-                            </div>
-                            
-                            <div class="tour-section">
-                                <h3>Itinerary</h3>
-                                <ul class="tour-list">${tourDetail.itinerary.map(item => '<li>' + item + '</li>').join('')}</ul>
-                            </div>
-                            
-                            <div class="tour-section">
-                                <h3>Included</h3>
-                                <ul class="tour-list">${tourDetail.includes.map(item => '<li>' + item + '</li>').join('')}</ul>
-                            </div>
-                            
-                            <div class="tour-section">
-                                <h3>Not Included</h3>
-                                <ul class="tour-list">${tourDetail.excludes.map(item => '<li>' + item + '</li>').join('')}</ul>
-                            </div>
-                            
-                            <div class="tour-section">
-                                <h3>Terms & Conditions</h3>
-                                <ul class="tour-list">${tourDetail.terms.map(item => '<li>' + item + '</li>').join('')}</ul>
-                            </div>
-                            
-                            <div class="contact-buttons">
-                                <h4>💬 Contact to Book Tour</h4>
-                                <p class="mb-3">Click the button below to chat directly with us:</p>
-                                <a href="mailto:info@vntoyouasia.com?subject=Book ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-email">📧 Email</a>
-                                <a href="https://wa.me/84987654321?text=Hello! I'm interested in ${encodeURIComponent(tourDetail.title)}" class="contact-btn btn-whatsapp" target="_blank">📱 WhatsApp</a>
-                                <a href="https://m.me/vntoyouasia" class="contact-btn btn-messenger" target="_blank">💬 Messenger</a>
-                                <a href="https://line.me/ti/p/~vntoyouasia" class="contact-btn btn-line" target="_blank">📞 LINE</a>
-                            </div>
-                            
-                            <div class="text-center mt-4">
-                                <a href="../../tour.html" class="btn btn-primary btn-lg">⬅️ Back to List</a>
+                const htmlContent = `
+                    <div class="tour-detail-content">
+                        <!-- Hero Image -->
+                        <img src="${sanitizeHTML(imageUrl)}" class="img-fluid w-100 mb-5" alt="${sanitizeHTML(tourDetail.title)}" 
+                             style="height: 300px; object-fit: cover; border-radius: 10px;" 
+                             onerror="this.src='https://via.placeholder.com/800x300'">
+                        
+                        <!-- Meta Cards -->
+                        <div class="tour-meta-cards">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="meta-card">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <h6>Duration</h6>
+                                        <p>${sanitizeHTML(tourDetail.duration || tourDetail.days + ' Days')}</p>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="meta-card">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <h6>Departure</h6>
+                                        <p>${sanitizeHTML(tourDetail.departure || tourDetail.region || 'Vietnam')}</p>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="meta-card">
+                                        <i class="fas fa-route"></i>
+                                        <h6>Destination</h6>
+                                        <p>${sanitizeHTML(tourDetail.destination || tourDetail.city || tourDetail.region || 'Vietnam')}</p>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="meta-card">
+                                        <i class="fas fa-bus"></i>
+                                        <h6>Transport</h6>
+                                        <p>${sanitizeHTML(tourDetail.transport || 'Air-conditioned vehicle')}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    `;
-                    
-                    console.log('HTML content generated successfully');
-                    const container = document.querySelector('section .container');
-                    console.log('Section container found:', container);
-                    console.log('Section container current content:', container ? container.innerHTML : 'null');
-                    
-                    if (container) {
-                        container.innerHTML = htmlContent;
-                        console.log('HTML rendered successfully');
-                        console.log('Section container new content preview:', container.innerHTML.substring(0, 200) + '...');
+
+                        <!-- Tour Code -->
+                        ${tourDetail.tourCode ? `
+                            <div class="section-card">
+                                <h5 class="text-center">
+                                    <span class="badge bg-primary fs-6">Tour Code: ${sanitizeHTML(tourDetail.tourCode)}</span>
+                                </h5>
+                            </div>
+                        ` : ''}
+
+                        <!-- Highlights -->
+                        ${tourDetail.highlights ? `
+                            <div class="highlights-section" id="highlights-section">
+                                <h3 class="section-title"><i class="fas fa-star"></i> Tour Highlights</h3>
+                                ${tourDetail.highlights.map(highlight => `
+                                    <div class="highlight-item">
+                                        <i class="fas fa-check-circle text-warning me-2"></i>
+                                        ${sanitizeHTML(highlight)}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
                         
-                        // Kiểm tra xem còn spinner không
-                        const spinners = document.querySelectorAll('.spinner-border');
-                        console.log('Remaining spinners after render:', spinners.length);
+                        <!-- Itinerary -->
+                        <div class="section-card" id="itinerary-section">
+                            <h3 class="section-title"><i class="fas fa-map-signs"></i> Itinerary</h3>
+                            ${renderItinerary(tourDetail.itinerary)}
+                        </div>
                         
-                    } else {
-                        console.error('Section container not found!');
-                        throw new Error('Section container element not found');
+                        <!-- Hotels -->
+                        ${tourDetail.hotels ? `
+                            <div class="section-card" id="hotels-section">
+                                <h3 class="section-title"><i class="fas fa-hotel"></i> Hotels</h3>
+                                ${renderHotels(tourDetail.hotels)}
+                            </div>
+                        ` : ''}
+
+                        <!-- Pricing -->
+                        ${tourDetail.pricing ? `
+                            <div class="section-card" id="pricing-section">
+                                <h3 class="section-title"><i class="fas fa-dollar-sign"></i> Pricing</h3>
+                                ${renderPricing(tourDetail.pricing)}
+                            </div>
+                        ` : ''}
+                        
+                        <!-- Included -->
+                        <div class="section-card" id="included-section">
+                            <h3 class="section-title"><i class="fas fa-check"></i> Included</h3>
+                            <ul class="list-unstyled">
+                                ${tourDetail.includes.map(item => `<li><i class="fas fa-check text-success me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <!-- Not Included -->
+                        <div class="section-card" id="excluded-section">
+                            <h3 class="section-title"><i class="fas fa-times"></i> Not Included</h3>
+                            <ul class="list-unstyled">
+                                ${tourDetail.excludes.map(item => `<li><i class="fas fa-times text-danger me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <!-- Terms & Conditions -->
+                        <div class="section-card" id="terms-section">
+                            <h3 class="section-title"><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
+                            <ul class="list-unstyled">
+                                ${tourDetail.terms.map(item => `<li><i class="fas fa-info-circle text-info me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <!-- Contact Section -->
+                        <div class="contact-section" id="contact-section">
+                            <h3><i class="fas fa-phone"></i> Contact to Book Tour</h3>
+                            <p class="mb-4">Contact ${sanitizeHTML(contactInfo.contactPerson)} for booking and inquiries</p>
+                            
+                            <div class="contact-buttons">
+                                <a href="mailto:${contactInfo.email}?subject=Book ${encodeURIComponent(tourDetail.title)}" 
+                                   class="contact-btn btn-email">
+                                   <i class="fas fa-envelope"></i> ${contactInfo.email}
+                                </a>
+                                <a href="https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=Hello! I'm interested in ${encodeURIComponent(tourDetail.title)}" 
+                                   class="contact-btn btn-whatsapp" target="_blank">
+                                   <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="tel:${contactInfo.phone}" class="contact-btn btn-messenger">
+                                   <i class="fas fa-phone"></i> Call ${contactInfo.phone}
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Hashtags at bottom -->
+                        ${tourDetail.hashtags ? `
+                            <div class="hashtags text-center mb-4">
+                                <h6 class="mb-3 text-muted">Tags:</h6>
+                                ${tourDetail.hashtags.map(tag => `<span class="hashtag">#${sanitizeHTML(tag)}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        
+                        <div class="text-center mt-5">
+                            <a href="../../tour.html" class="btn btn-primary btn-lg">
+                                <i class="fas fa-arrow-left"></i> Back to Tours List
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                console.log('HTML content generated successfully');
+                const container = document.querySelector('section .container');
+                
+                if (container) {
+                    container.innerHTML = htmlContent;
+                    console.log('HTML rendered successfully');
+                    
+                    // Show sticky navigation after content is loaded
+                    const stickyNav = document.getElementById('stickyNav');
+                    const navToggle = document.getElementById('navToggle');
+                    if (stickyNav && navToggle) {
+                        stickyNav.style.display = 'block';
+                        navToggle.style.display = 'block';
+                        // Start with navigation hidden on mobile
+                        if (window.innerWidth <= 768) {
+                            stickyNav.classList.add('hidden');
+                        }
                     }
                     
-                } catch (renderError) {
-                    console.error('Error during HTML rendering:', renderError);
-                    throw new Error('Lỗi hiển thị: ' + renderError.message);
+                    // Initialize sticky navigation functionality
+                    initStickyNavigation();
+                    
+                } else {
+                    console.error('Section container not found!');
+                    throw new Error('Section container element not found');
                 }
                 
             } catch (error) {
@@ -242,12 +908,125 @@
                     container.innerHTML = `
                         <div class="alert alert-danger">
                             <h4>Lỗi: ${error.message}</h4>
-                            <p>Error details: ${error.stack || 'No additional information'}</p>
-                            <a href="../../tour.html" class="btn btn-primary">⬅️ Back to List</a>
+                            <p>Please try again or contact us for assistance.</p>
+                            <a href="../../tour.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-left"></i> Back to Tours List
+                            </a>
                         </div>
                     `;
                 }
             }
+        }
+
+        // Initialize sticky navigation
+        function initStickyNavigation() {
+            const stickyNav = document.getElementById('stickyNav');
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = stickyNav.querySelectorAll('a');
+            
+            // Toggle functionality
+            let navVisible = window.innerWidth > 768; // Start visible on desktop, hidden on mobile
+            
+            function updateToggleButton() {
+                const icon = navToggle.querySelector('i');
+                if (navVisible) {
+                    icon.className = 'fas fa-times';
+                    navToggle.classList.add('nav-visible');
+                    navToggle.title = 'Hide Navigation';
+                } else {
+                    icon.className = 'fas fa-list';
+                    navToggle.classList.remove('nav-visible');
+                    navToggle.title = 'Show Navigation';
+                }
+            }
+            
+            function toggleNav() {
+                navVisible = !navVisible;
+                if (navVisible) {
+                    stickyNav.classList.remove('hidden');
+                } else {
+                    stickyNav.classList.add('hidden');
+                }
+                updateToggleButton();
+            }
+            
+            navToggle.addEventListener('click', toggleNav);
+            updateToggleButton();
+            
+            // Handle click events
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 100; // Account for header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Auto-hide on mobile after navigation
+                        if (window.innerWidth <= 768) {
+                            setTimeout(() => {
+                                navVisible = true; // Will be toggled to false
+                                toggleNav();
+                            }, 500);
+                        }
+                    }
+                });
+            });
+            
+            // Handle scroll events to highlight current section
+            function updateActiveNav() {
+                let currentSection = '';
+                const sections = ['highlights-section', 'itinerary-section', 'hotels-section', 'pricing-section', 'included-section', 'excluded-section', 'terms-section', 'contact-section'];
+                
+                sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top <= 150 && rect.bottom >= 150) {
+                            currentSection = sectionId;
+                        }
+                    }
+                });
+                
+                // Update active link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Throttled scroll listener
+            let ticking = false;
+            function handleScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateActiveNav();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            updateActiveNav(); // Initial call
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 480) {
+                    stickyNav.style.display = 'none';
+                    navToggle.style.display = 'none';
+                } else {
+                    stickyNav.style.display = 'block';
+                    navToggle.style.display = 'block';
+                }
+            });
         }
 
         document.addEventListener('DOMContentLoaded', loadTourDetail);
