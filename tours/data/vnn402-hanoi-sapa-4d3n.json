@@ -83,36 +83,41 @@
     }
   },
   "pricing": {
-    "3star": {
-      "singleSurcharge": 51,
-      "groupPrices": {
-        "3pax": 439,
-        "4pax": 384,
-        "7pax": 295,
-        "10-14pax": 253,
-        "15-19pax": 242,
-        "20-24pax": 224,
-        "25-29pax": 218,
-        "30-34pax": 210,
-        "35-39pax": 204,
-        "40-42pax": 200
+    "currency": "USD",
+    "options": [
+      {
+        "name": "3 Star Hotel",
+        "rates": [
+          {"type": "Single Supplement", "price": 51},
+          {"type": "3 Pax", "price": 439},
+          {"type": "4 Pax", "price": 384},
+          {"type": "7 Pax", "price": 295},
+          {"type": "10-14 Pax", "price": 253},
+          {"type": "15-19 Pax + 1 Tour Leader", "price": 242},
+          {"type": "20-24 Pax + 1 Tour Leader", "price": 224},
+          {"type": "25-29 Pax + 1 Tour Leader", "price": 218},
+          {"type": "30-34 Pax + 2 Tour Leaders", "price": 210},
+          {"type": "35-39 Pax + 2 Tour Leaders", "price": 204},
+          {"type": "40-42 Pax + 2 Tour Leaders", "price": 200}
+        ]
+      },
+      {
+        "name": "4 Star Hotel",
+        "rates": [
+          {"type": "Single Supplement", "price": 59},
+          {"type": "3 Pax", "price": 448},
+          {"type": "4 Pax", "price": 394},
+          {"type": "7 Pax", "price": 305},
+          {"type": "10-14 Pax", "price": 263},
+          {"type": "15-19 Pax + 1 Tour Leader", "price": 242},
+          {"type": "20-24 Pax + 1 Tour Leader", "price": 226},
+          {"type": "25-29 Pax + 1 Tour Leader", "price": 221},
+          {"type": "30-34 Pax + 2 Tour Leaders", "price": 214},
+          {"type": "35-39 Pax + 2 Tour Leaders", "price": 209},
+          {"type": "40-42 Pax + 2 Tour Leaders", "price": 206}
+        ]
       }
-    },
-    "4star": {
-      "singleSurcharge": 59,
-      "groupPrices": {
-        "3pax": 448,
-        "4pax": 394,
-        "7pax": 305,
-        "10-14pax": 263,
-        "15-19pax": 242,
-        "20-24pax": 226,
-        "25-29pax": 221,
-        "30-34pax": 214,
-        "35-39pax": 209,
-        "40-42pax": 206
-      }
-    }
+    ]
   },
   "includes": [
     "3-star or 4-star accommodation (twin sharing)",
