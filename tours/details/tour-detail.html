@@ -33,7 +33,7 @@
         </div>
     </header>
 
-    <section class="py-5">
+    <section class="py-4">
         <div class="container">
             <div class="text-center">
                 <div class="spinner-border" role="status">
@@ -125,10 +125,11 @@
             }
         }
 
-        // Format meals
+        // Format meals with icon and better styling
         function formatMeals(meals) {
             const mealMap = { 'B': 'Breakfast', 'L': 'Lunch', 'D': 'Dinner' };
-            return meals.map(meal => `<span>${mealMap[meal] || meal}</span>`).join('');
+            const mealList = meals.map(meal => `<strong>${mealMap[meal] || meal}</strong>`).join(' - ');
+            return `<i class="fas fa-check-circle me-1" style="color: var(--brand-primary-color);"></i>${mealList}`;
         }
 
         // Render itinerary for new structure
@@ -137,18 +138,20 @@
             
             // Check if it's new structure (array of objects) or old structure (array of strings)
             if (typeof itinerary[0] === 'object' && itinerary[0].day) {
-                // New structure
+                // New structure - simplified without heavy wrappers
                 return itinerary.map(day => `
-                    <div class="itinerary-day">
-                        <div class="day-number">Day ${day.day}</div>
-                        <h5>${sanitizeHTML(day.title)}</h5>
-                        <p>${sanitizeHTML(day.description)}</p>
-                        ${day.meals ? `<div class="meals-icons">${formatMeals(day.meals)}</div>` : ''}
+                    <div class="mb-3 pb-3 border-bottom">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-primary me-2">Day ${day.day}</span>
+                            <h5 class="mb-0">${sanitizeHTML(day.title)}</h5>
+                        </div>
+                        <p class="mb-2">${sanitizeHTML(day.description)}</p>
+                        ${day.meals ? `<div class="mt-2 text-success">${formatMeals(day.meals)}</div>` : ''}
                     </div>
                 `).join('');
             } else {
-                // Old structure - array of strings
-                return itinerary.map(item => `<li>${sanitizeHTML(item)}</li>`).join('');
+                // Old structure - array of strings  
+                return '<ul class="list-unstyled">' + itinerary.map(item => `<li class="mb-2 pb-2 border-bottom"><i class="fas fa-map-marker-alt text-primary me-2"></i>${sanitizeHTML(item)}</li>`).join('') + '</ul>';
             }
         }
 
@@ -157,16 +160,14 @@
             if (!hotels) return '';
             
             return Object.keys(hotels).map(city => `
-                <div class="hotel-section">
-                    <div class="hotel-city"><i class="fas fa-map-marker-alt"></i> ${sanitizeHTML(city.charAt(0).toUpperCase() + city.slice(1))}</div>
+                <div class="mb-3">
+                    <h5 class="text-primary mb-2"><i class="fas fa-map-marker-alt me-1"></i> ${sanitizeHTML(city.charAt(0).toUpperCase() + city.slice(1))}</h5>
                     ${Object.keys(hotels[city]).map(starLevel => `
-                        <div class="hotel-star">
-                            <h6><i class="fas fa-star"></i> ${starLevel.replace('star', ' Star Hotels')}</h6>
-                            <div class="hotel-list">
-                                <ul class="mb-0">
-                                    ${hotels[city][starLevel].map(hotel => `<li>${sanitizeHTML(hotel)}</li>`).join('')}
-                                </ul>
-                            </div>
+                        <div class="mb-2">
+                            <h6 class="mb-1"><i class="fas fa-star text-warning me-1"></i> ${starLevel.replace('star', ' Star Hotels')}</h6>
+                            <ul class="list-unstyled ms-3">
+                                ${hotels[city][starLevel].map(hotel => `<li class="mb-1 text-muted">• ${sanitizeHTML(hotel)}</li>`).join('')}
+                            </ul>
                         </div>
                     `).join('')}
                 </div>
@@ -318,9 +319,8 @@
                 console.log('Starting HTML render...');
                 
                 const htmlContent = `
-                    <div class="tour-detail-content">
                         <!-- Hero Image -->
-                        <img src="${sanitizeHTML(imageUrl)}" class="img-fluid w-100 mb-5" alt="${sanitizeHTML(tourDetail.title)}" 
+                        <img src="${sanitizeHTML(imageUrl)}" class="img-fluid w-100 mb-4" alt="${sanitizeHTML(tourDetail.title)}" 
                              style="height: 300px; object-fit: cover; border-radius: 10px;" 
                              onerror="this.src='https://via.placeholder.com/800x300'">
                         
@@ -360,8 +360,8 @@
 
                         <!-- Tour Code -->
                         ${tourDetail.tourCode ? `
-                            <div class="section-card">
-                                <h5 class="text-center">
+                            <div class="mb-4 text-center">
+                                <h5>
                                     <span class="badge bg-primary fs-6">Tour Code: ${sanitizeHTML(tourDetail.tourCode)}</span>
                                 </h5>
                             </div>
@@ -369,66 +369,83 @@
 
                         <!-- Highlights -->
                         ${tourDetail.highlights ? `
-                            <div class="highlights-section" id="highlights-section">
-                                <h3 class="section-title"><i class="fas fa-star"></i> Tour Highlights</h3>
-                                ${tourDetail.highlights.map(highlight => `
-                                    <div class="highlight-item">
-                                        <i class="fas fa-check-circle text-warning me-2"></i>
-                                        ${sanitizeHTML(highlight)}
-                                    </div>
-                                `).join('')}
+                            <div class="card mb-4" id="highlights-section">
+                                <div class="card-body">
+                                    <h3 class="section-title"><i class="fas fa-star"></i> Tour Highlights</h3>
+                                    <ul class="list-unstyled">
+                                        ${tourDetail.highlights.map(highlight => `
+                                            <li class="mb-2 pb-1">
+                                                <i class="fas fa-check-circle text-warning me-2"></i>
+                                                ${sanitizeHTML(highlight)}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
                             </div>
                         ` : ''}
                         
                         <!-- Itinerary -->
-                        <div class="section-card" id="itinerary-section">
-                            <h3 class="section-title"><i class="fas fa-map-signs"></i> Itinerary</h3>
-                            ${renderItinerary(tourDetail.itinerary)}
+                        <div class="card mb-4" id="itinerary-section">
+                            <div class="card-body">
+                                <h3 class="section-title"><i class="fas fa-map-signs"></i> Itinerary</h3>
+                                ${renderItinerary(tourDetail.itinerary)}
+                            </div>
                         </div>
                         
                         <!-- Hotels -->
                         ${tourDetail.hotels ? `
-                            <div class="section-card" id="hotels-section">
-                                <h3 class="section-title"><i class="fas fa-hotel"></i> Hotels</h3>
-                                ${renderHotels(tourDetail.hotels)}
+                            <div class="card mb-4" id="hotels-section">
+                                <div class="card-body">
+                                    <h3 class="section-title"><i class="fas fa-hotel"></i> Hotels</h3>
+                                    ${renderHotels(tourDetail.hotels)}
+                                </div>
                             </div>
                         ` : ''}
 
                         <!-- Pricing -->
                         ${tourDetail.pricing ? `
-                            <div class="section-card" id="pricing-section">
-                                <h3 class="section-title"><i class="fas fa-dollar-sign"></i> Pricing</h3>
-                                ${renderPricing(tourDetail.pricing)}
+                            <div class="card mb-4" id="pricing-section">
+                                <div class="card-body">
+                                    <h3 class="section-title"><i class="fas fa-dollar-sign"></i> Pricing</h3>
+                                    ${renderPricing(tourDetail.pricing)}
+                                </div>
                             </div>
                         ` : ''}
                         
                         <!-- Included -->
-                        <div class="section-card" id="included-section">
-                            <h3 class="section-title"><i class="fas fa-check"></i> Included</h3>
-                            <ul class="list-unstyled">
-                                ${tourDetail.includes.map(item => `<li><i class="fas fa-check text-success me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
-                            </ul>
+                        <div class="card mb-4" id="included-section">
+                            <div class="card-body">
+                                <h3 class="section-title"><i class="fas fa-check"></i> Included</h3>
+                                <ul class="list-unstyled">
+                                    ${tourDetail.includes.map(item => `<li class="mb-1"><i class="fas fa-check text-success me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                         
                         <!-- Not Included -->
-                        <div class="section-card" id="excluded-section">
-                            <h3 class="section-title"><i class="fas fa-times"></i> Not Included</h3>
-                            <ul class="list-unstyled">
-                                ${tourDetail.excludes.map(item => `<li><i class="fas fa-times text-danger me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
-                            </ul>
+                        <div class="card mb-4" id="excluded-section">
+                            <div class="card-body">
+                                <h3 class="section-title"><i class="fas fa-times"></i> Not Included</h3>
+                                <ul class="list-unstyled">
+                                    ${tourDetail.excludes.map(item => `<li class="mb-1"><i class="fas fa-times text-danger me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                         
                         <!-- Terms & Conditions -->
-                        <div class="section-card" id="terms-section">
-                            <h3 class="section-title"><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
-                            <ul class="list-unstyled">
-                                ${tourDetail.terms.map(item => `<li><i class="fas fa-info-circle text-info me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
-                            </ul>
+                        <div class="card mb-4" id="terms-section">
+                            <div class="card-body">
+                                <h3 class="section-title"><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
+                                <ul class="list-unstyled">
+                                    ${tourDetail.terms.map(item => `<li class="mb-1"><i class="fas fa-info-circle text-info me-2"></i>${sanitizeHTML(item)}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
                         
                         <!-- Contact Section -->
-                        <div class="contact-section" id="contact-section">
-                            <h3><i class="fas fa-phone"></i> Contact to Book Tour</h3>
+                        <div class="card contact-section mb-4" id="contact-section">
+                            <div class="card-body">
+                                <h3><i class="fas fa-phone"></i> Contact to Book Tour</h3>
                             <p class="mb-4">Contact ${sanitizeHTML(contactInfo.contactPerson)} for booking and inquiries</p>
                             
                             <div class="contact-buttons">
@@ -443,6 +460,7 @@
                                 <a href="tel:${contactInfo.phone}" class="contact-btn btn-messenger">
                                    <i class="fas fa-phone"></i> Call ${contactInfo.phone}
                                 </a>
+                            </div>
                             </div>
                         </div>
                         
@@ -459,7 +477,6 @@
                                 <i class="fas fa-arrow-left"></i> Back to Tours List
                             </a>
                         </div>
-                    </div>
                 `;
                 
                 console.log('HTML content generated successfully');
@@ -615,7 +632,7 @@
             // Throttled scroll listener with auto-hide for mobile
             let ticking = false;
             let scrollTimeout;
-            const HIDE_DELAY = 2000; // 2 seconds for mobile auto-hide
+            const HIDE_DELAY = 1000; // 1 second for mobile auto-hide (reduced from 2s)
             
             function hideNavAfterDelay() {
                 // Only auto-hide on mobile

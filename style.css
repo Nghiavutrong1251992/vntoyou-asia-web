@@ -435,12 +435,8 @@ span {
     font-size: 1.2rem;
 }
 
-/* Style cho tour detail layout - Use full container width like homepage */
-.tour-detail-content {
-    margin: 0 auto;
-    padding: 0 15px;
-    /* Removed max-width: 800px to match homepage container width */
-}
+/* Tour detail layout - removed wrapper to maximize content area */
+/* .tour-detail-content removed - using direct Bootstrap container like tour.html */
 
 .tour-title {
     color: var(--brand-primary-color);
@@ -1210,12 +1206,12 @@ span {
     }
 }
 
-/* Section Cards */
+/* Section Cards - Re-enabled for consistency with tour.html card styling */
 .section-card {
     background: white;
     border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 30px;
+    padding: 20px 15px; /* Reduced padding from 30px to 20px vertical, 15px horizontal */
+    margin-bottom: 20px; /* Reduced margin from 30px to 20px */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -1263,7 +1259,8 @@ span {
     }
 }
 
-/* Itinerary Styles */
+/* Itinerary Styles - Simplified, no longer using heavy wrappers */
+/*
 .itinerary-day {
     background: #f8f9fa;
     border-left: 4px solid var(--brand-primary-color);
@@ -1271,6 +1268,7 @@ span {
     margin-bottom: 20px;
     border-radius: 0 10px 10px 0;
 }
+*/
 
 .day-number {
     background: var(--brand-primary-color);
@@ -1299,7 +1297,8 @@ span {
     margin-right: 5px;
 }
 
-/* Hotel Sections */
+/* Hotel Sections - Simplified, no longer using heavy wrappers */
+/*
 .hotel-section {
     background: #f8f9fa;
     padding: 20px;
@@ -1322,6 +1321,7 @@ span {
     padding: 15px;
     border-radius: 8px;
 }
+*/
 
 /* Pricing Styles */
 .pricing-table {
@@ -1435,7 +1435,8 @@ span {
     display: inline-block;
 }
 
-/* Highlights Section */
+/* Highlights Section - Simplified, no longer using heavy wrappers */
+/*
 .highlights-section {
     background: linear-gradient(135deg, #fff3cd, #ffeaa7);
     border: 1px solid #ffc107;
@@ -1451,6 +1452,7 @@ span {
     margin-bottom: 10px;
     border-left: 4px solid #ffc107;
 }
+*/
 
 /* Sticky Navigation Menu */
 .sticky-nav {
@@ -1493,7 +1495,7 @@ span {
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 1em;
+    font-size: 1.1em; /* Increased from 1em to 1.1em */
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
@@ -1580,7 +1582,7 @@ span {
     }
     .sticky-nav a {
         padding: 6px 8px;
-        font-size: 0.9em;
+        font-size: 1em; /* Increased from 0.9em to 1em for mobile */
     }
     .nav-toggle {
         left: 15px;
