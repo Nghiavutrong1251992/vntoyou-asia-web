@@ -1,22 +1,23 @@
 {
   "id": "VNN402",
-  "title": "VNN402: Hanoi Sapa 4D3N Premium",
-  "subtitle": "Discover the breathtaking beauty of Vietnam's mountains and capital city",
-  "description": "Experience the stunning landscapes of Northern Vietnam with enhanced amenities",
-  "overview": "Experience the stunning landscapes of Northern Vietnam with our carefully crafted 4-day journey from Hanoi to Sapa. This premium tour combines cultural immersion with natural beauty, taking you through ethnic villages, majestic mountains, and vibrant local markets with special dining experiences.",
+  "title": "VNN402: Hanoi Sapa Halong 4D3N",
+  "subtitle": "Discover the breathtaking beauty of Vietnam's mountains, capital city and stunning bay",
+  "description": "Experience Northern Vietnam's most iconic destinations: Sapa mountains and Halong Bay",
+  "overview": "Experience the stunning landscapes of Northern Vietnam with our carefully crafted 4-day journey covering Hanoi, Sapa and Halong Bay. This premium tour combines cultural immersion with natural beauty, taking you through ethnic villages, majestic mountains, and the world-famous Halong Bay with special dining experiences.",
   "duration": "4 Days 3 Nights",
   "departure": "Hanoi",
-  "destination": "Hanoi, Sapa",
-  "transport": "Air-conditioned bus, Cable car, Muong Hoa Train",
+  "destination": "Hanoi, Sapa, Halong Bay",
+  "transport": "Air-conditioned bus, Cable car, Muong Hoa Train, Private boat",
   "region": "Northern Vietnam",
-  "city": "Hanoi, Sapa",
-  "hashtags": ["HanoiSapaTour", "NorthernVietnam", "FansipanMountain", "CatCatVillage", "SapaTravel", "HanoiTravel", "VietnamMountains", "CulturalTour", "PremiumTour"],
+  "city": "Hanoi, Sapa, Halong",
+  "hashtags": ["HanoiSapaTour", "HalongBayTour", "NorthernVietnam", "FansipanMountain", "CatCatVillage", "SapaTravel", "HanoiTravel", "VietnamMountains", "CulturalTour", "PremiumTour", "HalongBay", "ThienCungGrotte"],
   "highlights": [
     "3 special meals: Buffet Fansipan - Buffet Sen - Hotpot salmon + red wine",
     "Fansipan Mountain with Muong Hoa Train + Cable Car experience",
-    "Visit to Cat Cat Village and Sapa night market",
-    "Explore Hanoi's cultural landmarks including HCM Mausoleum",
-    "Experience Hanoi train track cafe culture"
+    "Visit to Cat Cat Village and Sapa night market", 
+    "Private boat trip in stunning Halong Bay",
+    "Explore Thien Cung Grottoes - one of Halong's most beautiful caves",
+    "Photo stop at Mega Grand World entertainment complex"
   ],
   "itinerary": [
     {
@@ -45,67 +46,71 @@
     {
       "day": 3,
       "meals": ["B", "L", "D"],
-      "title": "Sapa to Hanoi Journey",
-      "description": "Back to Hanoi - Tran Quoc Pagoda - West Lake - Hanoi train track cafe (not include cafe fee)",
+      "title": "Sapa to Halong Bay",
+      "description": "Back to Hanoi - Tran Quoc Pagoda - West Lake - Transfer to Halong Bay - Photo stop at Mega Grand World - Halong night market",
       "activities": [
         "Morning departure from Sapa back to Hanoi",
-        "Visit Tran Quoc Pagoda - oldest Buddhist temple in Hanoi",
+        "Visit Tran Quoc Pagoda - oldest Buddhist temple in Hanoi", 
         "West Lake area exploration",
-        "Experience famous Hanoi train track cafe (cafe fee not included)"
+        "Transfer to Halong Bay (3.5 hours drive)",
+        "Photo stop at Mega Grand World entertainment complex",
+        "Evening at Halong night market - local seafood and shopping"
       ]
     },
     {
       "day": 4,
       "meals": ["B", "L"],
-      "title": "Hanoi Exploration & Departure",
-      "description": "HCM Mausoleum - Shopping Hanoi Old Quarter - Mega Grand World - End of Tour",
+      "title": "Halong Bay Cruise & Departure",
+      "description": "Private Boat Trip Halong Bay - Thien Cung Grottoes - Lunch on boat - back to Hanoi - Shopping - End of tour",
       "activities": [
-        "Visit Ho Chi Minh Mausoleum and surrounding area",
-        "Shopping time at Hanoi Old Quarter",
-        "Mega Grand World entertainment complex",
+        "Private boat cruise through stunning Halong Bay",
+        "Explore Thien Cung Grottoes - magnificent limestone caves",
+        "Lunch on boat while enjoying bay views",
+        "Return journey to Hanoi (3.5 hours)",
+        "Last minute shopping in Hanoi",
         "Transfer to airport - End of tour"
       ]
     }
   ],
   "accommodation": {
-    "hanoi": {
-      "3star": "CWD Hanoi Hotel 3*, Quang Ba Trade Union Hotel 3* or similar",
-      "4star": "Thang Long Opera Hotel 4*/ Muong Thanh Central Hotel 4* / Super Candle Hanoi Hotel 4*/ Lacasa Hanoi Hotel 4* or similar"
-    },
     "sapa": {
       "3star": "Azure Sapa 3*/ Sapa Relax Hotel 3* or similar",
       "4star": "Sapa Highland Resort & Spa 4* / Charm Sapa Hotel 4* / Hotel De Sapa 4* or similar"
+    },
+    "halong": {
+      "3star": "New Star Halong 3*, Song Loc Luxury Hotel 3* or similar",
+      "4star": "Marina Halong Hotel or similar"
     }
   },
   "pricing": {
     "3star": {
-      "singleSurcharge": 53,
+      "singleSurcharge": 51,
       "groupPrices": {
-        "3pax": 377,
-        "4pax": 335,
-        "7pax": 262,
-        "10-14pax": 224,
-        "15-19pax": 218,
-        "20-24pax": 203,
-        "25-29pax": 198,
-        "30-34pax": 191,
-        "35-39pax": 186,
-        "40-42pax": 182
+        "3pax": 439,
+        "4pax": 384,
+        "7pax": 295,
+        "10-14pax": 253,
+        "15-19pax": 242,
+        "20-24pax": 224,
+        "25-29pax": 218,
+        "30-34pax": 210,
+        "35-39pax": 204,
+        "40-42pax": 200
       }
     },
     "4star": {
-      "singleSurcharge": 70,
+      "singleSurcharge": 59,
       "groupPrices": {
-        "3pax": 396,
-        "4pax": 354,
-        "7pax": 281,
-        "10-14pax": 243,
-        "15-19pax": 227,
-        "20-24pax": 214,
-        "25-29pax": 211,
-        "30-34pax": 205,
-        "35-39pax": 201,
-        "40-42pax": 198
+        "3pax": 448,
+        "4pax": 394,
+        "7pax": 305,
+        "10-14pax": 263,
+        "15-19pax": 242,
+        "20-24pax": 226,
+        "25-29pax": 221,
+        "30-34pax": 214,
+        "35-39pax": 209,
+        "40-42pax": 206
       }
     }
   },
@@ -115,16 +120,17 @@
     "English-speaking tour guide",
     "Transportation by air-conditioned vehicle",
     "Fansipan cable car and Muong Hoa train tickets",
+    "Private boat cruise in Halong Bay",
+    "Thien Cung Grottoes entrance fees",
     "Entrance fees to mentioned attractions",
     "3 special meals: Buffet Fansipan, Buffet Sen, Hotpot salmon + red wine"
   ],
   "excludes": [
     "International flights",
-    "Travel insurance",
+    "Travel insurance", 
     "Personal expenses",
     "Drinks during meals (except specified)",
     "Tips for guide and driver",
-    "Hanoi train track cafe fees",
     "Single supplement (if applicable)"
   ],
   "notes": [
