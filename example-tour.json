@@ -1,0 +1,192 @@
+{
+  "id": "TOUR_ID",
+  "title": "Tour Title: Destination Name XdXn",
+  "subtitle": "Brief catchy description of the tour experience",
+  "description": "Short description for tour listing page",
+  "overview": "Detailed overview paragraph describing the full tour experience, what makes it special, and what travelers can expect. This appears on the tour detail page.",
+  "duration": "X Days X Nights",
+  "departure": "Starting City/Airport",
+  "destination": "Destination1, Destination2, Destination3",
+  "transport": "Transportation methods (e.g., Air-conditioned bus, Cable car, Boat)",
+  "region": "Geographic Region (e.g., Northern Vietnam, Central Vietnam, Southern Vietnam)",
+  "city": "City1, City2, City3",
+  "hashtags": [
+    "MainDestinationTour", 
+    "RegionName", 
+    "KeyAttraction1", 
+    "KeyAttraction2", 
+    "TourType", 
+    "ActivityType"
+  ],
+  "highlights": [
+    "Special meal or experience 1",
+    "Unique attraction or activity 2", 
+    "Memorable experience 3",
+    "Cultural immersion opportunity 4"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "meals": ["B", "L", "D"],
+      "title": "Day 1 Title - Arrival/First Activity",
+      "description": "Brief description of day 1 activities and schedule"
+    },
+    {
+      "day": 2,
+      "meals": ["B", "L", "D"],
+      "title": "Day 2 Title - Main Activity/Attraction", 
+      "description": "Brief description of day 2 activities and schedule"
+    },
+    {
+      "day": 3,
+      "meals": ["B", "L", "D"],
+      "title": "Day 3 Title - Secondary Activity/Travel",
+      "description": "Brief description of day 3 activities and schedule"
+    },
+    {
+      "day": 4,
+      "meals": ["B", "L"],
+      "title": "Day 4 Title - Final Activities/Departure",
+      "description": "Brief description of day 4 activities and departure"
+    }
+  ],
+  "hotels": "City1: 3 Star - Hotel Name 3*, Alternative Hotel 3* or similar, 4 Star - Hotel Name 4*, Alternative Hotel 4* or similar | City2: 3 Star - Hotel Name 3*, Alternative Hotel 3* or similar, 4 Star - Hotel Name 4*, Alternative Hotel 4* or similar",
+  "pricing": {
+    "currency": "USD",
+    "options": [
+      {
+        "name": "3 Star Hotel",
+        "rates": [
+          {
+            "type": "Single Supplement",
+            "price": 0
+          },
+          {
+            "type": "3 Pax", 
+            "price": 0
+          },
+          {
+            "type": "4 Pax",
+            "price": 0
+          },
+          {
+            "type": "7 Pax",
+            "price": 0
+          },
+          {
+            "type": "10-14 Pax",
+            "price": 0
+          },
+          {
+            "type": "15-19 Pax + 1 Tour Leader",
+            "price": 0
+          },
+          {
+            "type": "20-24 Pax + 1 Tour Leader", 
+            "price": 0
+          },
+          {
+            "type": "25-29 Pax + 1 Tour Leader",
+            "price": 0
+          },
+          {
+            "type": "30-34 Pax + 2 Tour Leaders",
+            "price": 0
+          },
+          {
+            "type": "35-39 Pax + 2 Tour Leaders",
+            "price": 0
+          },
+          {
+            "type": "40-42 Pax + 2 Tour Leaders",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "name": "4 Star Hotel",
+        "rates": [
+          {
+            "type": "Single Supplement",
+            "price": 0
+          },
+          {
+            "type": "3 Pax",
+            "price": 0
+          },
+          {
+            "type": "4 Pax", 
+            "price": 0
+          },
+          {
+            "type": "7 Pax",
+            "price": 0
+          },
+          {
+            "type": "10-14 Pax",
+            "price": 0
+          },
+          {
+            "type": "15-19 Pax + 1 Tour Leader",
+            "price": 0
+          },
+          {
+            "type": "20-24 Pax + 1 Tour Leader",
+            "price": 0
+          },
+          {
+            "type": "25-29 Pax + 1 Tour Leader",
+            "price": 0
+          },
+          {
+            "type": "30-34 Pax + 2 Tour Leaders",
+            "price": 0
+          },
+          {
+            "type": "35-39 Pax + 2 Tour Leaders",
+            "price": 0
+          },
+          {
+            "type": "40-42 Pax + 2 Tour Leaders",
+            "price": 0
+          }
+        ]
+      }
+    ]
+  },
+  "includes": [
+    "X-star accommodation (twin sharing)",
+    "Meals as specified in itinerary", 
+    "English-speaking tour guide",
+    "Transportation by air-conditioned vehicle",
+    "Entrance fees to mentioned attractions",
+    "Specific inclusions for this tour"
+  ],
+  "excludes": [
+    "International flights",
+    "Travel insurance",
+    "Personal expenses", 
+    "Drinks during meals (except specified)",
+    "Tips for guide and driver",
+    "Single supplement (if applicable)",
+    "Specific exclusions for this tour"
+  ],
+  "notes": [
+    "General note about pricing and booking",
+    "Important information about weather or seasonal considerations",
+    "Special requirements or recommendations",
+    "Any other important tour-specific information"
+  ],
+  "seo": {
+    "keywords": [
+      "destination1", 
+      "destination2", 
+      "attraction1", 
+      "attraction2", 
+      "vietnam tour", 
+      "tour type", 
+      "activity type"
+    ],
+    "metaDescription": "SEO-friendly description of the tour for search engines, including key destinations and experiences. Keep under 160 characters."
+  }
+}
