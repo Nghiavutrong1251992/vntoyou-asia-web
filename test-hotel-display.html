@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hotel Display</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>🏨 Hotels Display Test</h2>
+    <div class="card">
+        <div class="card-body" id="hotels-display">
+            <!-- Hotels will be rendered here -->
+        </div>
+    </div>
+</div>
+
+<script>
+// Function sanitize HTML
+function sanitizeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// New simplified render function
+function renderHotels(hotels) {
+    if (!hotels) return '';
+    
+    // Check if hotels is string (new format) or object (old format)
+    if (typeof hotels === 'string') {
+        // New simple format
+        const cities = hotels.split('|');
+        
+        return cities.map(cityInfo => {
+            const cityMatch = cityInfo.trim().match(/^([^:]+):\s*(.+)$/);
+            if (cityMatch) {
+                const cityName = cityMatch[1].trim();
+                const hotelInfo = cityMatch[2].trim();
+                
+                return `
+                    <div class="mb-3">
+                        <h5 class="text-primary mb-2">
+                            <i class="fas fa-map-marker-alt me-1"></i> 
+                            ${sanitizeHTML(cityName)}
+                        </h5>
+                        <p class="text-muted mb-0" style="line-height: 1.6;">
+                            ${sanitizeHTML(hotelInfo)}
+                        </p>
+                    </div>
+                `;
+            }
+            return '';
+        }).join('');
+    }
+    return '';
+}
+
+// Test data - new format
+const hotelData = "Hanoi: 3 Star - CWD Hanoi Hotel 3*, Quang Ba Trade Union Hotel 3* or similar, 4 Star - Thang Long Opera Hotel 4*, Muong Thanh Central Hotel 4*, Super Candle Hanoi Hotel 4*, Lacasa Hanoi Hotel 4* or similar | Sapa: 3 Star - Azure Sapa 3*, Sapa Relax Hotel 3* or similar, 4 Star - Sapa Highland Resort & Spa 4*, Charm Sapa Hotel 4*, Hotel De Sapa 4* or similar";
+
+// Render the result
+document.getElementById('hotels-display').innerHTML = renderHotels(hotelData);
+</script>
+</body>
+</html>

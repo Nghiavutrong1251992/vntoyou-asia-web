@@ -156,23 +156,51 @@
             }
         }
 
-        // Render hotels section
+        // Render hotels section - simplified version
         function renderHotels(hotels) {
             if (!hotels) return '';
             
-            return Object.keys(hotels).map(city => `
-                <div class="mb-3">
-                    <h5 class="text-primary mb-2"><i class="fas fa-map-marker-alt me-1"></i> ${sanitizeHTML(city.charAt(0).toUpperCase() + city.slice(1))}</h5>
-                    ${Object.keys(hotels[city]).map(starLevel => `
-                        <div class="mb-2">
-                            <h6 class="mb-1"><i class="fas fa-star text-warning me-1"></i> ${starLevel.replace('star', ' Star Hotels')}</h6>
-                            <ul class="list-unstyled ms-3">
-                                ${hotels[city][starLevel].map(hotel => `<li class="mb-1 text-muted">• ${sanitizeHTML(hotel)}</li>`).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}
-                </div>
-            `).join('');
+            // Check if hotels is string (new format) or object (old format)
+            if (typeof hotels === 'string') {
+                // New simple format
+                const cities = hotels.split('|');
+                
+                return cities.map(cityInfo => {
+                    const cityMatch = cityInfo.trim().match(/^([^:]+):\s*(.+)$/);
+                    if (cityMatch) {
+                        const cityName = cityMatch[1].trim();
+                        const hotelInfo = cityMatch[2].trim();
+                        
+                        return `
+                            <div class="mb-3">
+                                <h5 class="text-primary mb-2">
+                                    <i class="fas fa-map-marker-alt me-1"></i> 
+                                    ${sanitizeHTML(cityName)}
+                                </h5>
+                                <p class="text-muted mb-0" style="line-height: 1.6;">
+                                    ${sanitizeHTML(hotelInfo)}
+                                </p>
+                            </div>
+                        `;
+                    }
+                    return '';
+                }).join('');
+            } else {
+                // Old complex format - keep for backward compatibility
+                return Object.keys(hotels).map(city => `
+                    <div class="mb-3">
+                        <h5 class="text-primary mb-2"><i class="fas fa-map-marker-alt me-1"></i> ${sanitizeHTML(city.charAt(0).toUpperCase() + city.slice(1))}</h5>
+                        ${Object.keys(hotels[city]).map(starLevel => `
+                            <div class="mb-2">
+                                <h6 class="mb-1"><i class="fas fa-star text-warning me-1"></i> ${starLevel.replace('star', ' Star Hotels')}</h6>
+                                <ul class="list-unstyled ms-3">
+                                    ${hotels[city][starLevel].map(hotel => `<li class="mb-1 text-muted">• ${sanitizeHTML(hotel)}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                `).join('');
+            }
         }
 
         // Render pricing section with tabs

@@ -40,7 +40,33 @@
       "description": "HCM Mausoleum - Shopping Hanoi Old Quarter - Mega Grand World - End of Tour"
     }
   ],
-  "hotels": "Hanoi: 3 Star - CWD Hanoi Hotel 3*, Quang Ba Trade Union Hotel 3* or similar, 4 Star - Thang Long Opera Hotel 4*, Muong Thanh Central Hotel 4*, Super Candle Hanoi Hotel 4*, Lacasa Hanoi Hotel 4* or similar | Sapa: 3 Star - Azure Sapa 3*, Sapa Relax Hotel 3* or similar, 4 Star - Sapa Highland Resort & Spa 4*, Charm Sapa Hotel 4*, Hotel De Sapa 4* or similar",
+  "hotels": {
+    "hanoi": {
+      "name": "Hanoi",
+      "3star": [
+        "CWD Hanoi Hotel 3*",
+        "Quang Ba Trade Union Hotel 3*"
+      ],
+      "4star": [
+        "Thang Long Opera Hotel 4*",
+        "Muong Thanh Central Hotel 4*",
+        "Super Candle Hanoi Hotel 4*",
+        "Lacasa Hanoi Hotel 4*"
+      ]
+    },
+    "sapa": {
+      "name": "Sapa",
+      "3star": [
+        "Azure Sapa 3*",
+        "Sapa Relax Hotel 3*"
+      ],
+      "4star": [
+        "Sapa Highland Resort & Spa 4*",
+        "Charm Sapa Hotel 4*",
+        "Hotel De Sapa 4*"
+      ]
+    }
+  },
   "pricing": {
     "currency": "USD",
     "options": [

@@ -1,15 +1,16 @@
 function exportTourToJSON() {
   const sheet = SpreadsheetApp.getActiveSheet();
-  const data = sheet.getDataRange().getValues();
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const dataRow = sheet.getRange(2, 1, 1, sheet.getLastColumn()).getValues()[0];
   
   let tourData = {};
   
-  // Đọc dữ liệu cơ bản
-  for (let i = 0; i < data.length; i++) {
-    const field = data[i][0];
-    const value = data[i][1];
+  // Xử lý từng cột dữ liệu
+  for (let i = 0; i < headers.length; i++) {
+    const field = headers[i];
+    const value = dataRow[i];
     
-    if (!field || !value) continue;
+    if (!field || value === '') continue;
     
     // Xử lý các trường đơn giản
     if (field === 'id') tourData.id = value;
@@ -24,54 +25,47 @@ function exportTourToJSON() {
     else if (field === 'region') tourData.region = value;
     else if (field === 'city') tourData.city = value;
     
-    // Xử lý mảng
+    // Xử lý mảng với separator |
     else if (field === 'hashtags') {
-      tourData.hashtags = value.split(',').map(item => item.trim());
+      tourData.hashtags = value.split('|').map(item => item.trim());
     }
     else if (field === 'highlights') {
       tourData.highlights = [value];
     }
-    // Note: includes, excludes, terms, contact sẽ được load từ default-terms.json
-    else if (field === 'seo_keywords') {
-      if (!tourData.seo) tourData.seo = {};
-      tourData.seo.keywords = value.split(',').map(item => item.trim());
-    }
-    else if (field === 'seo_meta_description') {
-      if (!tourData.seo) tourData.seo = {};
-      tourData.seo.metaDescription = value;
-    }
     
-    // Xử lý itinerary
-    else if (field.startsWith('itinerary_day')) {
+    // Xử lý lịch trình (hỗ trợ tối đa 14 ngày)
+    else if (field.match(/^day(\d+)_(meals|title|description)$/)) {
       if (!tourData.itinerary) tourData.itinerary = [];
       
-      const dayMatch = field.match(/itinerary_day(\d+)_(.+)/);
+      const dayMatch = field.match(/^day(\d+)_(meals|title|description)$/);
       if (dayMatch) {
         const dayNum = parseInt(dayMatch[1]);
         const property = dayMatch[2];
         
-        // Tìm hoặc tạo day object
-        let dayObj = tourData.itinerary.find(item => item.day === dayNum);
-        if (!dayObj) {
-          dayObj = { day: dayNum };
-          tourData.itinerary.push(dayObj);
-        }
-        
-        if (property === 'meals') {
-          dayObj.meals = value.split(',').map(item => item.trim());
-        } else if (property === 'title') {
-          dayObj.title = value;
-        } else if (property === 'description') {
-          dayObj.description = value;
+        if (dayNum >= 1 && dayNum <= 14) { // Giới hạn 14 ngày
+          // Tìm hoặc tạo day object
+          let dayObj = tourData.itinerary.find(item => item.day === dayNum);
+          if (!dayObj) {
+            dayObj = { day: dayNum };
+            tourData.itinerary.push(dayObj);
+          }
+          
+          if (property === 'meals') {
+            dayObj.meals = value.split('|').map(item => item.trim());
+          } else if (property === 'title') {
+            dayObj.title = value;
+          } else if (property === 'description') {
+            dayObj.description = value;
+          }
         }
       }
     }
     
-    // Xử lý hotels
-    else if (field.startsWith('hotels_')) {
+    // Xử lý khách sạn (hỗ trợ nhiều thành phố hơn)
+    else if (field.match(/^(hanoi|sapa|hcmc|danang|hoian|hue|dalat|nhatrang|phuquoc|halong)_(3star|4star)_hotels$/)) {
       if (!tourData.hotels) tourData.hotels = {};
       
-      const hotelMatch = field.match(/hotels_(.+)_(.+)/);
+      const hotelMatch = field.match(/^(.+)_(3star|4star)_hotels$/);
       if (hotelMatch) {
         const city = hotelMatch[1];
         const starType = hotelMatch[2];
@@ -81,8 +75,8 @@ function exportTourToJSON() {
       }
     }
     
-    // Xử lý pricing
-    else if (field.startsWith('pricing_')) {
+    // Xử lý giá tour (pricing)
+    else if (field.match(/^(3star|4star)_(single_supplement|3pax|4pax|7pax|10_14pax|15_19pax|20_24pax|25_29pax|30_34pax|35_39pax|40_42pax)$/)) {
       if (!tourData.pricing) {
         tourData.pricing = {
           currency: "USD",
@@ -93,39 +87,44 @@ function exportTourToJSON() {
         };
       }
       
-      if (field === 'pricing_currency') {
-        tourData.pricing.currency = value;
-      } else {
-        const pricingMatch = field.match(/pricing_(.+star)_(.+)/);
-        if (pricingMatch) {
-          const starType = pricingMatch[1];
-          const rateType = pricingMatch[2];
-          
-          let optionIndex = starType === '3star' ? 0 : 1;
-          let typeLabel = '';
-          
-          if (rateType === 'single') typeLabel = 'Single Supplement';
-          else if (rateType === '3pax') typeLabel = '3 Pax';
-          else if (rateType === '4pax') typeLabel = '4 Pax';
-          else if (rateType === '7pax') typeLabel = '7 Pax';
-          else if (rateType === '10_14pax') typeLabel = '10-14 Pax';
-          else if (rateType === '15_19pax') typeLabel = '15-19 Pax + 1 Tour Leader';
-          else if (rateType === '20_24pax') typeLabel = '20-24 Pax + 1 Tour Leader';
-          else if (rateType === '25_29pax') typeLabel = '25-29 Pax + 1 Tour Leader';
-          else if (rateType === '30_34pax') typeLabel = '30-34 Pax + 2 Tour Leaders';
-          else if (rateType === '35_39pax') typeLabel = '35-39 Pax + 2 Tour Leaders';
-          else if (rateType === '40_42pax') typeLabel = '40-42 Pax + 2 Tour Leaders';
-          
-          if (typeLabel) {
-            tourData.pricing.options[optionIndex].rates.push({
-              type: typeLabel,
-              price: parseInt(value)
-            });
-          }
+      const pricingMatch = field.match(/^(3star|4star)_(.+)$/);
+      if (pricingMatch) {
+        const starType = pricingMatch[1];
+        const rateType = pricingMatch[2];
+        
+        let optionIndex = starType === '3star' ? 0 : 1;
+        let typeLabel = '';
+        
+        if (rateType === 'single_supplement') typeLabel = 'Single Supplement';
+        else if (rateType === '3pax') typeLabel = '3 Pax';
+        else if (rateType === '4pax') typeLabel = '4 Pax';
+        else if (rateType === '7pax') typeLabel = '7 Pax';
+        else if (rateType === '10_14pax') typeLabel = '10-14 Pax';
+        else if (rateType === '15_19pax') typeLabel = '15-19 Pax + 1 Tour Leader';
+        else if (rateType === '20_24pax') typeLabel = '20-24 Pax + 1 Tour Leader';
+        else if (rateType === '25_29pax') typeLabel = '25-29 Pax + 1 Tour Leader';
+        else if (rateType === '30_34pax') typeLabel = '30-34 Pax + 2 Tour Leaders';
+        else if (rateType === '35_39pax') typeLabel = '35-39 Pax + 2 Tour Leaders';
+        else if (rateType === '40_42pax') typeLabel = '40-42 Pax + 2 Tour Leaders';
+        
+        if (typeLabel && value) {
+          tourData.pricing.options[optionIndex].rates.push({
+            type: typeLabel,
+            price: parseInt(value)
+          });
         }
       }
     }
-    // Note: contact sẽ được load từ default-terms.json
+    
+    // Xử lý SEO
+    else if (field === 'seo_keywords') {
+      if (!tourData.seo) tourData.seo = {};
+      tourData.seo.keywords = value.split('|').map(item => item.trim());
+    }
+    else if (field === 'seo_meta_description') {
+      if (!tourData.seo) tourData.seo = {};
+      tourData.seo.metaDescription = value;
+    }
   }
   
   // Sắp xếp itinerary theo day

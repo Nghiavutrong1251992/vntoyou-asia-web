@@ -1,0 +1,144 @@
+{
+  "hotels": {
+    "danang": {
+      "name": "Da Nang",
+      "3star": [
+        "Sepon Blue Hotel 3*",
+        "Pandora Danang Hotel 3*"
+      ],
+      "4star": [
+        "Luxtery Da Nang 4*",
+        "Nhu Minh Danang 4*"
+      ],
+      "5star": [
+        "Golden Bay Danang Hotel 5*",
+        "Muong Thanh Luxury Danang 5*"
+      ]
+    },
+    "hoian": {
+      "name": "Hoi An",
+      "3star": [],
+      "4star": [
+        "Historic Hoian 4*",
+        "Silkotel Hoian 4*",
+        "La Charm Hoi An Hotel & Spa 4*"
+      ],
+      "5star": []
+    },
+    "hue": {
+      "name": "Hue",
+      "3star": [],
+      "4star": [
+        "Thanh Lich Hotel Hue 4*",
+        "Romance Hotel Hue 4*"
+      ],
+      "5star": []
+    },
+    "hanoi": {
+      "name": "Hanoi",
+      "3star": [
+        "CWD Hanoi Hotel 3*",
+        "Quang Ba Trade Union Hotel 3*"
+      ],
+      "4star": [
+        "Thang Long Opera Hotel 4*",
+        "Muong Thanh Central Hotel 4*",
+        "Super Candle Hanoi Hotel 4*",
+        "Lacasa Hanoi Hotel 4*"
+      ],
+      "5star": []
+    },
+    "sapa": {
+      "name": "Sapa",
+      "3star": [
+        "Azure Sapa 3*",
+        "Sapa Relax Hotel 3*"
+      ],
+      "4star": [
+        "Sapa Highland Resort & Spa 4*",
+        "Charm Sapa Hotel 4*",
+        "Hotel De Sapa 4*"
+      ],
+      "5star": []
+    },
+    "halong": {
+      "name": "Ha Long",
+      "3star": [
+        "New Star Halong 3*",
+        "Song Loc Luxury Hotel 3*"
+      ],
+      "4star": [
+        "Marina Halong Hotel 4*"
+      ],
+      "5star": []
+    },
+    "nhatrang": {
+      "name": "Nha Trang",
+      "3star": [],
+      "4star": [
+        "Le More Nha Trang Hotel 4*",
+        "Le' Cham Hotel Nhatrang 4*"
+      ],
+      "5star": []
+    },
+    "phuquoc": {
+      "name": "Phu Quoc",
+      "3star": [],
+      "4star": [
+        "VinHolidays Fiesta Phuquoc 4*",
+        "Wyndham Garden Hotel 4*"
+      ],
+      "5star": []
+    },
+    "hcmc": {
+      "name": "Ho Chi Minh City",
+      "3star": [],
+      "4star": [
+        "Cicilia Saigon Hotel 4*",
+        "Athena Saigon Hotel 4*",
+        "Ramana Saigon Hotel 4*"
+      ],
+      "5star": []
+    },
+    "muine": {
+      "name": "Mui Ne",
+      "3star": [],
+      "4star": [
+        "Muong Thanh Muine 4*"
+      ],
+      "5star": []
+    },
+    "dalat": {
+      "name": "Da Lat",
+      "3star": [],
+      "4star": [
+        "TTC Dalat Hotel 4*",
+        "King Dalat Hotel 4*",
+        "Saigon Dalat Hotel 4*"
+      ],
+      "5star": []
+    },
+    "tamdao": {
+      "name": "Tam Dao",
+      "3star": [],
+      "4star": [
+        "Venus Hotel Tam Dao 4*"
+      ],
+      "5star": []
+    },
+    "ninhbinh": {
+      "name": "Ninh Binh",
+      "3star": [],
+      "4star": [
+        "The Reed Ninh Binh 4*"
+      ],
+      "5star": []
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-09-21",
+    "description": "Standardized hotel list for VN To You Asia tour management",
+    "usage": "This file provides auto-complete data for Google Sheets tour management"
+  }
+}

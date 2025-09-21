@@ -1,0 +1,75 @@
+{
+  "id": "VNC501CB",
+  "title": "VNC501CB: 5D4N Classic Da Nang - Hue - Ba Na Hills - Hoi An Discovery",
+  "subtitle": "Explore the cultural heart of Central Vietnam",
+  "description": "A perfect journey through Vietnam's imperial history and coastal beauty",
+  "overview": "Discover the rich cultural heritage of Central Vietnam with this comprehensive 5-day tour covering the ancient capital of Hue, the vibrant city of Da Nang, the magical Ba Na Hills, and the charming ancient town of Hoi An.",
+  "duration": "5 Days 4 Nights",
+  "departure": "Da Nang",
+  "destination": "Da Nang, Hue, Hoi An",
+  "transport": "Air-conditioned bus, Cable car",
+  "region": "Central Vietnam",
+  "city": "Da Nang, Hue, Hoi An",
+  "hashtags": ["DaNangTour", "HueTour", "HoiAnTour", "BaNaHills", "CentralVietnam", "ImperialCity", "AncientTown", "CulturalTour"],
+  "highlights": [
+    "Golden Bridge experience, Imperial City tour, Hoi An Ancient Town walking tour, Dragon Bridge fire show"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "meals": ["B", "L", "D"],
+      "title": "Da Nang Arrival",
+      "description": "Arrival in Da Nang - Transfer to hotel - Ba Na Hills full day tour with Golden Bridge and French Village"
+    },
+    {
+      "day": 2,
+      "meals": ["B", "L", "D"],
+      "title": "Hue Imperial City",
+      "description": "Da Nang to Hue via Hai Van Pass - Imperial City tour - Thien Mu Pagoda - Perfume River cruise"
+    },
+    {
+      "day": 3,
+      "meals": ["B", "L", "D"],
+      "title": "Hoi An Ancient Town",
+      "description": "Hue to Hoi An - My Son Sanctuary - Hoi An Ancient Town walking tour - Japanese Covered Bridge"
+    },
+    {
+      "day": 4,
+      "meals": ["B", "L", "D"],
+      "title": "Hoi An Culture & Cooking",
+      "description": "Tra Que Vegetable Village - Cooking class - Basket boat tour - Hoi An night market"
+    },
+    {
+      "day": 5,
+      "meals": ["B", "L"],
+      "title": "Da Nang Departure",
+      "description": "Free time for shopping - My Khe Beach - Dragon Bridge - Transfer to airport - Departure"
+    }
+  ],
+  "hotels": "Da Nang: 3 Star - Sepon Blue Hotel 3* / Pandora Danang Hotel or similar, 4 Star - Luxtery Da Nang 4* / Nhu Minh Danang 4* or similar, 5 Star - Golden Bay Danang Hotel 5* / Muong Thanh Luxury Danang 5* or similar | Hoi An: 4 Star - Historic Hoian, Silkotel Hoian, La Charm Hoi An Hotel & Spa or similar | Hue: 4 Star - Thanh Lich Hotel Hue, Romance Hotel or similar",
+  "pricing": {
+    "currency": "USD",
+    "options": [
+      {
+        "name": "3 Star Hotel",
+        "rates": [
+          { "type": "Single Supplement", "price": 59 },
+          { "type": "3 Pax", "price": 420 },
+          { "type": "4 Pax", "price": 385 }
+        ]
+      },
+      {
+        "name": "4 Star Hotel", 
+        "rates": [
+          { "type": "Single Supplement", "price": 79 },
+          { "type": "3 Pax", "price": 520 },
+          { "type": "4 Pax", "price": 475 }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "keywords": ["Da Nang", "Hue", "Hoi An", "Central Vietnam", "UNESCO", "Imperial City", "Ancient Town", "Ba Na Hills"],
+    "metaDescription": "Discover Central Vietnam's UNESCO World Heritage Sites with our 5-day Da Nang-Hue-Hoi An tour. Visit Ba Na Hills Golden Bridge, Imperial City, and Hoi An Ancient Town."
+  }
+}
