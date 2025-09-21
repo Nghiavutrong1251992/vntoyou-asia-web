@@ -1,0 +1,137 @@
+{
+  "id": "VNN402",
+  "title": "VNN402: Hanoi Sapa 4D3N Premium",
+  "subtitle": "Discover the breathtaking beauty of Vietnam's mountains and capital city",
+  "description": "Experience the stunning landscapes of Northern Vietnam with enhanced amenities",
+  "overview": "Experience the stunning landscapes of Northern Vietnam with our carefully crafted 4-day journey from Hanoi to Sapa. This premium tour combines cultural immersion with natural beauty, taking you through ethnic villages, majestic mountains, and vibrant local markets with special dining experiences.",
+  "duration": "4 Days 3 Nights",
+  "departure": "Hanoi",
+  "destination": "Hanoi, Sapa",
+  "transport": "Air-conditioned bus, Cable car, Muong Hoa Train",
+  "region": "Northern Vietnam",
+  "city": "Hanoi, Sapa",
+  "hashtags": ["HanoiSapaTour", "NorthernVietnam", "FansipanMountain", "CatCatVillage", "SapaTravel", "HanoiTravel", "VietnamMountains", "CulturalTour", "PremiumTour"],
+  "highlights": [
+    "3 special meals: Buffet Fansipan - Buffet Sen - Hotpot salmon + red wine",
+    "Fansipan Mountain with Muong Hoa Train + Cable Car experience",
+    "Visit to Cat Cat Village and Sapa night market",
+    "Explore Hanoi's cultural landmarks including HCM Mausoleum",
+    "Experience Hanoi train track cafe culture"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "meals": ["B", "L", "D"],
+      "title": "Airport Transfer to Sapa",
+      "description": "Pick up at airport - Transfer to Sapa - Cat Cat Village - Sapa night market",
+      "activities": [
+        "Airport pickup and transfer to Sapa",
+        "Visit Cat Cat Village - explore ethnic minority culture",
+        "Evening at Sapa night market - local shopping and street food"
+      ]
+    },
+    {
+      "day": 2,
+      "meals": ["B", "L", "D"],
+      "title": "Fansipan Mountain Adventure",
+      "description": "Fansipan Mountain (Include Muong Hoa Train + Cable Car + Buffet) - Moana Sapa",
+      "activities": [
+        "Morning: Take Muong Hoa Train to Fansipan Station",
+        "Cable car ride to Fansipan Peak - Roof of Indochina",
+        "Buffet lunch at Fansipan",
+        "Afternoon: Moana Sapa relaxation"
+      ]
+    },
+    {
+      "day": 3,
+      "meals": ["B", "L", "D"],
+      "title": "Sapa to Hanoi Journey",
+      "description": "Back to Hanoi - Tran Quoc Pagoda - West Lake - Hanoi train track cafe (not include cafe fee)",
+      "activities": [
+        "Morning departure from Sapa back to Hanoi",
+        "Visit Tran Quoc Pagoda - oldest Buddhist temple in Hanoi",
+        "West Lake area exploration",
+        "Experience famous Hanoi train track cafe (cafe fee not included)"
+      ]
+    },
+    {
+      "day": 4,
+      "meals": ["B", "L"],
+      "title": "Hanoi Exploration & Departure",
+      "description": "HCM Mausoleum - Shopping Hanoi Old Quarter - Mega Grand World - End of Tour",
+      "activities": [
+        "Visit Ho Chi Minh Mausoleum and surrounding area",
+        "Shopping time at Hanoi Old Quarter",
+        "Mega Grand World entertainment complex",
+        "Transfer to airport - End of tour"
+      ]
+    }
+  ],
+  "accommodation": {
+    "hanoi": {
+      "3star": "CWD Hanoi Hotel 3*, Quang Ba Trade Union Hotel 3* or similar",
+      "4star": "Thang Long Opera Hotel 4*/ Muong Thanh Central Hotel 4* / Super Candle Hanoi Hotel 4*/ Lacasa Hanoi Hotel 4* or similar"
+    },
+    "sapa": {
+      "3star": "Azure Sapa 3*/ Sapa Relax Hotel 3* or similar",
+      "4star": "Sapa Highland Resort & Spa 4* / Charm Sapa Hotel 4* / Hotel De Sapa 4* or similar"
+    }
+  },
+  "pricing": {
+    "3star": {
+      "singleSurcharge": 53,
+      "groupPrices": {
+        "3pax": 377,
+        "4pax": 335,
+        "7pax": 262,
+        "10-14pax": 224,
+        "15-19pax": 218,
+        "20-24pax": 203,
+        "25-29pax": 198,
+        "30-34pax": 191,
+        "35-39pax": 186,
+        "40-42pax": 182
+      }
+    },
+    "4star": {
+      "singleSurcharge": 70,
+      "groupPrices": {
+        "3pax": 396,
+        "4pax": 354,
+        "7pax": 281,
+        "10-14pax": 243,
+        "15-19pax": 227,
+        "20-24pax": 214,
+        "25-29pax": 211,
+        "30-34pax": 205,
+        "35-39pax": 201,
+        "40-42pax": 198
+      }
+    }
+  },
+  "includes": [
+    "3-star or 4-star accommodation (twin sharing)",
+    "Meals as specified in itinerary",
+    "English-speaking tour guide",
+    "Transportation by air-conditioned vehicle",
+    "Fansipan cable car and Muong Hoa train tickets",
+    "Entrance fees to mentioned attractions",
+    "3 special meals: Buffet Fansipan, Buffet Sen, Hotpot salmon + red wine"
+  ],
+  "excludes": [
+    "International flights",
+    "Travel insurance",
+    "Personal expenses",
+    "Drinks during meals (except specified)",
+    "Tips for guide and driver",
+    "Hanoi train track cafe fees",
+    "Single supplement (if applicable)"
+  ],
+  "notes": [
+    "Prices are per person in USD",
+    "Single supplement applies for solo travelers",
+    "Group size affects pricing - larger groups get better rates",
+    "Weather conditions may affect Fansipan cable car operations",
+    "Hanoi train track cafe fees are not included"
+  ]
+}
