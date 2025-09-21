@@ -1,0 +1,41 @@
+{
+  "companyInfo": {
+    "name": "VIET NAM TO YOU TOURISM COMPANY LIMITED",
+    "address": "5TT1 - 537 Bát Khối - Thạch Bàn - Hà Nội",
+    "email": "SALES@VNTOYOU.NET",
+    "website": "www.vntoyou.net"
+  },
+  "contacts": [
+    {
+      "name": "Ms. Ngan",
+      "title": "Sales Manager",
+      "phone": "+84904596505",
+      "whatsapp": "+84904596505",
+      "primary": true
+    },
+    {
+      "name": "Mr. Thong",
+      "title": "Sales Manager",
+      "phone": "+84977632673",
+      "whatsapp": "+84977632673",
+      "primary": false
+    },
+    {
+      "name": "Ms. Ruby",
+      "title": "Sales Manager",
+      "phone": "+84934615595",
+      "whatsapp": "+84934615595",
+      "primary": false
+    }
+  ],
+  "socialMedia": {
+    "facebook": "",
+    "instagram": "",
+    "youtube": ""
+  },
+  "businessHours": {
+    "weekdays": "Monday - Friday: 8:00 AM - 6:00 PM",
+    "weekend": "Saturday: 8:00 AM - 5:00 PM",
+    "note": "Sunday: Closed (Emergency contact available)"
+  }
+}

@@ -38,16 +38,24 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3>Contact Information</h3>
-                    <p><strong>VIET NAM TO YOU TOURISM COMPANY LIMITED</strong></p>
-                    <p>Address: No. 5TT1 Alley 537 Bat Khoi Str, Long Bien Dist, Hanoi, Vietnam</p>
-                    <p>Email: SALES@VNTOYOU.NET</p>
-                    <p>Hotline: +84 904 596 505 (Ms. Ngan) / +84 977 632 673 (Mr. Thong) / +84 93 461 55 95 (Ms. Ruby)</p>
+                    <div id="company-info">
+                        <p><strong>Loading...</strong></p>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h3>Direct Contact</h3>
-                    <p><a href="mailto:SALES@VNTOYOU.NET" class="btn btn-primary">Send Email</a></p>
-                    <p><a href="tel:+84904596505" class="btn btn-primary">Call Ms. Ngan</a></p>
-                    <p><a href="https://wa.me/84904596505" class="btn btn-primary">WhatsApp Ms. Ngan</a></p>
+                    <div id="contact-buttons">
+                        <p>Loading contact options...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h3>Our Team</h3>
+                    <div id="contact-team" class="row">
+                        <p>Loading team information...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,6 +97,7 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/contact-manager.js"></script>
     <script src="popup/popup.js"></script>
     <script>
         // Back to Top functionality
@@ -98,6 +107,56 @@
                 behavior: 'smooth'
             });
         }
+
+        // Load contact page content
+        document.addEventListener('DOMContentLoaded', async () => {
+            const contactData = await window.contactManager.loadContactInfo();
+            
+            if (contactData) {
+                // Update company info
+                const companyInfo = document.getElementById('company-info');
+                companyInfo.innerHTML = `
+                    <p><strong>${contactData.companyInfo.name}</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${contactData.companyInfo.address}</p>
+                    <p><i class="fas fa-envelope"></i> ${contactData.companyInfo.email}</p>
+                    <p><i class="fas fa-globe"></i> ${contactData.companyInfo.website}</p>
+                    ${contactData.businessHours ? `
+                        <div class="mt-3">
+                            <h6><i class="fas fa-clock"></i> Business Hours:</h6>
+                            <p class="mb-1">${contactData.businessHours.weekdays}</p>
+                            <p class="mb-1">${contactData.businessHours.weekend}</p>
+                            <small class="text-muted">${contactData.businessHours.note}</small>
+                        </div>
+                    ` : ''}
+                `;
+
+                // Update contact buttons
+                const contactButtons = document.getElementById('contact-buttons');
+                contactButtons.innerHTML = window.contactManager.generateContactButtons();
+
+                // Update team info
+                const teamSection = document.getElementById('contact-team');
+                teamSection.innerHTML = contactData.contacts.map(contact => `
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">${contact.name}</h6>
+                                <p class="card-text text-muted">${contact.title}</p>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a href="tel:${contact.phone}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                    <a href="https://wa.me/${contact.whatsapp.replace(/[^0-9]/g, '')}" class="btn btn-sm btn-success" target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                                <small class="text-muted d-block mt-2">${contact.phone}</small>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
 
         // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', function() {
