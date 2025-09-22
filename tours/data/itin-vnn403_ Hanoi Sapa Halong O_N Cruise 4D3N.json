@@ -1,0 +1,117 @@
+{
+  "id": "VNN403",
+  "title": "VNN403: Hanoi Sapa Halong Overnight Cruise 4D3N",
+  "subtitle": "Luxury cruise experience with Sapa mountains and Halong Bay overnight cruise",
+  "description": "Experience the ultimate Northern Vietnam adventure combining mountain beauty and luxury cruise",
+  "overview": "Discover the breathtaking beauty of Northern Vietnam with our premium 4-day journey combining Sapa mountains with a luxurious overnight cruise in Halong Bay. This unique tour offers the perfect blend of mountain trekking, cultural immersion, and luxury cruise experience.",
+  "duration": "4 Days 3 Nights",
+  "departure": "Hanoi Airport",
+  "destination": "Sapa, Halong Bay, Hanoi",
+  "transport": "Air-conditioned bus, Cable car, Luxury cruise",
+  "region": "Northern Vietnam",
+  "city": "Hanoi, Sapa, Halong",
+  "hashtags": ["HanoiSapaHalong", "LuxuryCruise", "OvernightCruise", "FansipanMountain", "HalongBay", "SapaTravel", "VietnamLuxury", "CruiseTour"],
+  "highlights": [
+    "3 special meals: Buffet Fansipan - Buffet Sen - Hotpot salmon + red wine",
+    "Luxury 5-star overnight cruise in Halong Bay",
+    "Fansipan Mountain cable car experience",
+    "Cat Cat Village cultural visit",
+    "Activities on luxury cruise ship"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "meals": ["B", "L", "D"],
+      "title": "Airport - Sapa",
+      "description": "Pick up at airport - Transfer to Sapa - Cat Cat Village - Sapa night market"
+    },
+    {
+      "day": 2,
+      "meals": ["B", "L", "D"],
+      "title": "Sapa",
+      "description": "Fansipan Mountain (Include Muong Hoa Train + Cable Car + Buffet) - Moana Sapa - Transfer back to Hanoi"
+    },
+    {
+      "day": 3,
+      "meals": ["B", "L", "D"],
+      "title": "Sapa - Halong",
+      "description": "Halong Bay 5* Luxury Cruise Trip - Activities on Cruise"
+    },
+    {
+      "day": 4,
+      "meals": ["B", "L"],
+      "title": "Halong - Hanoi - Airport",
+      "description": "Activities on Cruise - Back to Hanoi - Shopping - End of tour"
+    }
+  ],
+  "hotels": "Hanoi: 3* Hotel: New Star Halong 3*, Song Loc Luxury Hotel or 3* similar | 4* Hotel: Marina Halong Hotel or similar | Sapa: 3* Hotel: Azure Sapa 3*/ Sapa Relax Hotel 3* or similar | 4* Hotel: Sapa Highland Resort & Spa 4* / Charm Sapa Hotel 4* / Hotel De Sapa 4* or similar",
+  "pricing": {
+    "currency": "USD",
+    "options": [
+      {
+        "name": "3 Star Hotel",
+        "rates": [
+          {"type": "Single Surcharge", "price": 51},
+          {"type": "3 Pax", "price": 428},
+          {"type": "4 Pax", "price": 371},
+          {"type": "7 Pax", "price": 278},
+          {"type": "10-14 Pax", "price": 239},
+          {"type": "15-19 Pax + 1 Tour Leader", "price": 226},
+          {"type": "20-24 Pax + 1 Tour Leader", "price": 207},
+          {"type": "25-29 Pax + 1 Tour Leader", "price": 201},
+          {"type": "30-34 Pax + 2 Tour Leaders", "price": 193},
+          {"type": "35-39 Pax + 2 Tour Leaders", "price": 187},
+          {"type": "40-42 Pax + 2 Tour Leaders", "price": 182}
+        ]
+      },
+      {
+        "name": "4 Star Hotel",
+        "rates": [
+          {"type": "Single Surcharge", "price": 175},
+          {"type": "3 Pax", "price": 554},
+          {"type": "4 Pax", "price": 497},
+          {"type": "7 Pax", "price": 403},
+          {"type": "10-14 Pax", "price": 364},
+          {"type": "15-19 Pax + 1 Tour Leader", "price": 342},
+          {"type": "20-24 Pax + 1 Tour Leader", "price": 326},
+          {"type": "25-29 Pax + 1 Tour Leader", "price": 321},
+          {"type": "30-34 Pax + 2 Tour Leaders", "price": 314},
+          {"type": "35-39 Pax + 2 Tour Leaders", "price": 308},
+          {"type": "40-42 Pax + 2 Tour Leaders", "price": 305}
+        ]
+      }
+    ]
+  },
+  "includes": [
+    "3-star or 4-star accommodation (twin sharing)",
+    "Meals as specified in itinerary",
+    "English-speaking tour guide",
+    "Transportation by air-conditioned vehicle",
+    "Fansipan cable car and Muong Hoa train tickets",
+    "5-star luxury overnight cruise in Halong Bay",
+    "All cruise activities and entertainment",
+    "Entrance fees to mentioned attractions",
+    "3 special meals: Buffet Fansipan, Buffet Sen, Hotpot salmon + red wine"
+  ],
+  "excludes": [
+    "International flights",
+    "Travel insurance",
+    "Personal expenses",
+    "Drinks during meals (except specified)",
+    "Tips for guide and driver",
+    "Single supplement (if applicable)",
+    "Optional cruise activities"
+  ],
+  "terms": [
+    "Prices are per person in USD",
+    "Single supplement applies for solo travelers",
+    "Group size affects pricing - larger groups get better rates",
+    "Weather conditions may affect cruise operations",
+    "Cruise schedule may vary depending on weather conditions",
+    "Luxury cruise includes all standard amenities and activities"
+  ],
+  "seo": {
+    "keywords": ["Hanoi", "Sapa", "Halong Bay", "luxury cruise", "overnight cruise", "Fansipan", "Vietnam tour", "luxury tour"],
+    "metaDescription": "Experience luxury Northern Vietnam tour with 4-day Hanoi-Sapa-Halong cruise. Enjoy Fansipan Mountain, Cat Cat Village, and 5-star overnight cruise in Halong Bay."
+  }
+}

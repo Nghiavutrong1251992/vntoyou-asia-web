@@ -16,5 +16,14 @@
     "description": "Experience Northern Vietnam's most iconic destinations: Sapa mountains and Halong Bay",
     "image": "tours/data/nhatrang.jpg",
     "dataFile": "data/vnn402-hanoi-sapa-4d3n.json"
+  },
+  {
+    "id": "vnn403",
+    "title": "VNN403: Hanoi Sapa Halong Overnight Cruise 4D3N",
+    "region": "Northern Vietnam",
+    "days": 4,
+    "description": "Luxury cruise experience with Sapa mountains and Halong Bay overnight cruise",
+    "image": "tours/data/nhatrang.jpg",
+    "dataFile": "data/itin-vnn403_ Hanoi Sapa Halong O_N Cruise 4D3N.json"
   }
 ]
